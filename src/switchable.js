@@ -26,6 +26,7 @@ define(function(require, exports, module) {
     var Switchable = Widget.extend({
 
         attrs: {
+
             // 用户传入的 triggers 和 panels
             // 可以是 Selector、jQuery 对象、或 DOM 元素集
             triggers: {

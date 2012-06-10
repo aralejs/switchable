@@ -5,7 +5,7 @@ define(function(require, exports, module) {
 
 
     // 手风琴组件
-    module.exports = Switchable.extend({
+    var Accordion = Switchable.extend({
 
         attrs: {
             triggerType: 'click',
@@ -53,5 +53,7 @@ define(function(require, exports, module) {
             }
         }
     });
+
+    module.exports = Accordion;
 
 });
