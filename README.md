@@ -237,18 +237,6 @@ seajs.use(['tabs'], function(Tabs) {
 
 2. 也可以适用自动渲染。详情可以参考[examples/autorender.html](https://github.com/alipay/arale/blob/master/lib/switchable/examples/autorender.html)
 
-      
-
-## 演示页面
-
- - [examples/autorender.html](http://aralejs.org/lib/switchable/examples/autorender.html)
- - [examples/tabs.html](http://aralejs.org/lib/switchable/examples/tabs.html)
- - [examples/switchable-data-api.html](http://aralejs.org/lib/switchable/examples/switchable-data-api.html)
-
-
-## 测试用例
-
-* <http://aralejs.org/lib/switchable/tests/runner.html>
 
 
 ## 交流讨论
