@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 
-    var $ = require('jquery');
+    var $ = require('$');
 
     var SCROLLX = 'scrollx';
     var SCROLLY = 'scrolly';

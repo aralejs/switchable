@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var Switchable = require('./switchable');
-    var $ = require('jquery');
+    var $ = require('$');
     var CONST = require('./const');
 
 

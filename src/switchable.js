@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     //  - https://github.com/kissyteam/kissy/blob/master/src/switchable/
 
 
-    var $ = require('jquery');
+    var $ = require('$');
     var Widget = require('widget');
 
     var CONST = require('./const');

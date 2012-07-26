@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
 
-    var $ = require('jquery');
+    var $ = require('$');
 
 
     // 自动播放插件
