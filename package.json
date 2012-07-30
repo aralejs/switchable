@@ -1,5 +1,5 @@
 {
-    "version": "0.9.5",
+    "version": "0.9.9",
     "name": "switchable",
     "output": {
         "switchable.js": ".",
@@ -9,8 +9,14 @@
         "carousel.js": "default"
     },
     "dependencies": {
-        "$":"$",
-        "widget": "widget/0.9.16/widget"
+        "$":"jquery/1.7.2/jquery",
+        "widget": "widget/0.9.16/widget",
+        "easing": "0.9.3"
     },
-    "tests": ["switchable"]
+    "tests": ["switchable"],
+    "deploy": {
+      "server": "dev",
+      "host": "assets.dev.alipay.net",
+      "path": "/home/dev/static/dev/static"
+    }
 }
