@@ -1,8 +1,50 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Switchable Auto-render Examples</title>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Switchable</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/base.css" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/style.css" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/pygments.css" />
+        <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.0/sea.js"></script>
+        
+<script src="http://aralejs.github.com/tools/seajs-help.js"></script>
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="http://aralejs.github.com/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="http://aralejs.org/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="../">Switchable</a>
+                <a href="../examples/">Examples</a>
+                
+                
+                <a id="nav-test" href="../tests/runner.html">Tests</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container">
+
+<nav id="side-nav">
+    
+    <a href="../examples/accordion.html">accordion</a>
+    
+    <a href="../examples/autorender.html">autorender</a>
+    
+    <a href="../examples/index.html">index</a>
+    
+    <a href="../examples/switchable.html">switchable</a>
+    
+    <a href="../examples/tabs.html">tabs</a>
+    
+</nav>
+
 <style>
     * {
         margin: 0;
@@ -36,10 +78,7 @@
         font-size: 14px;
     }
 </style>
-</head>
-
-<body>
-<h2>Accordion - 手风琴</h2>
+<p><h2>Accordion - 手风琴</h2>
 <style>
     #accordion1 {width:300px;border:1px solid #ccc;}
     #accordion1 .ui-switchable-trigger{padding:3px 10px;cursor:pointer;border-bottom:1px solid #ddd;background:#f3f3f3;overflow:hidden; height: 18px;}
@@ -63,10 +102,17 @@
     <div class="ui-switchable-panel" style="display:none;" data-role="panel">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
     <div class="ui-switchable-trigger last-trigger" data-role="trigger"><i class="ui-icon"></i><h3>标题D</h3></div>
     <div class="ui-switchable-panel last-panel" style="display:none;" data-role="panel">内容D<br/>内容D<br/>内容D</div>
-</div>
+</div></p>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;widget&#39;</span><span class="p">,</span> <span class="s1">&#39;easing&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$</span><span class="p">,</span> <span class="nx">Widget</span><span class="p">)</span> <span class="p">{</span>
 
-<script src="../../../tools/seajs-and-its-friends.js"></script>
-<script>
+    <span class="c1">// for debug</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$</span> <span class="o">=</span> <span class="nx">$</span><span class="p">;</span>
+
+    <span class="nx">Widget</span><span class="p">.</span><span class="nx">autoRenderAll</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
 seajs.use(['jquery', 'widget', 'easing'], function($, Widget) {
 
     // for debug
@@ -75,5 +121,11 @@ seajs.use(['jquery', 'widget', 'easing'], function($, Widget) {
     Widget.autoRenderAll();
 });
 </script>
-</body>
+
+
+            </div>
+        </div>
+        <hr class="end" />
+        <a id="github" href="https://github.com/aralejs/switchable" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:999" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    </body>
 </html>

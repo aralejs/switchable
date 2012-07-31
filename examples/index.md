@@ -32,6 +32,7 @@
     }
 </style>
 
+<h2>Tabs - 普通标签页</h2>
 <style>
     #demo1 { position: relative; width: 750px; padding-top: 29px; }
     #demo1 .ui-switchable-nav { position: absolute; left: 20px; margin-top: -29px; z-index: 99; }
@@ -55,9 +56,8 @@
     }
 </style>
 
-<h2>Tabs - 普通标签页</h2>
 <div id="demo1" class="section">
-    <ul class="ui-switchable-nav"> 
+    <ul class="ui-switchable-nav">
         <li>标题 A</li>
         <li>标题 B</li>
         <li>标题 C</li>
@@ -77,8 +77,8 @@
 seajs.use(['../src/tabs', '$'], function(Tabs, $) {
     tabs = new Tabs({
     element: '#demo1',
-        triggers: '.ui-switchable-nav li',
-        panels: '.ui-switchable-content div',
+        triggers: '#demo1 .ui-switchable-nav li',
+        panels: '#demo1 .ui-switchable-content div',
         activeIndex: 2,
         effect: 'fade'
     });
@@ -129,7 +129,7 @@ seajs.use(['../src/tabs', '$'], function(Tabs, $) {
     }
 </style>
 <div id="demo2" class="section loading">
-    <ol class="ui-switchable-content"> 
+    <ol class="ui-switchable-content">
         <li><a href="http://fun.alipay.com/buy/index.htm?src=5buy03" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/2lOsygtTn7.jpg"/></a></li>
         <li class="hidden"><a target="_blank" href="http://fun.alipay.com/hkwhb/index.htm?_adType=aedacbacdeajaefcehdg"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201205/3H1Kii949r.jpg"/></a></li>
         <li class="hidden"><a target="_blank" href="http://fun.alipay.com/lvmama/index.htm"><img alt="" width="710" height="175" border="0" src="https://i.alipayobjects.com/e/201206/2muugwqegL.png"/></a></li>
@@ -140,11 +140,9 @@ seajs.use(['../src/tabs', '$'], function(Tabs, $) {
                 <param name="quality" value="high"/>
                 <param name="swfversion" value="8.0.0"/>
                 <param name="wmode" value="opaque"/>
-                <!--[if !IE]>-->
                 <object type="application/x-shockwave-flash" data="http://img04.taobaocdn.com/tps/i4/T1bblrXfBrXXXXXXXX.swf" width="470" height="150" name="holiday-logo" class="holiday-logo">
                     <param name="wmode" value="opaque"/>
                 </object>
-                <!--<![endif]-->
             </object>
         </li>
     </ol>
@@ -152,9 +150,9 @@ seajs.use(['../src/tabs', '$'], function(Tabs, $) {
 
 ```javascript
 seajs.use(['../src/slide', '$'], function(Slide, $) {
-    slide = new Slide({
-    element: '#demo2',
-        panels: '.ui-switchable-content li',
+    slide1 = new Slide({
+        element: '#demo2',
+        panels: '#demo2 .ui-switchable-content li',
         effect: 'fade',
         easing: 'easeOutStrong',
         interval: 2000
@@ -162,7 +160,7 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
 });
 ```
 
-<h2>Slide - 首页卡盘</h2>
+<h2>Slide - 有啊首页卡盘</h2>
 <style>
     #demo3 {
         position: relative;
@@ -204,8 +202,8 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     }
 </style>
 
-<div id="demo3" class="section">
-    <div class="yslider-stage">
+<div id="demo3" class="section" data-widget="slide" data-delay="200" data-effect="fade" data-easing="easeBoth" data-duration="200" data-autoplay="false">
+    <div class="yslider-stage" data-role="content">
         <p><a href="http://co.youa.baidu.com/content/promo/zhongjimiaoshazong/index.html" target="_blank"><img width="405" height="220" alt="终极秒杀场" src="http://co.youa.baidu.com/picture/r/image/2009-12-25/236d430f443d05925ad7291d9ad6b560.jpg"/></a></p>
         <p><a href="http://youa.baidu.com/zc" target="_blank"><img width="405" height="220" alt="9折话费" src="http://co.youa.baidu.com/picture/r/image/2009-12-25/4b2e801b6d174648ec77678d4a9f32e8.jpg"/></a></p>
         <p><a href="http://co.youa.baidu.com/content/lottery/chrislotact/index.html?c=676" target="_blank"><img  width="405" height="220" alt="彩票大派送" src="http://co.youa.baidu.com/picture/r/image/2009-12-21/eb76df2598316e6b5e52cd94ae2e3f1b.jpg"/></a></p>
@@ -213,7 +211,7 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         <p><a href="http://youa.baidu.com/shop/3710a13d15c375285841ef08/tab/0344b67328e77dc92132cad9" target="_blank"><img  width="405" height="220" alt="周末购" src="http://co.youa.baidu.com/picture/r/image/2009-12-27/74538ac61dc0836f5d40d29b181868fc.jpg"/></a></p>
         <p><a href="http://co.youa.baidu.com/content/promo/xmas09/index.html?c=740" target="_blank"><img  width="405" height="220" alt="年终风暴" src="http://co.youa.baidu.com/picture/r/image/2009-12-23/d69f75d92daf625053bd0f92f2b5e586.jpg"/></a></p>
     </div>
-    <ul class="yslider-stick">
+    <ul class="yslider-stick" data-role="nav">
         <li class="selected"><a href="http://co.youa.baidu.com/content/promo/xmas09/index.html?c=740" target="_blank">年终风暴</a></li>
         <li><a href="http://co.youa.baidu.com/content/promo/zhongjimiaoshazong/index.html" target="_blank">终极秒杀场</a></li>
         <li><a href="http://youa.baidu.com/zc" target="_blank">9折话费</a></li>
@@ -225,10 +223,10 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
 
 ```javascript
 seajs.use(['../src/slide', '$'], function(Slide, $) {
-    slide = new Slide({
-    element: '#demo3',
-        panels: '.yslider-stage p',
-        triggers: '.yslider-stick li',
+    slide2 = new Slide({
+        element: '#demo3',
+        panels: '#demo3 .yslider-stage p',
+        triggers: '#demo3 .yslider-stick li',
         effect: 'fade',
         easing: 'easeBoth',
         interval: 200,
@@ -249,14 +247,15 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         color: #666;
         cursor: pointer;
     }
-    .scrollable .prev { left: 10px; }
+    .scrollable .prev { 
+        left: 10px; 
+    }
     .scrollable .next { right: 10px; }
     .scrollable .disable { color: #ddd; cursor: default; }
-
     .scrollable .ui-switchable-nav {
         position: absolute;
         right: 30px;
-        top: -10px;
+        top: -20px;
     }
     .scrollable .ui-switchable-nav li {
         float: left;
@@ -267,7 +266,6 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     .scrollable .ui-switchable-nav li.ui-switchable-active {
         color: #C8282B;
     }
-
     .scroller {
         position: relative;
         width: 680px;
@@ -288,11 +286,11 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         display: inline !important; /* fix ie6 双边距 bug */
     }
 </style>
-<div id="demo4" class="section scrollable">
-    <span id="scroller-prev" class="prev">&lsaquo; 上一页</span>
-    <span id="scroller-next" class="next">下一页 &rsaquo;</span>
+<div id="demo4" class="section scrollable" data-widget="carousel" data-effect="scrollx" data-easing="easeOutStrong" data-step="5" data-view-size="[680]" data-circular="true">
+    <span id="scroller-prev" class="prev" data-role="prev">&lsaquo; 上一页</span>
+    <span id="scroller-next" class="next" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
-        <div class="ui-switchable-content">
+        <div class="ui-switchable-content" data-role="content">
             <img alt="" src="http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg"/>
             <img alt="" src="http://farm4.static.flickr.com/3089/2796719087_c3ee89a730_t.jpg"/>
             <img alt="" src="http://farm1.static.flickr.com/79/244441862_08ec9b6b49_t.jpg"/>
@@ -309,7 +307,7 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
             <img alt="" src="http://farm4.static.flickr.com/3635/3323893254_3183671257_t.jpg"/>
             <img alt="" src="http://farm4.static.flickr.com/3624/3323893148_8318838fbd_t.jpg"/>
         </div>
-        <ul class="ui-switchable-nav">
+        <ul class="ui-switchable-nav" data-role="nav">
             <li class="ui-switchable-active">&bull;</li>
             <li>&bull;</li>
             <li>&bull;</li>
@@ -321,8 +319,8 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
 seajs.use(['../src/carousel', '$'], function(Carousel, $) {
     carousel = new Carousel({
         element: '#demo4',
-        panels: '.ui-switchable-content img',
-        triggers: '.ui-switchable-nav li',
+        panels: '#demo4 .ui-switchable-content img',
+        triggers: '#demo4 .ui-switchable-nav li',
         easing: 'easeOutStrong',
         effect: 'scrollx',
         step: 5,
@@ -352,9 +350,9 @@ seajs.use(['../src/carousel', '$'], function(Carousel, $) {
 
 ```javascript
 seajs.use(['../src/slide', '$'], function(Slide, $) {
-    slide2 = new Slide({
+    slide3 = new Slide({
         element: '#demo5',
-        panels: '.news-items li',
+        panels: '#demo5 .news-items li',
         hasTriggers: false, 
         easing: 'easeOutStrong',
         duration: 2000
@@ -375,13 +373,13 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     #accordion1 .last-panel { border-bottom: none }
 </style>
 <div id="accordion1" class="section">
-    <div class="ui-switchable-trigger ui-switchable-active" data-role="trigger"><i class="ui-icon"></i><h3>标题A</h3></div>
-    <div class="ui-switchable-panel" data-role="panel">
+    <div class="ui-switchable-trigger ui-switchable-active"><i class="ui-icon"></i><h3>标题A</h3></div>
+    <div class="ui-switchable-panel">
         1、支持鼠标滑过和点击触点两种方式<br/>
         2、支持同时展开多个面板
     </div>
     <div class="ui-switchable-trigger"><i class="ui-icon"></i><h3>标题B</h3></div>
-    <div class="ui-switchable-panel" style="display:none;">内容B<br/>内容B<br/>内容B</div>
+    <div class="ui-switchable-panel" style="display:none;" data-role="panel">内容B<br/>内容B<br/>内容B</div>
     <div class="ui-switchable-trigger"><i class="ui-icon"></i><h3>标题C</h3></div>
     <div class="ui-switchable-panel" style="display:none;">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
     <div class="ui-switchable-trigger last-trigger"><i class="ui-icon"></i><h3>标题D</h3></div>
@@ -392,8 +390,8 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
 seajs.use(['../src/accordion', '$'], function(Accordion, $) {
     accordion = new Accordion({
         element: '#accordion1',
-        triggers: $('.ui-switchable-trigger'),
-        panels: $('.ui-switchable-panel')
+        triggers: $('#accordion1 .ui-switchable-trigger'),
+        panels: $('#accordion1 .ui-switchable-panel')
     });
 });
 ```
@@ -424,8 +422,8 @@ seajs.use(['../src/accordion', '$'], function(Accordion, $) {
         font-weight: bold;
     }
 </style>
-<div id="big" class="section" data-widget="slide" style="height:450px;" data-effect="fade">
-    <ul class="ui-switchable-content" data-role="content">
+<div id="big" class="section" style="height:450px;">
+    <ul class="ui-switchable-content">
         <li><a href="http://item.taobao.com/item.htm?id=7002076261" style="height:450px;" target="_blank"><img src="http://img02.taobaocdn.com/imgextra/i2/438942225/T27Z0bXeRdXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
         <li><a href="http://gearband.tmall.com/view_page-74632436.htm" style="height:450px;" target="_blank"><img src="http://img03.taobaocdn.com/imgextra/i3/438942225/T2eMBHXkFaXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
     </ul>
@@ -433,12 +431,11 @@ seajs.use(['../src/accordion', '$'], function(Accordion, $) {
 
 ```javascript
 seajs.use(['../src/slide', '$'], function(Slide, $) {
-    slide = new Slide({
-    element: '#big',
-        panels: '.ui-switchable-content li',
+    slide4 = new Slide({
+        element: '#big',
+        panels: '#big .ui-switchable-content li',
         effect: 'fade'
     });
 });
 ```
-
 

@@ -1,8 +1,50 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8"/>
-<title>Tabs Example</title>
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Switchable</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/base.css" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/style.css" />
+        <link rel="stylesheet" href="http://aralejs.github.com/assets/pygments.css" />
+        <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.0/sea.js"></script>
+        
+<script src="http://aralejs.github.com/tools/seajs-help.js"></script>
+
+        <!--[if lt IE 9]>
+        <script type="text/javascript" src="http://aralejs.github.com/assets/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header id="header">
+            <h1 id="brand"><a href="http://aralejs.org/">Arale</a></h1>
+            <nav id="nav" role="navigation">
+                <a href="../">Switchable</a>
+                <a href="../examples/">Examples</a>
+                
+                
+                <a id="nav-test" href="../tests/runner.html">Tests</a>
+                
+            </nav>
+        </header>
+
+        <div id="main">
+            <div class="container">
+
+<nav id="side-nav">
+    
+    <a href="../examples/accordion.html">accordion</a>
+    
+    <a href="../examples/autorender.html">autorender</a>
+    
+    <a href="../examples/index.html">index</a>
+    
+    <a href="../examples/switchable.html">switchable</a>
+    
+    <a href="../examples/tabs.html">tabs</a>
+    
+</nav>
+
 <style>
     #demo1 {
         font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -48,47 +90,62 @@
     }
 </style>
 
-<script src="../../../tools/seajs-and-its-friends.js"></script>
-<script>
+<div class="s-section">
+    <div id="demo1" class="s-demo">
+    <ul class="ui-switchable-nav">
+        <li>标题 A</li>
+        <li>标题 B</li>
+        <li>标题 C</li>
+        <li>标题 D</li>
+    </ul>
+    <div class="ui-switchable-content">
+        <div style="display: none">
+        内容 A
+        <pre>
+          - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
+          - 鼠标快速滑过非当前 trigger, 不触发
+          - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
+          - click 或 Tab 切换到 trigger, 立即触发
+          - switch / switched 事件的触发
+        </pre>
+        </div>
+            <div style="display: none">内容 B</div>
+            <div style="display: none">内容 C</div>
+            <div style="display: none">内容 D</div>
+        </div>
+    </div>
+</div>
+<div class="highlight"><pre><span class="kd">var</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">tabs</span><span class="p">;</span>
+
+    <span class="nx">seajs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
+        <span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s1">&#39;tabs-src&#39;</span><span class="o">:</span> <span class="s1">&#39;../src/tabs&#39;</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+
+    <span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;tabs-src&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nx">Tabs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">T</span> <span class="o">=</span> <span class="nx">Tabs</span><span class="p">;</span>
+        <span class="nx">$</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">;</span>
+
+        <span class="nx">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabs</span><span class="p">({</span>
+            <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo1&#39;</span><span class="p">,</span>
+            <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;.ui-switchable-nav li&#39;</span><span class="p">,</span>
+            <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;.ui-switchable-content div&#39;</span><span class="p">,</span>
+            <span class="nx">activeIndex</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span>
+        <span class="p">});</span>
+
+    <span class="p">});</span>
+</pre></div>
+
+<script type="text/javascript">
+    var T, $, tabs;
+
     seajs.config({
         alias: {
             'tabs-src': '../src/tabs'
         }
     });
-</script>
-</head>
-<body>
-
-    <div class="s-section">
-
-        <div id="demo1" class="s-demo">
-            <ul class="ui-switchable-nav">
-                <li>标题 A</li>
-                <li>标题 B</li>
-                <li>标题 C</li>
-                <li>标题 D</li>
-            </ul>
-            <div class="ui-switchable-content">
-                <div style="display: none">
-内容 A
-<pre>
-  - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
-  - 鼠标快速滑过非当前 trigger, 不触发
-  - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
-  - click 或 Tab 切换到 trigger, 立即触发
-  - switch / switched 事件的触发
-</pre>
-                </div>
-                <div style="display: none">内容 B</div>
-                <div style="display: none">内容 C</div>
-                <div style="display: none">内容 D</div>
-            </div>
-
-        </div>
-    </div>
-
-<script>
-    var T, $, tabs;
 
     seajs.use(['jquery', 'tabs-src'], function(jQuery, Tabs) {
         T = Tabs;
@@ -105,5 +162,10 @@
     });
 </script>
 
-</body>
+
+            </div>
+        </div>
+        <hr class="end" />
+        <a id="github" href="https://github.com/aralejs/switchable" target="_blank"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:999" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    </body>
 </html>
