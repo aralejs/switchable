@@ -15,6 +15,7 @@
         left: 20px;
         margin-top: -29px;
         z-index: 99;
+        list-style-type: none; 
     }
 
     #demo1 .ui-switchable-nav li {

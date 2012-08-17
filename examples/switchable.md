@@ -1,40 +1,7 @@
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        padding: 20px 50px 50px;
-        font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-
-    li {
-        list-style: none;
-    }
-
-    li a {
-        text-decoration: none;
-    }
-
-    h2 { margin: 30px 0 10px; font-size: 17px; }
-    .loading { background: #EBF5FA url(assets/loading.gif) no-repeat 50% 50%; }
-
-    p.code-switch { color: #09f; cursor: pointer; margin-top: 10px; }
-    pre.code {
-        color: #444;
-        cursor: auto;
-        border-left: 2px solid #7F96AA;
-        margin-top: 5px;
-        padding: 0 10px 20px 10px;
-        font-size: 14px;
-    }
-</style>
-
 <h2>Tabs - 普通标签页</h2>
 <style>
     #demo1 { position: relative; width: 750px; padding-top: 29px; }
-    #demo1 .ui-switchable-nav-test { position: absolute; left: 20px; margin-top: -29px; z-index: 99; }
+    #demo1 .ui-switchable-nav-test { position: absolute; left: 20px; margin-top: -29px; z-index: 99;list-style-type: none; }
     #demo1 .ui-switchable-nav-test li {
         float: left;
         width: 130px;
@@ -74,7 +41,7 @@
 <h2>Slide - 卡盘轮播</h2>
 <style>
     #demo2 { position: relative; width: 710px; height: 176px; border: 1px solid #B6D1E6; overflow: hidden; }
-    #demo2 .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
+    #demo2 .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; list-style-type: none; }
     #demo2 .ui-switchable-nav li {
         float: left;
         width: 16px;

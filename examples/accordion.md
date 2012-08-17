@@ -1,37 +1,3 @@
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        padding: 20px 50px 50px;
-        font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-
-    li {
-        list-style: none;
-    }
-
-    li a {
-        text-decoration: none;
-    }
-
-    body { padding: 20px 50px 50px; }
-    h2 { margin: 30px 0 10px; font-size: 17px; }
-    .loading { background: #EBF5FA url(assets/loading.gif) no-repeat 50% 50%; }
-
-    p.code-switch { color: #09f; cursor: pointer; margin-top: 10px; }
-    pre.code {
-        color: #444;
-        cursor: auto;
-        border-left: 2px solid #7F96AA;
-        margin-top: 5px;
-        padding: 0 10px 20px 10px;
-        font-size: 14px;
-    }
-</style>
-
 <h2>Accordion - 手风琴</h2>
 <style>
     #accordion1 {width:300px;border:1px solid #ccc;}
