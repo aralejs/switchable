@@ -24,12 +24,8 @@
     <div class="ui-switchable-panel last-panel" style="display:none;" data-role="panel">内容D<br/>内容D<br/>内容D</div>
 </div>
 
-```javascript
-seajs.use(['jquery', 'widget', 'easing'], function($, Widget) {
-
-    // for debug
-    this.$ = $;
-
+````javascript
+seajs.use(['widget'], function(Widget) {
     Widget.autoRenderAll();
 });
-```
+````

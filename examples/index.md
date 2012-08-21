@@ -43,8 +43,8 @@
     </div>
 </div>
 
-```javascript
-seajs.use(['../src/tabs', '$'], function(Tabs, $) {
+````javascript
+seajs.use(['tabs', '$'], function(Tabs, $) {
     tabs = new Tabs({
     element: '#demo1',
         triggers: '#demo1 .ui-switchable-nav li',
@@ -53,7 +53,7 @@ seajs.use(['../src/tabs', '$'], function(Tabs, $) {
         effect: 'fade'
     });
 });
-```
+````
 
 <h2>Slide - 卡盘</h2>
 <style>
@@ -118,8 +118,8 @@ seajs.use(['../src/tabs', '$'], function(Tabs, $) {
     </ol>
 </div>
 
-```javascript
-seajs.use(['../src/slide', '$'], function(Slide, $) {
+````javascript
+seajs.use(['slide', '$'], function(Slide, $) {
     slide1 = new Slide({
         element: '#demo2',
         panels: '#demo2 .ui-switchable-content li',
@@ -128,7 +128,7 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         interval: 2000
     });
 });
-```
+````
 
 <h2>Slide - 有啊首页卡盘</h2>
 <style>
@@ -191,8 +191,8 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     </ul>
 </div>
 
-```javascript
-seajs.use(['../src/slide', '$'], function(Slide, $) {
+````javascript
+seajs.use(['slide', '$'], function(Slide, $) {
     slide2 = new Slide({
         element: '#demo3',
         panels: '#demo3 .yslider-stage p',
@@ -203,7 +203,7 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         autoplay: false
     });
 });
-```
+````
 
 <h2>Carousel - 旋转木马</h2>
 <style>
@@ -285,8 +285,8 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     </div>
 </div>
 
-```javascript
-seajs.use(['../src/carousel', '$'], function(Carousel, $) {
+````javascript
+seajs.use(['carousel', '$'], function(Carousel, $) {
     carousel = new Carousel({
         element: '#demo4',
         panels: '#demo4 .ui-switchable-content img',
@@ -300,7 +300,7 @@ seajs.use(['../src/carousel', '$'], function(Carousel, $) {
         nextBtn: '#scroller-next'
     });
 });
-```
+````
 
 <h2>Slide - 有啊滚动新闻条</h2>
 <style>
@@ -318,8 +318,8 @@ seajs.use(['../src/carousel', '$'], function(Carousel, $) {
     </ul>
 </div>
 
-```javascript
-seajs.use(['../src/slide', '$'], function(Slide, $) {
+````javascript
+seajs.use(['slide', '$'], function(Slide, $) {
     slide3 = new Slide({
         element: '#demo5',
         panels: '#demo5 .news-items li',
@@ -328,7 +328,7 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         duration: 2000
     });
 });
-```
+````
 
 <h2>Accordion - 手风琴</h2>
 <style>
@@ -356,15 +356,15 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     <div class="ui-switchable-panel last-panel" style="display:none;">内容D<br/>内容D<br/>内容D</div>
 </div>
 
-```javascript
-seajs.use(['../src/accordion', '$'], function(Accordion, $) {
+````javascript
+seajs.use(['accordion', '$'], function(Accordion, $) {
     accordion = new Accordion({
         element: '#accordion1',
         triggers: $('#accordion1 .ui-switchable-trigger'),
         panels: $('#accordion1 .ui-switchable-panel')
     });
 });
-```
+````
 
 <h2>超大轮播</h2>
 <style>
@@ -399,13 +399,13 @@ seajs.use(['../src/accordion', '$'], function(Accordion, $) {
     </ul>
 </div>
 
-```javascript
-seajs.use(['../src/slide', '$'], function(Slide, $) {
+````javascript
+seajs.use(['slide'], function(Slide) {
     slide4 = new Slide({
         element: '#big',
         panels: '#big .ui-switchable-content li',
         effect: 'fade'
     });
 });
-```
+````
 

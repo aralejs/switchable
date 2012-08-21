@@ -328,12 +328,8 @@
     </ul>
 </div>
 
-```javascript
-seajs.use(['jquery', 'widget', 'easing'], function($, Widget) {
-
-    // for debug
-    this.$ = $;
-
+````javascript
+seajs.use(['widget'], function(Widget) {
     Widget.autoRenderAll();
 });
-```
+````

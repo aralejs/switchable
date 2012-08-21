@@ -71,18 +71,7 @@
 </div>
 
 ```javascript
-    var T, $, tabs;
-
-    seajs.config({
-        alias: {
-            'tabs-src': '../src/tabs'
-        }
-    });
-
-    seajs.use(['jquery', 'tabs-src'], function(jQuery, Tabs) {
-        T = Tabs;
-        $ = jQuery;
-
+    seajs.use(['tabs'], function(Tabs) {
         tabs = new Tabs({
             element: '#demo1',
             triggers: '.ui-switchable-nav li',
@@ -90,6 +79,5 @@
             activeIndex: 2,
             effect: 'fade'
         });
-
     });
 ```

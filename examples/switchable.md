@@ -37,6 +37,15 @@
         <div style="display: none">内容 E</div>
     </div>
 </div>
+````javascript
+    seajs.use(['tabs'], function(Tabs) {
+        tabs = new Tabs({
+            element: '#demo1',
+            activeIndex: 1,
+            effect: 'fade'
+        });
+    });
+````
 
 <h2>Slide - 卡盘轮播</h2>
 <style>
@@ -95,32 +104,12 @@
     </ol>
 </div>
 
-```javascript
-
-   seajs.config({
-        alias: {
-            'tabs-src': '../src/tabs',
-            'slide-src': '../src/slide'
-        }
-    });
-
-    var T, $, tabs, slide;
-
-    seajs.use(['jquery', 'tabs-src', 'slide-src', 'easing'], function(jQuery, Tabs, Slide) {
-        T = Tabs;
-        $ = jQuery;
-
-        tabs = new Tabs({
-            element: '#demo1',
-            activeIndex: 1,
-            effect: 'fade'
-        });
-
+````javascript
+    seajs.use(['slide'], function(Slide) {
         slide = new Slide({
             element: '#demo2',
             effect: 'scrolly',
             interval: 2000
         });
-
     });
-```
+````
