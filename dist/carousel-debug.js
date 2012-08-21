@@ -1,7 +1,7 @@
-define("#switchable/0.9.5/carousel-debug", ["./switchable-debug", "$-debug", "#widget/0.9.16/widget-debug", "#base/0.9.16/base-debug", "#events/0.9.1/events-debug", "#class/0.9.2/class-debug"], function(require, exports, module) {
+define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2/jquery-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug", "#easing/1.0.0/easing-debug"], function(require, exports, module) {
 
     var Switchable = require('./switchable-debug');
-    var $ = require('$-debug');
+    var $ = require('#jquery/1.7.2/jquery-debug');
     var CONST = require('./const-debug');
 
 

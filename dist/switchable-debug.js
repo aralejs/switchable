@@ -1,4 +1,4 @@
-define("#switchable/0.9.5/const-debug", [], function(require, exports) {
+define("#switchable/0.9.9/const-debug", [], function(require, exports) {
 
     var UI_SWITCHABLE = 'ui-switchable';
 
@@ -16,9 +16,9 @@ define("#switchable/0.9.5/const-debug", [], function(require, exports) {
 });
 
 
-define("#switchable/0.9.5/plugins/effects-debug", ["$-debug"], function(require, exports, module) {
+define("#switchable/0.9.9/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
-    var $ = require('$-debug');
+    var $ = require('#jquery/1.7.2/jquery-debug');
 
     var SCROLLX = 'scrollx';
     var SCROLLY = 'scrolly';
@@ -184,9 +184,9 @@ define("#switchable/0.9.5/plugins/effects-debug", ["$-debug"], function(require,
 });
 
 
-define("#switchable/0.9.5/plugins/autoplay-debug", ["$-debug"], function(require, exports, module) {
+define("#switchable/0.9.9/plugins/autoplay-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
-    var $ = require('$-debug');
+    var $ = require('#jquery/1.7.2/jquery-debug');
 
 
     // 自动播放插件
@@ -310,9 +310,9 @@ define("#switchable/0.9.5/plugins/autoplay-debug", ["$-debug"], function(require
 });
 
 
-define("#switchable/0.9.5/plugins/circular-debug", ["./plugins/effects-debug", "$-debug"], function(require, exports, module) {
+define("#switchable/0.9.9/plugins/circular-debug", ["./effects-debug", "#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
-    var $ = require('$-debug');
+    var $ = require('#jquery/1.7.2/jquery-debug');
 
     var SCROLLX = 'scrollx';
     var SCROLLY = 'scrolly';
@@ -427,7 +427,7 @@ define("#switchable/0.9.5/plugins/circular-debug", ["./plugins/effects-debug", "
 });
 
 
-define("#switchable/0.9.5/plugins/multiple-debug", ["./const-debug"], function(require, exports, module) {
+define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(require, exports, module) {
 
     var CONST = require('../const-debug');
 
@@ -458,7 +458,7 @@ define("#switchable/0.9.5/plugins/multiple-debug", ["./const-debug"], function(r
 });
 
 
-define("#switchable/0.9.5/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "$-debug", "#widget/0.9.16/widget-debug", "#base/0.9.16/base-debug", "#events/0.9.1/events-debug", "#class/0.9.2/class-debug"], function(require, exports, module) {
+define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "#jquery/1.7.2/jquery-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug", "#easing/1.0.0/easing-debug"], function(require, exports, module) {
 
     // Switchable
     // -----------
@@ -467,8 +467,9 @@ define("#switchable/0.9.5/switchable-debug", ["./const-debug", "./plugins/effect
     //  - https://github.com/kissyteam/kissy/blob/master/src/switchable/
 
 
-    var $ = require('$-debug');
-    var Widget = require('#widget/0.9.16/widget-debug');
+    var $ = require('#jquery/1.7.2/jquery-debug');
+    var Widget = require('#widget/1.0.0/widget-debug');
+    var Easing = require('#easing/1.0.0/easing-debug');
 
     var CONST = require('./const-debug');
     var Effects = require('./plugins/effects-debug');

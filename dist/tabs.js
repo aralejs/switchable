@@ -1,1 +1,1 @@
-define("#switchable/0.9.5/tabs",["./switchable","$","#widget/0.9.16/widget","#base/0.9.16/base","#events/0.9.1/events","#class/0.9.2/class"],function(e,t,n){var r=e("./switchable");n.exports=r.extend({})});
+define("#switchable/0.9.9/tabs",["./switchable","#jquery/1.7.2/jquery","#widget/1.0.0/widget","#base/1.0.0/base","#class/1.0.0/class","#events/1.0.0/events","#easing/1.0.0/easing"],function(e,t,n){var r=e("./switchable");n.exports=r.extend({})});
