@@ -6,8 +6,8 @@
 <title>Switchable</title>
 <link rel="stylesheet" href="http://aralejs.org/assets/base.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/style.css">
-
 <script src="http://seajs.org/dist/sea.js"></script>
+
 <script src="http://aralejs.org/tools/seajs-helper.js"></script>
 
 <!--[if lt IE 9]>
@@ -27,8 +27,8 @@
 
 
         <nav role="navigation" id="nav">
-            <a class="icon-home" title="Home" href="/" id="logo">Home</a>
-            <a class="icon-github" href="https://github.com/aralejs/switchable">Code</a>
+            <a class="icon-home" target="_blank" title="Home" href="/" id="logo">Home</a>
+            <a id="code-link" class="icon-github" target="_blank" href="https://github.com/aralejs/switchable">Code</a>
         </nav>
     </div>
 </header>
@@ -89,7 +89,16 @@
         <div style="display: none">内容 D</div>
         <div style="display: none">内容 E</div>
     </div>
-</div></p>
+</div>
+<code>javascript+
+    seajs.use([&#39;tabs&#39;], function(Tabs) {
+        tabs = new Tabs({
+            element: &#39;#demo1&#39;,
+            activeIndex: 1,
+            effect: &#39;fade&#39;
+        });
+    });
+</code></p>
 <p><h2>Slide - 卡盘轮播</h2>
 <style>
     #demo2 { position: relative; width: 710px; height: 176px; border: 1px solid #B6D1E6; overflow: hidden; }
@@ -145,63 +154,24 @@
         <li class="hidden"><a href="http://fun.alipay.com/sj/index.htm" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/37t81c9HYx.jpg"/></a></li>
     </ol>
 </div></p>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
-        <span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s1">&#39;tabs-src&#39;</span><span class="o">:</span> <span class="s1">&#39;../src/tabs&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;slide-src&#39;</span><span class="o">:</span> <span class="s1">&#39;../src/slide&#39;</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
 
-    <span class="kd">var</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">tabs</span><span class="p">,</span> <span class="nx">slide</span><span class="p">;</span>
-
-    <span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;tabs-src&#39;</span><span class="p">,</span> <span class="s1">&#39;slide-src&#39;</span><span class="p">,</span> <span class="s1">&#39;easing&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nx">Tabs</span><span class="p">,</span> <span class="nx">Slide</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">T</span> <span class="o">=</span> <span class="nx">Tabs</span><span class="p">;</span>
-        <span class="nx">$</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">;</span>
-
-        <span class="nx">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabs</span><span class="p">({</span>
-            <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo1&#39;</span><span class="p">,</span>
-            <span class="nx">activeIndex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span>
-        <span class="p">});</span>
-
-        <span class="nx">slide</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
-            <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo2&#39;</span><span class="p">,</span>
-            <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;scrolly&#39;</span><span class="p">,</span>
-            <span class="nx">interval</span><span class="o">:</span> <span class="mi">2000</span>
-        <span class="p">});</span>
-
-    <span class="p">});</span>
-</pre></div>
-
-<script type="text/javascript">
-
-   seajs.config({
-        alias: {
-            'tabs-src': '../src/tabs',
-            'slide-src': '../src/slide'
-        }
-    });
-
-    var T, $, tabs, slide;
-
-    seajs.use(['jquery', 'tabs-src', 'slide-src', 'easing'], function(jQuery, Tabs, Slide) {
-        T = Tabs;
-        $ = jQuery;
-
-        tabs = new Tabs({
-            element: '#demo1',
-            activeIndex: 1,
-            effect: 'fade'
-        });
-
+<script>
+    seajs.use(['slide'], function(Slide) {
         slide = new Slide({
             element: '#demo2',
             effect: 'scrolly',
             interval: 2000
         });
-
     });
 </script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;slide&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">slide</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
+            <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo2&#39;</span><span class="p">,</span>
+            <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;scrolly&#39;</span><span class="p">,</span>
+            <span class="nx">interval</span><span class="o">:</span> <span class="mi">2000</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+</pre></div>
 
 </div>
 
@@ -210,5 +180,8 @@
 <hr class="end">
 <link rel="stylesheet" href="http://aralejs.org/assets/pygments.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/fontawesome/css/font-awesome.css">
+<script>
+    seajs.use('http://aralejs.org/tools/nico-helper.js');
+</script>
 </body>
 </html>

@@ -6,8 +6,8 @@
 <title>Switchable</title>
 <link rel="stylesheet" href="http://aralejs.org/assets/base.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/style.css">
-
 <script src="http://seajs.org/dist/sea.js"></script>
+
 <script src="http://aralejs.org/tools/seajs-helper.js"></script>
 
 <!--[if lt IE 9]>
@@ -27,8 +27,8 @@
 
 
         <nav role="navigation" id="nav">
-            <a class="icon-home" title="Home" href="/" id="logo">Home</a>
-            <a class="icon-github" href="https://github.com/aralejs/switchable">Code</a>
+            <a class="icon-home" target="_blank" title="Home" href="/" id="logo">Home</a>
+            <a id="code-link" class="icon-github" target="_blank" href="https://github.com/aralejs/switchable">Code</a>
         </nav>
     </div>
 </header>
@@ -94,19 +94,9 @@
         <div style="display: none">内容 E</div>
     </div>
 </div>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/tabs&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Tabs</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabs</span><span class="p">({</span>
-    <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo1&#39;</span><span class="p">,</span>
-        <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;#demo1 .ui-switchable-nav li&#39;</span><span class="p">,</span>
-        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo1 .ui-switchable-content div&#39;</span><span class="p">,</span>
-        <span class="nx">activeIndex</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-</pre></div>
 
-<script type="text/javascript">
-seajs.use(['../src/tabs', '$'], function(Tabs, $) {
+<script>
+seajs.use(['tabs', '$'], function(Tabs, $) {
     tabs = new Tabs({
     element: '#demo1',
         triggers: '#demo1 .ui-switchable-nav li',
@@ -116,6 +106,16 @@ seajs.use(['../src/tabs', '$'], function(Tabs, $) {
     });
 });
 </script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;tabs&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Tabs</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabs</span><span class="p">({</span>
+    <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo1&#39;</span><span class="p">,</span>
+        <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;#demo1 .ui-switchable-nav li&#39;</span><span class="p">,</span>
+        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo1 .ui-switchable-content div&#39;</span><span class="p">,</span>
+        <span class="nx">activeIndex</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 <p><h2>Slide - 卡盘</h2>
 <style>
     #demo2 { position: relative; width: 710px; height: 176px; border: 1px solid #B6D1E6; overflow: hidden; }
@@ -178,19 +178,9 @@ seajs.use(['../src/tabs', '$'], function(Tabs, $) {
         </li>
     </ol>
 </div></p>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/slide&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">slide1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
-        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo2&#39;</span><span class="p">,</span>
-        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo2 .ui-switchable-content li&#39;</span><span class="p">,</span>
-        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span><span class="p">,</span>
-        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeOutStrong&#39;</span><span class="p">,</span>
-        <span class="nx">interval</span><span class="o">:</span> <span class="mi">2000</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-</pre></div>
 
-<script type="text/javascript">
-seajs.use(['../src/slide', '$'], function(Slide, $) {
+<script>
+seajs.use(['slide', '$'], function(Slide, $) {
     slide1 = new Slide({
         element: '#demo2',
         panels: '#demo2 .ui-switchable-content li',
@@ -200,6 +190,16 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     });
 });
 </script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;slide&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">slide1</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
+        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo2&#39;</span><span class="p">,</span>
+        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo2 .ui-switchable-content li&#39;</span><span class="p">,</span>
+        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span><span class="p">,</span>
+        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeOutStrong&#39;</span><span class="p">,</span>
+        <span class="nx">interval</span><span class="o">:</span> <span class="mi">2000</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 <p><h2>Slide - 有啊首页卡盘</h2>
 <style>
     #demo3 {
@@ -260,21 +260,9 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         <li><a href="http://youa.baidu.com/shop/3710a13d15c375285841ef08/tab/0344b67328e77dc92132cad9" target="_blank">周末购</a></li>
     </ul>
 </div>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/slide&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">slide2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
-        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo3&#39;</span><span class="p">,</span>
-        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo3 .yslider-stage p&#39;</span><span class="p">,</span>
-        <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;#demo3 .yslider-stick li&#39;</span><span class="p">,</span>
-        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span><span class="p">,</span>
-        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeBoth&#39;</span><span class="p">,</span>
-        <span class="nx">interval</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-        <span class="nx">autoplay</span><span class="o">:</span> <span class="kc">false</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-</pre></div>
 
-<script type="text/javascript">
-seajs.use(['../src/slide', '$'], function(Slide, $) {
+<script>
+seajs.use(['slide', '$'], function(Slide, $) {
     slide2 = new Slide({
         element: '#demo3',
         panels: '#demo3 .yslider-stage p',
@@ -286,6 +274,18 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     });
 });
 </script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;slide&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">slide2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
+        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo3&#39;</span><span class="p">,</span>
+        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo3 .yslider-stage p&#39;</span><span class="p">,</span>
+        <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;#demo3 .yslider-stick li&#39;</span><span class="p">,</span>
+        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span><span class="p">,</span>
+        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeBoth&#39;</span><span class="p">,</span>
+        <span class="nx">interval</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="nx">autoplay</span><span class="o">:</span> <span class="kc">false</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 <p><h2>Carousel - 旋转木马</h2>
 <style>
     .scrollable {
@@ -365,24 +365,9 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
         </ul>
     </div>
 </div></p>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/carousel&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Carousel</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">carousel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Carousel</span><span class="p">({</span>
-        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo4&#39;</span><span class="p">,</span>
-        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo4 .ui-switchable-content img&#39;</span><span class="p">,</span>
-        <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;#demo4 .ui-switchable-nav li&#39;</span><span class="p">,</span>
-        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeOutStrong&#39;</span><span class="p">,</span>
-        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;scrollx&#39;</span><span class="p">,</span>
-        <span class="nx">step</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-        <span class="nx">viewSize</span><span class="o">:</span> <span class="p">[</span><span class="mi">680</span><span class="p">],</span>
-        <span class="nx">circular</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="nx">prevBtn</span><span class="o">:</span> <span class="s1">&#39;#scroller-prev&#39;</span><span class="p">,</span>
-        <span class="nx">nextBtn</span><span class="o">:</span> <span class="s1">&#39;#scroller-next&#39;</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-</pre></div>
 
-<script type="text/javascript">
-seajs.use(['../src/carousel', '$'], function(Carousel, $) {
+<script>
+seajs.use(['carousel', '$'], function(Carousel, $) {
     carousel = new Carousel({
         element: '#demo4',
         panels: '#demo4 .ui-switchable-content img',
@@ -397,6 +382,21 @@ seajs.use(['../src/carousel', '$'], function(Carousel, $) {
     });
 });
 </script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;carousel&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Carousel</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">carousel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Carousel</span><span class="p">({</span>
+        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo4&#39;</span><span class="p">,</span>
+        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo4 .ui-switchable-content img&#39;</span><span class="p">,</span>
+        <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;#demo4 .ui-switchable-nav li&#39;</span><span class="p">,</span>
+        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeOutStrong&#39;</span><span class="p">,</span>
+        <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;scrollx&#39;</span><span class="p">,</span>
+        <span class="nx">step</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nx">viewSize</span><span class="o">:</span> <span class="p">[</span><span class="mi">680</span><span class="p">],</span>
+        <span class="nx">circular</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nx">prevBtn</span><span class="o">:</span> <span class="s1">&#39;#scroller-prev&#39;</span><span class="p">,</span>
+        <span class="nx">nextBtn</span><span class="o">:</span> <span class="s1">&#39;#scroller-next&#39;</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 <p><h2>Slide - 有啊滚动新闻条</h2>
 <style>
     .scroll-news { height: 20px; overflow: hidden; }
@@ -412,19 +412,9 @@ seajs.use(['../src/carousel', '$'], function(Carousel, $) {
         <li><a target="_blank" href="http://co.youa.baidu.com/content/help/A3/2/2008-09-01/143723181295.html#10">收藏</a> + <a target="_blank" href="http://co.youa.baidu.com/content/help/A3/2009-01-08/112820209991.html">购物车</a>，逛街搜店更便捷</li>
     </ul>
 </div></p>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/slide&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">slide3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
-        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo5&#39;</span><span class="p">,</span>
-        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo5 .news-items li&#39;</span><span class="p">,</span>
-        <span class="nx">hasTriggers</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
-        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeOutStrong&#39;</span><span class="p">,</span>
-        <span class="nx">duration</span><span class="o">:</span> <span class="mi">2000</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-</pre></div>
 
-<script type="text/javascript">
-seajs.use(['../src/slide', '$'], function(Slide, $) {
+<script>
+seajs.use(['slide', '$'], function(Slide, $) {
     slide3 = new Slide({
         element: '#demo5',
         panels: '#demo5 .news-items li',
@@ -434,6 +424,16 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     });
 });
 </script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;slide&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">slide3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
+        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo5&#39;</span><span class="p">,</span>
+        <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#demo5 .news-items li&#39;</span><span class="p">,</span>
+        <span class="nx">hasTriggers</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+        <span class="nx">easing</span><span class="o">:</span> <span class="s1">&#39;easeOutStrong&#39;</span><span class="p">,</span>
+        <span class="nx">duration</span><span class="o">:</span> <span class="mi">2000</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 <p><h2>Accordion - 手风琴</h2>
 <style>
     #accordion1 {width:300px;border:1px solid #ccc;}
@@ -459,17 +459,9 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
     <div class="ui-switchable-trigger last-trigger"><i class="ui-icon"></i><h3>标题D</h3></div>
     <div class="ui-switchable-panel last-panel" style="display:none;">内容D<br/>内容D<br/>内容D</div>
 </div></p>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/accordion&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Accordion</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">accordion</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Accordion</span><span class="p">({</span>
-        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#accordion1&#39;</span><span class="p">,</span>
-        <span class="nx">triggers</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#accordion1 .ui-switchable-trigger&#39;</span><span class="p">),</span>
-        <span class="nx">panels</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#accordion1 .ui-switchable-panel&#39;</span><span class="p">)</span>
-    <span class="p">});</span>
-<span class="p">});</span>
-</pre></div>
 
-<script type="text/javascript">
-seajs.use(['../src/accordion', '$'], function(Accordion, $) {
+<script>
+seajs.use(['accordion', '$'], function(Accordion, $) {
     accordion = new Accordion({
         element: '#accordion1',
         triggers: $('#accordion1 .ui-switchable-trigger'),
@@ -477,6 +469,14 @@ seajs.use(['../src/accordion', '$'], function(Accordion, $) {
     });
 });
 </script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;accordion&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Accordion</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">accordion</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Accordion</span><span class="p">({</span>
+        <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#accordion1&#39;</span><span class="p">,</span>
+        <span class="nx">triggers</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#accordion1 .ui-switchable-trigger&#39;</span><span class="p">),</span>
+        <span class="nx">panels</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#accordion1 .ui-switchable-panel&#39;</span><span class="p">)</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
 <p><h2>超大轮播</h2>
 <style>
     #big { position: relative; border: 1px solid #B6D1E6; overflow: hidden; }
@@ -509,7 +509,17 @@ seajs.use(['../src/accordion', '$'], function(Accordion, $) {
         <li><a href="http://gearband.tmall.com/view_page-74632436.htm" style="height:450px;" target="_blank"><img src="http://img03.taobaocdn.com/imgextra/i3/438942225/T2eMBHXkFaXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
     </ul>
 </div></p>
-<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;../src/slide&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">,</span> <span class="nx">$</span><span class="p">)</span> <span class="p">{</span>
+
+<script>
+seajs.use(['slide'], function(Slide) {
+    slide4 = new Slide({
+        element: '#big',
+        panels: '#big .ui-switchable-content li',
+        effect: 'fade'
+    });
+});
+</script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;slide&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Slide</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">slide4</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Slide</span><span class="p">({</span>
         <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#big&#39;</span><span class="p">,</span>
         <span class="nx">panels</span><span class="o">:</span> <span class="s1">&#39;#big .ui-switchable-content li&#39;</span><span class="p">,</span>
@@ -518,16 +528,6 @@ seajs.use(['../src/accordion', '$'], function(Accordion, $) {
 <span class="p">});</span>
 </pre></div>
 
-<script type="text/javascript">
-seajs.use(['../src/slide', '$'], function(Slide, $) {
-    slide4 = new Slide({
-        element: '#big',
-        panels: '#big .ui-switchable-content li',
-        effect: 'fade'
-    });
-});
-</script>
-
 </div>
 
     </div>
@@ -535,5 +535,8 @@ seajs.use(['../src/slide', '$'], function(Slide, $) {
 <hr class="end">
 <link rel="stylesheet" href="http://aralejs.org/assets/pygments.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/fontawesome/css/font-awesome.css">
+<script>
+    seajs.use('http://aralejs.org/tools/nico-helper.js');
+</script>
 </body>
 </html>

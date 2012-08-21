@@ -6,8 +6,8 @@
 <title>Switchable</title>
 <link rel="stylesheet" href="http://aralejs.org/assets/base.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/style.css">
-
 <script src="http://seajs.org/dist/sea.js"></script>
+
 <script src="http://aralejs.org/tools/seajs-helper.js"></script>
 
 <!--[if lt IE 9]>
@@ -27,8 +27,8 @@
 
 
         <nav role="navigation" id="nav">
-            <a class="icon-home" title="Home" href="/" id="logo">Home</a>
-            <a class="icon-github" href="https://github.com/aralejs/switchable">Code</a>
+            <a class="icon-home" target="_blank" title="Home" href="/" id="logo">Home</a>
+            <a id="code-link" class="icon-github" target="_blank" href="https://github.com/aralejs/switchable">Code</a>
         </nav>
     </div>
 </header>
@@ -122,18 +122,7 @@
         </div>
     </div>
 </div>
-<div class="highlight"><pre><span class="kd">var</span> <span class="nx">T</span><span class="p">,</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">tabs</span><span class="p">;</span>
-
-    <span class="nx">seajs</span><span class="p">.</span><span class="nx">config</span><span class="p">({</span>
-        <span class="nx">alias</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s1">&#39;tabs-src&#39;</span><span class="o">:</span> <span class="s1">&#39;../src/tabs&#39;</span>
-        <span class="p">}</span>
-    <span class="p">});</span>
-
-    <span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;jquery&#39;</span><span class="p">,</span> <span class="s1">&#39;tabs-src&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jQuery</span><span class="p">,</span> <span class="nx">Tabs</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">T</span> <span class="o">=</span> <span class="nx">Tabs</span><span class="p">;</span>
-        <span class="nx">$</span> <span class="o">=</span> <span class="nx">jQuery</span><span class="p">;</span>
-
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;tabs&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Tabs</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabs</span><span class="p">({</span>
             <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo1&#39;</span><span class="p">,</span>
             <span class="nx">triggers</span><span class="o">:</span> <span class="s1">&#39;.ui-switchable-nav li&#39;</span><span class="p">,</span>
@@ -141,33 +130,8 @@
             <span class="nx">activeIndex</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
             <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span>
         <span class="p">});</span>
-
     <span class="p">});</span>
 </pre></div>
-
-<script type="text/javascript">
-    var T, $, tabs;
-
-    seajs.config({
-        alias: {
-            'tabs-src': '../src/tabs'
-        }
-    });
-
-    seajs.use(['jquery', 'tabs-src'], function(jQuery, Tabs) {
-        T = Tabs;
-        $ = jQuery;
-
-        tabs = new Tabs({
-            element: '#demo1',
-            triggers: '.ui-switchable-nav li',
-            panels: '.ui-switchable-content div',
-            activeIndex: 2,
-            effect: 'fade'
-        });
-
-    });
-</script>
 
 </div>
 
@@ -176,5 +140,8 @@
 <hr class="end">
 <link rel="stylesheet" href="http://aralejs.org/assets/pygments.css">
 <link rel="stylesheet" href="http://aralejs.org/assets/fontawesome/css/font-awesome.css">
+<script>
+    seajs.use('http://aralejs.org/tools/nico-helper.js');
+</script>
 </body>
 </html>
