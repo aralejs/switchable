@@ -89,16 +89,25 @@
         <div style="display: none">内容 D</div>
         <div style="display: none">内容 E</div>
     </div>
-</div>
-<code>javascript+
-    seajs.use([&#39;tabs&#39;], function(Tabs) {
+</div></p>
+
+<script>
+    seajs.use(['tabs'], function(Tabs) {
         tabs = new Tabs({
-            element: &#39;#demo1&#39;,
+            element: '#demo1',
             activeIndex: 1,
-            effect: &#39;fade&#39;
+            effect: 'fade'
         });
     });
-</code></p>
+</script>
+<div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;tabs&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Tabs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabs</span><span class="p">({</span>
+            <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo1&#39;</span><span class="p">,</span>
+            <span class="nx">activeIndex</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nx">effect</span><span class="o">:</span> <span class="s1">&#39;fade&#39;</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+</pre></div>
 <p><h2>Slide - 卡盘轮播</h2>
 <style>
     #demo2 { position: relative; width: 710px; height: 176px; border: 1px solid #B6D1E6; overflow: hidden; }
