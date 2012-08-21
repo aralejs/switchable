@@ -37,6 +37,7 @@
         <div style="display: none">内容 E</div>
     </div>
 </div>
+
 ````javascript
     seajs.use(['tabs'], function(Tabs) {
         tabs = new Tabs({
