@@ -27,7 +27,7 @@ define(function(require, exports, module) {
         _parseRole: function() {
             Switchable.prototype._parseRole.call(this);
 
-            var role = this.dataset.role;
+            var role = this.dataset && this.dataset.role;
             if (!role) return;
 
             // attr 里没找到时，才根据 data-role 来解析

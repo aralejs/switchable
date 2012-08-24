@@ -77,7 +77,7 @@ define(function(require, exports, module) {
 
 
         _parseRole: function() {
-            var role = this.dataset.role;
+            var role = this.dataset && this.dataset.role;
             if (!role) return;
 
             var element = this.element;
