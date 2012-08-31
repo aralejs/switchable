@@ -36,13 +36,11 @@ define(function(require, exports, module) {
 
             if (!prevBtn[0] && role.prev) {
                 prevBtn = role.prev;
-                console.info(1, prevBtn)
                 this.set('prevBtn', prevBtn);
             }
 
             if (!nextBtn[0] && role.next) {
                 nextBtn = role.next;
-                console.info(2, nextBtn)
                 this.set('nextBtn', nextBtn);
             }
 
