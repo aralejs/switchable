@@ -537,7 +537,8 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
 
 
         _parseRole: function() {
-            var role = this.dataset.role;
+            // var role = this.dataset && this.dataset.role;
+            var role = this._getDatasetRole();
             if (!role) return;
 
             var element = this.element;
@@ -546,15 +547,31 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
 
             // attr 里没找到时，才根据 data-role 来解析
             if (triggers.length === 0 && (role.trigger || role.nav)) {
-                triggers = element.find(role.trigger || role.nav + ' > *');
+                triggers = role.trigger || role.nav.find('> *');
             }
 
             if (panels.length === 0 && (role.panel || role.content)) {
-                panels = element.find(role.panel || role.content + ' > *');
+                panels = role.panel || role.content.find('> *');
             }
 
             this.set('triggers', triggers);
             this.set('panels', panels);
+        },
+
+        _getDatasetRole: function() {
+            var element = this.element;
+            var role = {};
+            var isHaveRole = false;
+            var roles = ['trigger', 'panel', 'nav', 'content'];
+            $.each(roles, function(index, key) {
+              var elems = $('[data-role=' + key + ']', element); 
+              if (elems.length) {
+                role[key] = elems;
+                isHaveRole = true;
+              }
+            });
+            if (!isHaveRole) return null;
+            return role;
         },
 
         _initElement: function() {
@@ -709,7 +726,7 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
         prev: function() {
             var fromIndex = this.get('activeIndex');
             // 考虑循环切换的情况
-            var index = (fromIndex - 1 + this.get('length')) % this.length;
+            var index = (fromIndex - 1 + this.get('length')) % this.get('length');
             this.switchTo(index);
         },
 
