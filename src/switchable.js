@@ -76,9 +76,9 @@ define(function(require, exports, module) {
         },
 
 
-        _parseRole: function() {
+        _parseRole: function(role) {
             // var role = this.dataset && this.dataset.role;
-            var role = this._getDatasetRole();
+            role = role || this._getDatasetRole();
             if (!role) return;
 
             var element = this.element;
@@ -98,9 +98,9 @@ define(function(require, exports, module) {
             this.set('panels', panels);
         },
 
-        _getDatasetRole: function() {
+        _getDatasetRole: function(role) {
             var element = this.element;
-            var role = {};
+            var role = role || {};
             var isHaveRole = false;
             var roles = ['trigger', 'panel', 'nav', 'content'];
             $.each(roles, function(index, key) {
