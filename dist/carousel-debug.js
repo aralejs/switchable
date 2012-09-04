@@ -27,25 +27,40 @@ define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2
         _parseRole: function() {
             Switchable.prototype._parseRole.call(this);
 
-            var role = this.dataset.role;
+            // var role = this.dataset && this.dataset.role;
+            var role = this._getDatasetRole();
             if (!role) return;
-
             // attr 里没找到时，才根据 data-role 来解析
             var prevBtn = this.get('prevBtn');
             var nextBtn = this.get('nextBtn');
 
             if (!prevBtn[0] && role.prev) {
-                prevBtn = this.$(role.prev);
+                prevBtn = role.prev;
                 this.set('prevBtn', prevBtn);
             }
 
             if (!nextBtn[0] && role.next) {
-                nextBtn = this.$(role.next);
+                nextBtn = role.next;
                 this.set('nextBtn', nextBtn);
             }
 
             prevBtn.addClass(CONST.PREV_BTN_CLASS);
             nextBtn.addClass(CONST.NEXT_BTN_CLASS);
+        },
+
+         _getDatasetRole: function() {
+            var element = this.element;
+            var role = {};
+            var roles = ['next', 'prev'];
+            $.each(roles, function(index, key) {
+              var elems = $('[data-role=' + key + ']', element); 
+              if (elems.length) {
+                role[key] = elems;
+                isHaveRole = true;
+              }
+            });
+            if (!isHaveRole) return null;
+            return role;
         },
 
         _initTriggers: function() {
