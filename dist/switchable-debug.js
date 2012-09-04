@@ -523,7 +523,9 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             },
 
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
-            viewSize: []
+            viewSize: [],
+
+            activeClass: CONST.ACTIVE_CLASS 
         },
 
         setup: function() {
@@ -596,7 +598,8 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             if (triggers.length === 0 && this.get('hasTriggers')) {
                 this.nav = generateTriggersMarkup(
                         this.get('length'),
-                        this.get('activeIndex')
+                        this.get('activeIndex'),
+                        this.get('activeClass')
                 ).appendTo(this.element);
 
                 // update triggers
@@ -690,8 +693,8 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             var triggers = this.triggers;
             if (triggers.length < 1) return;
 
-            triggers.eq(fromIndex).removeClass(CONST.ACTIVE_CLASS);
-            triggers.eq(toIndex).addClass(CONST.ACTIVE_CLASS);
+            triggers.eq(fromIndex).removeClass(this.get('activeClass'));
+            triggers.eq(toIndex).addClass(this.get('activeClass'));
         },
 
         _switchPanel: function(panelInfo) {
@@ -788,11 +791,11 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
     // Helpers
     // -------
 
-    function generateTriggersMarkup(length, activeIndex) {
+    function generateTriggersMarkup(length, activeIndex, activeClass) {
         var nav = $('<ul>');
 
         for (var i = 0; i < length; i++) {
-            var className = i === activeIndex ? CONST.ACTIVE_CLASS : '';
+            var className = i === activeIndex ? activeClass : '';
 
             $('<li>', {
                 'class': className,
