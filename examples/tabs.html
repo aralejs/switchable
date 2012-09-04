@@ -125,6 +125,18 @@
         </div>
     </div>
 </div>
+
+<script>
+    seajs.use(['tabs'], function(Tabs) {
+        tabs = new Tabs({
+            element: '#demo1',
+            triggers: '.ui-switchable-nav li',
+            panels: '.ui-switchable-content div',
+            activeIndex: 2,
+            effect: 'fade'
+        });
+    });
+</script>
 <div class="highlight"><pre><span class="nx">seajs</span><span class="p">.</span><span class="nx">use</span><span class="p">([</span><span class="s1">&#39;tabs&#39;</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">Tabs</span><span class="p">)</span> <span class="p">{</span>
         <span class="nx">tabs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Tabs</span><span class="p">({</span>
             <span class="nx">element</span><span class="o">:</span> <span class="s1">&#39;#demo1&#39;</span><span class="p">,</span>

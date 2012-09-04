@@ -70,7 +70,7 @@
     </div>
 </div>
 
-```javascript
+````javascript
     seajs.use(['tabs'], function(Tabs) {
         tabs = new Tabs({
             element: '#demo1',
@@ -80,4 +80,4 @@
             effect: 'fade'
         });
     });
-```
+````
