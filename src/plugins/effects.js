@@ -35,7 +35,7 @@ define(function(require, exports, module) {
                 var firstPanel = panels.eq(0);
 
                 // 设置定位信息，为滚动效果做铺垫
-                content.css('position', 'absolute');
+                content.css('position', 'relative');
 
                 // 注：content 的父级不一定是 container
                 if (content.parent().css('position') === 'static') {
