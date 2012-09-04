@@ -65,7 +65,7 @@ define(function(require, exports, module) {
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
             viewSize: [],
 
-            activeClass: CONST.ACTIVE_CLASS 
+            activeTriggerClass: CONST.ACTIVE_CLASS 
         },
 
         setup: function() {
@@ -139,7 +139,7 @@ define(function(require, exports, module) {
                 this.nav = generateTriggersMarkup(
                         this.get('length'),
                         this.get('activeIndex'),
-                        this.get('activeClass')
+                        this.get('activeTriggerClass')
                 ).appendTo(this.element);
 
                 // update triggers
@@ -233,8 +233,8 @@ define(function(require, exports, module) {
             var triggers = this.triggers;
             if (triggers.length < 1) return;
 
-            triggers.eq(fromIndex).removeClass(this.get('activeClass'));
-            triggers.eq(toIndex).addClass(this.get('activeClass'));
+            triggers.eq(fromIndex).removeClass(this.get('activeTriggerClass'));
+            triggers.eq(toIndex).addClass(this.get('activeTriggerClass'));
         },
 
         _switchPanel: function(panelInfo) {
@@ -331,11 +331,11 @@ define(function(require, exports, module) {
     // Helpers
     // -------
 
-    function generateTriggersMarkup(length, activeIndex, activeClass) {
+    function generateTriggersMarkup(length, activeIndex, activeTriggerClass) {
         var nav = $('<ul>');
 
         for (var i = 0; i < length; i++) {
-            var className = i === activeIndex ? activeClass : '';
+            var className = i === activeIndex ? activeTriggerClass : '';
 
             $('<li>', {
                 'class': className,
