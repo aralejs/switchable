@@ -440,6 +440,10 @@ define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(
         },
 
         methods: {
+            switchTo: function(toIndex) {
+              this._switchTo(toIndex, toIndex);
+            },
+
             _switchTrigger: function(toIndex) {
                 this.triggers.eq(toIndex).toggleClass(CONST.ACTIVE_CLASS);
             },
@@ -525,7 +529,7 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
             viewSize: [],
 
-            activeClass: CONST.ACTIVE_CLASS 
+            activeTriggerClass: CONST.ACTIVE_CLASS 
         },
 
         setup: function() {
@@ -599,7 +603,7 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
                 this.nav = generateTriggersMarkup(
                         this.get('length'),
                         this.get('activeIndex'),
-                        this.get('activeClass')
+                        this.get('activeTriggerClass')
                 ).appendTo(this.element);
 
                 // update triggers
@@ -693,8 +697,8 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             var triggers = this.triggers;
             if (triggers.length < 1) return;
 
-            triggers.eq(fromIndex).removeClass(this.get('activeClass'));
-            triggers.eq(toIndex).addClass(this.get('activeClass'));
+            triggers.eq(fromIndex).removeClass(this.get('activeTriggerClass'));
+            triggers.eq(toIndex).addClass(this.get('activeTriggerClass'));
         },
 
         _switchPanel: function(panelInfo) {
@@ -791,11 +795,11 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
     // Helpers
     // -------
 
-    function generateTriggersMarkup(length, activeIndex, activeClass) {
+    function generateTriggersMarkup(length, activeIndex, activeTriggerClass) {
         var nav = $('<ul>');
 
         for (var i = 0; i < length; i++) {
-            var className = i === activeIndex ? activeClass : '';
+            var className = i === activeIndex ? activeTriggerClass : '';
 
             $('<li>', {
                 'class': className,
