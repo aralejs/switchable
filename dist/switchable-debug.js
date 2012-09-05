@@ -445,7 +445,7 @@ define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(
             },
 
             _switchTrigger: function(toIndex) {
-                this.triggers.eq(toIndex).toggleClass(CONST.ACTIVE_CLASS);
+                this.triggers.eq(toIndex).toggleClass(this.get('activeTriggerClass'));
             },
 
             _triggerIsValid: function() {
