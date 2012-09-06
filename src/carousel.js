@@ -51,6 +51,7 @@ define(function(require, exports, module) {
         },
 
          _getDatasetRole: function(role) {
+            var isHaveRole = false;
             var element = this.element;
             var roles = ['next', 'prev'];
             $.each(roles, function(index, key) {
