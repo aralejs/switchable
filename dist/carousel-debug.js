@@ -51,6 +51,7 @@ define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2
         },
 
          _getDatasetRole: function(role) {
+            var isHaveRole = false;
             var element = this.element;
             var roles = ['next', 'prev'];
             $.each(roles, function(index, key) {
