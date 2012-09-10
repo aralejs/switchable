@@ -1,4 +1,4 @@
-define("#switchable/0.9.9/const-debug", [], function(require, exports) {
+define("#switchable/0.9.10/const-debug", [], function(require, exports) {
 
     var UI_SWITCHABLE = 'ui-switchable';
 
@@ -16,7 +16,7 @@ define("#switchable/0.9.9/const-debug", [], function(require, exports) {
 });
 
 
-define("#switchable/0.9.9/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
     var $ = require('#jquery/1.7.2/jquery-debug');
 
@@ -151,7 +151,6 @@ define("#switchable/0.9.9/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"]
 
         // 水平/垂直滚动效果
         scroll: function(panelInfo) {
-console.info('1------')
             var isX = this.get('effect') === SCROLLX;
             var diff = this.get('viewSize')[isX ? 0 : 1] * panelInfo.toIndex;
 
@@ -185,7 +184,7 @@ console.info('1------')
 });
 
 
-define("#switchable/0.9.9/plugins/autoplay-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/autoplay-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
     var $ = require('#jquery/1.7.2/jquery-debug');
 
@@ -311,7 +310,7 @@ define("#switchable/0.9.9/plugins/autoplay-debug", ["#jquery/1.7.2/jquery-debug"
 });
 
 
-define("#switchable/0.9.9/plugins/circular-debug", ["./effects-debug", "#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/circular-debug", ["./effects-debug", "#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
     var $ = require('#jquery/1.7.2/jquery-debug');
 
@@ -429,7 +428,7 @@ define("#switchable/0.9.9/plugins/circular-debug", ["./effects-debug", "#jquery/
 });
 
 
-define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/multiple-debug", ["../const-debug"], function(require, exports, module) {
 
     var CONST = require('../const-debug');
 
@@ -464,7 +463,7 @@ define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(
 });
 
 
-define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "#jquery/1.7.2/jquery-debug", "#easing/1.0.0/easing-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "#jquery/1.7.2/jquery-debug", "#easing/1.0.0/easing-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
 
     // Switchable
     // -----------
