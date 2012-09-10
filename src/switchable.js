@@ -8,8 +8,8 @@ define(function(require, exports, module) {
 
 
     var $ = require('$');
-    var Widget = require('widget');
     var Easing = require('easing');
+    var Widget = require('widget'); // var Easing = require('easinging');
 
     var CONST = require('./const');
     var Effects = require('./plugins/effects');

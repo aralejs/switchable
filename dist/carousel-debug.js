@@ -1,4 +1,4 @@
-define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2/jquery-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug", "#easing/1.0.0/easing-debug"], function(require, exports, module) {
+define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2/jquery-debug", "#easing/1.0.0/easing-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
 
     var Switchable = require('./switchable-debug');
     var $ = require('#jquery/1.7.2/jquery-debug');
@@ -21,7 +21,9 @@ define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2
                 getter: function(val) {
                     return $(val).eq(0);
                 }
-            }
+            },
+
+            _isNext: false
         },
 
         _parseRole: function(role) {
@@ -74,6 +76,7 @@ define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2
             this.get('prevBtn').click(function(ev) {
                 ev.preventDefault();
                 if (circular || that.get('activeIndex') > 0) {
+                    that.set('_isNext', false);
                     that.prev();
                 }
             });
@@ -82,6 +85,7 @@ define("#switchable/0.9.9/carousel-debug", ["./switchable-debug", "#jquery/1.7.2
                 ev.preventDefault();
                 var len = that.get('length') - 1;
                 if (circular || that.get('activeIndex') < len) {
+                    that.set('_isNext', true);
                     that.next();
                 }
             });
