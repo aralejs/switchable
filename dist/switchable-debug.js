@@ -474,7 +474,7 @@ define("#switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/effec
 
     var $ = require('#jquery/1.7.2/jquery-debug');
     var Easing = require('#easing/1.0.0/easing-debug');
-    var Widget = require('#widget/1.0.0/widget-debug'); // var Easing = require('undefined-debug');
+    var Widget = require('#widget/1.0.0/widget-debug'); // var Easing = require('easinging-debug');
 
     var CONST = require('./const-debug');
     var Effects = require('./plugins/effects-debug');
