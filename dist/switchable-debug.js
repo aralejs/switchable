@@ -463,7 +463,7 @@ define("#switchable/0.9.10/plugins/multiple-debug", ["../const-debug"], function
 });
 
 
-define("#switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "#jquery/1.7.2/jquery-debug", "#easing/1.0.0/easing-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "#jquery/1.7.2/jquery-debug", "#easing/1.0.0/easing-debug", "#widget/1.0.2/widget-debug", "#base/1.0.1/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
 
     // Switchable
     // -----------
@@ -474,7 +474,7 @@ define("#switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/effec
 
     var $ = require('#jquery/1.7.2/jquery-debug');
     var Easing = require('#easing/1.0.0/easing-debug');
-    var Widget = require('#widget/1.0.0/widget-debug'); // var Easing = require('easinging-debug');
+    var Widget = require('#widget/1.0.2/widget-debug'); // var Easing = require('easinging-debug');
 
     var CONST = require('./const-debug');
     var Effects = require('./plugins/effects-debug');
