@@ -1,6 +1,7 @@
 {
     "version": "0.9.10",
     "name": "switchable",
+    "tag": "widget",
     "output": {
         "switchable.js": ".",
         "tabs.js": "default",
