@@ -5,16 +5,7 @@ Switchable提供了切换的基本操作，并通过参数配置实现了自动�
 ---
 
 
-## 模块依赖
-
- - [seajs](seajs/README.md)
- - [jquery](jquery/README.md)
- - [widget](widget/README.md)
-
-
-
-
-## 配置属性
+## API
 
 * `triggers` {String|Array}
     
@@ -237,11 +228,4 @@ seajs.use(['tabs'], function(Tabs) {
 
 2. 也可以适用自动渲染。详情可以参考[examples/autorender.html](https://github.com/alipay/arale/blob/master/lib/switchable/examples/autorender.html)
 
-
-
-## 交流讨论
-
-欢迎创建
-[GitHub Issue](https://github.com/alipay/arale/issues/new)
-来提交反馈。
 

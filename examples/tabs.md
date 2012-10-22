@@ -1,3 +1,9 @@
+# Tabs - 普通标签页
+
+- order: 5
+
+---
+
 <style>
     #demo1 {
         font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;

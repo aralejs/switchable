@@ -1,3 +1,9 @@
+# 基本用法
+
+- order: 1
+
+---
+
 <style>
     .loading { background: #EBF5FA url(assets/loading.gif) no-repeat 50% 50%; }
 </style>

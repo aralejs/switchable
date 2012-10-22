@@ -1,3 +1,9 @@
+# Slide - 卡盘轮播
+
+- order: 3
+
+---
+
 <h2>Tabs - 普通标签页</h2>
 <style>
     #demo1 { position: relative; width: 750px; padding-top: 29px; }

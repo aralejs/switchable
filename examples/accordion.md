@@ -1,4 +1,9 @@
-<h2>Accordion - 手风琴</h2>
+# Accordion - 手风琴
+
+- order: 4
+
+---
+
 <style>
     #accordion1 {width:300px;border:1px solid #ccc;}
     #accordion1 .ui-switchable-trigger{padding:3px 10px;cursor:pointer;border-bottom:1px solid #ddd;background:#f3f3f3;overflow:hidden; height: 18px;}
