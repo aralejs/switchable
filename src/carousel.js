@@ -21,14 +21,18 @@ define(function(require, exports, module) {
                 getter: function(val) {
                     return $(val).eq(0);
                 }
-            }
+            },
+
+            _isNext: false
         },
 
-        _parseRole: function() {
-            Switchable.prototype._parseRole.call(this);
+        _parseRole: function(role) {
+            role = Switchable.prototype._getDatasetRole.call(this) || {};
+            role = this._getDatasetRole(role);
 
+            Switchable.prototype._parseRole.call(this, role);
             // var role = this.dataset && this.dataset.role;
-            var role = this._getDatasetRole();
+
             if (!role) return;
             // attr 里没找到时，才根据 data-role 来解析
             var prevBtn = this.get('prevBtn');
@@ -48,9 +52,9 @@ define(function(require, exports, module) {
             nextBtn.addClass(CONST.NEXT_BTN_CLASS);
         },
 
-         _getDatasetRole: function() {
+         _getDatasetRole: function(role) {
+            var isHaveRole = false;
             var element = this.element;
-            var role = {};
             var roles = ['next', 'prev'];
             $.each(roles, function(index, key) {
               var elems = $('[data-role=' + key + ']', element); 
@@ -72,6 +76,7 @@ define(function(require, exports, module) {
             this.get('prevBtn').click(function(ev) {
                 ev.preventDefault();
                 if (circular || that.get('activeIndex') > 0) {
+                    that.set('_isNext', false);
                     that.prev();
                 }
             });
@@ -80,6 +85,7 @@ define(function(require, exports, module) {
                 ev.preventDefault();
                 var len = that.get('length') - 1;
                 if (circular || that.get('activeIndex') < len) {
+                    that.set('_isNext', true);
                     that.next();
                 }
             });

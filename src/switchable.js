@@ -8,8 +8,8 @@ define(function(require, exports, module) {
 
 
     var $ = require('$');
-    var Widget = require('widget');
     var Easing = require('easing');
+    var Widget = require('widget'); // var Easing = require('easinging');
 
     var CONST = require('./const');
     var Effects = require('./plugins/effects');
@@ -63,7 +63,9 @@ define(function(require, exports, module) {
             },
 
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
-            viewSize: []
+            viewSize: [],
+
+            activeTriggerClass: CONST.ACTIVE_CLASS 
         },
 
         setup: function() {
@@ -76,9 +78,9 @@ define(function(require, exports, module) {
         },
 
 
-        _parseRole: function() {
+        _parseRole: function(role) {
             // var role = this.dataset && this.dataset.role;
-            var role = this._getDatasetRole();
+            role = role || this._getDatasetRole();
             if (!role) return;
 
             var element = this.element;
@@ -98,9 +100,9 @@ define(function(require, exports, module) {
             this.set('panels', panels);
         },
 
-        _getDatasetRole: function() {
+        _getDatasetRole: function(role) {
             var element = this.element;
-            var role = {};
+            var role = role || {};
             var isHaveRole = false;
             var roles = ['trigger', 'panel', 'nav', 'content'];
             $.each(roles, function(index, key) {
@@ -136,7 +138,8 @@ define(function(require, exports, module) {
             if (triggers.length === 0 && this.get('hasTriggers')) {
                 this.nav = generateTriggersMarkup(
                         this.get('length'),
-                        this.get('activeIndex')
+                        this.get('activeIndex'),
+                        this.get('activeTriggerClass')
                 ).appendTo(this.element);
 
                 // update triggers
@@ -230,8 +233,8 @@ define(function(require, exports, module) {
             var triggers = this.triggers;
             if (triggers.length < 1) return;
 
-            triggers.eq(fromIndex).removeClass(CONST.ACTIVE_CLASS);
-            triggers.eq(toIndex).addClass(CONST.ACTIVE_CLASS);
+            triggers.eq(fromIndex).removeClass(this.get('activeTriggerClass'));
+            triggers.eq(toIndex).addClass(this.get('activeTriggerClass'));
         },
 
         _switchPanel: function(panelInfo) {
@@ -328,11 +331,11 @@ define(function(require, exports, module) {
     // Helpers
     // -------
 
-    function generateTriggersMarkup(length, activeIndex) {
+    function generateTriggersMarkup(length, activeIndex, activeTriggerClass) {
         var nav = $('<ul>');
 
         for (var i = 0; i < length; i++) {
-            var className = i === activeIndex ? CONST.ACTIVE_CLASS : '';
+            var className = i === activeIndex ? activeTriggerClass : '';
 
             $('<li>', {
                 'class': className,

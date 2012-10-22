@@ -1,4 +1,4 @@
-define("#switchable/0.9.9/const-debug", [], function(require, exports) {
+define("#switchable/0.9.10/const-debug", [], function(require, exports) {
 
     var UI_SWITCHABLE = 'ui-switchable';
 
@@ -16,7 +16,7 @@ define("#switchable/0.9.9/const-debug", [], function(require, exports) {
 });
 
 
-define("#switchable/0.9.9/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
     var $ = require('#jquery/1.7.2/jquery-debug');
 
@@ -53,7 +53,7 @@ define("#switchable/0.9.9/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"]
                 var firstPanel = panels.eq(0);
 
                 // 设置定位信息，为滚动效果做铺垫
-                content.css('position', 'absolute');
+                content.css('position', 'relative');
 
                 // 注：content 的父级不一定是 container
                 if (content.parent().css('position') === 'static') {
@@ -184,7 +184,7 @@ define("#switchable/0.9.9/plugins/effects-debug", ["#jquery/1.7.2/jquery-debug"]
 });
 
 
-define("#switchable/0.9.9/plugins/autoplay-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/autoplay-debug", ["#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
     var $ = require('#jquery/1.7.2/jquery-debug');
 
@@ -310,7 +310,7 @@ define("#switchable/0.9.9/plugins/autoplay-debug", ["#jquery/1.7.2/jquery-debug"
 });
 
 
-define("#switchable/0.9.9/plugins/circular-debug", ["./effects-debug", "#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/circular-debug", ["./effects-debug", "#jquery/1.7.2/jquery-debug"], function(require, exports, module) {
 
     var $ = require('#jquery/1.7.2/jquery-debug');
 
@@ -339,9 +339,10 @@ define("#switchable/0.9.9/plugins/circular-debug", ["./effects-debug", "#jquery/
         var toIndex = panelInfo.toIndex;
         var fromIndex = panelInfo.fromIndex;
         var len = this.get('length');
+        var isNext = this.get('_isNext');
 
-        var isBackwardCritical = (fromIndex === 0 && toIndex === len - 1);
-        var isForwardCritical = (fromIndex === len - 1 && toIndex === 0);
+        var isBackwardCritical = (fromIndex === 0 && toIndex === len - 1 && !isNext);
+        var isForwardCritical = (fromIndex === len - 1 && toIndex === 0 && isNext);
 
         var isBackward = isBackwardCritical ||
                 (!isForwardCritical && toIndex < fromIndex);
@@ -427,7 +428,7 @@ define("#switchable/0.9.9/plugins/circular-debug", ["./effects-debug", "#jquery/
 });
 
 
-define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/plugins/multiple-debug", ["../const-debug"], function(require, exports, module) {
 
     var CONST = require('../const-debug');
 
@@ -440,8 +441,12 @@ define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(
         },
 
         methods: {
+            switchTo: function(toIndex) {
+              this._switchTo(toIndex, toIndex);
+            },
+
             _switchTrigger: function(toIndex) {
-                this.triggers.eq(toIndex).toggleClass(CONST.ACTIVE_CLASS);
+                this.triggers.eq(toIndex).toggleClass(this.get('activeTriggerClass'));
             },
 
             _triggerIsValid: function() {
@@ -458,7 +463,7 @@ define("#switchable/0.9.9/plugins/multiple-debug", ["../const-debug"], function(
 });
 
 
-define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "#jquery/1.7.2/jquery-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug", "#easing/1.0.0/easing-debug"], function(require, exports, module) {
+define("#switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "#jquery/1.7.2/jquery-debug", "#easing/1.0.0/easing-debug", "#widget/1.0.0/widget-debug", "#base/1.0.0/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
 
     // Switchable
     // -----------
@@ -468,8 +473,8 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
 
 
     var $ = require('#jquery/1.7.2/jquery-debug');
-    var Widget = require('#widget/1.0.0/widget-debug');
     var Easing = require('#easing/1.0.0/easing-debug');
+    var Widget = require('#widget/1.0.0/widget-debug'); // var Easing = require('easinging-debug');
 
     var CONST = require('./const-debug');
     var Effects = require('./plugins/effects-debug');
@@ -523,7 +528,9 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             },
 
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
-            viewSize: []
+            viewSize: [],
+
+            activeTriggerClass: CONST.ACTIVE_CLASS 
         },
 
         setup: function() {
@@ -536,9 +543,9 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
         },
 
 
-        _parseRole: function() {
+        _parseRole: function(role) {
             // var role = this.dataset && this.dataset.role;
-            var role = this._getDatasetRole();
+            role = role || this._getDatasetRole();
             if (!role) return;
 
             var element = this.element;
@@ -558,9 +565,9 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             this.set('panels', panels);
         },
 
-        _getDatasetRole: function() {
+        _getDatasetRole: function(role) {
             var element = this.element;
-            var role = {};
+            var role = role || {};
             var isHaveRole = false;
             var roles = ['trigger', 'panel', 'nav', 'content'];
             $.each(roles, function(index, key) {
@@ -596,7 +603,8 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             if (triggers.length === 0 && this.get('hasTriggers')) {
                 this.nav = generateTriggersMarkup(
                         this.get('length'),
-                        this.get('activeIndex')
+                        this.get('activeIndex'),
+                        this.get('activeTriggerClass')
                 ).appendTo(this.element);
 
                 // update triggers
@@ -690,8 +698,8 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
             var triggers = this.triggers;
             if (triggers.length < 1) return;
 
-            triggers.eq(fromIndex).removeClass(CONST.ACTIVE_CLASS);
-            triggers.eq(toIndex).addClass(CONST.ACTIVE_CLASS);
+            triggers.eq(fromIndex).removeClass(this.get('activeTriggerClass'));
+            triggers.eq(toIndex).addClass(this.get('activeTriggerClass'));
         },
 
         _switchPanel: function(panelInfo) {
@@ -788,11 +796,11 @@ define("#switchable/0.9.9/switchable-debug", ["./const-debug", "./plugins/effect
     // Helpers
     // -------
 
-    function generateTriggersMarkup(length, activeIndex) {
+    function generateTriggersMarkup(length, activeIndex, activeTriggerClass) {
         var nav = $('<ul>');
 
         for (var i = 0; i < length; i++) {
-            var className = i === activeIndex ? CONST.ACTIVE_CLASS : '';
+            var className = i === activeIndex ? activeTriggerClass : '';
 
             $('<li>', {
                 'class': className,
