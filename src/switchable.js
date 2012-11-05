@@ -9,7 +9,7 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var Easing = require('easing');
-    var Widget = require('widget'); // var Easing = require('easinging');
+    var Widget = require('widget'); 
 
     var CONST = require('./const');
     var Effects = require('./plugins/effects');
