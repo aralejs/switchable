@@ -469,7 +469,7 @@ define("arale/switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/
 
     var $ = require('$-debug');
     var Easing = require('arale/easing/1.0.0/easing-debug');
-    var Widget = require('arale/widget/1.0.2/widget-debug'); // var Easing = require('easinging-debug');
+    var Widget = require('arale/widget/1.0.2/widget-debug');
 
     var CONST = require('./const-debug');
     var Effects = require('./plugins/effects-debug');
