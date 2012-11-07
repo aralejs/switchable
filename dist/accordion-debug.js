@@ -1,4 +1,4 @@
-define("#switchable/0.9.10/accordion-debug", ["./switchable-debug", "#jquery/1.7.2/jquery-debug", "#easing/1.0.0/easing-debug", "#widget/1.0.2/widget-debug", "#base/1.0.1/base-debug", "#class/1.0.0/class-debug", "#events/1.0.0/events-debug"], function(require, exports, module) {
+define("arale/switchable/0.9.10/accordion-debug", ["./switchable-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug"], function(require, exports, module) {
 
     var Switchable = require('./switchable-debug');
 
