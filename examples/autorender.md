@@ -7,6 +7,11 @@
 
 <h2>Tabs - 普通标签页</h2>
 <style>
+    .ui-switchable * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
     #demo1 { position: relative; width: 750px; padding-top: 29px; }
     #demo1 .ui-switchable-nav { position: absolute; left: 20px; margin-top: -29px; z-index: 99;list-style-type: none; }
     #demo1 .ui-switchable-nav li {

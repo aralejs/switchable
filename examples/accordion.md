@@ -5,6 +5,11 @@
 ---
 
 <style>
+    .ui-switchable * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
     #accordion1 {width:300px;border:1px solid #ccc;}
     #accordion1 .ui-switchable-trigger{padding:3px 10px;cursor:pointer;border-bottom:1px solid #ddd;background:#f3f3f3;overflow:hidden; height: 18px;}
     #accordion1 .ui-switchable-trigger h3{float: left; width: 100px; margin-left: 5px; }

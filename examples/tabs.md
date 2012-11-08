@@ -5,6 +5,11 @@
 ---
 
 <style>
+    .ui-switchable * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
     #demo1 {
         font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         position: relative;
