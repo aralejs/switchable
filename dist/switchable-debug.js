@@ -1,4 +1,4 @@
-define("arale/switchable/0.9.10/const-debug", [], function(require, exports) {
+define("arale/switchable/0.9.11/const-debug", [], function(require, exports) {
 
     var UI_SWITCHABLE = 'ui-switchable';
 
@@ -15,7 +15,7 @@ define("arale/switchable/0.9.10/const-debug", [], function(require, exports) {
 
 });
 
-define("arale/switchable/0.9.10/plugins/effects-debug", ["$-debug"], function(require, exports, module) {
+define("arale/switchable/0.9.11/plugins/effects-debug", ["$-debug"], function(require, exports, module) {
 
     var $ = require('$-debug');
 
@@ -182,7 +182,7 @@ define("arale/switchable/0.9.10/plugins/effects-debug", ["$-debug"], function(re
 
 });
 
-define("arale/switchable/0.9.10/plugins/autoplay-debug", ["$-debug"], function(require, exports, module) {
+define("arale/switchable/0.9.11/plugins/autoplay-debug", ["$-debug"], function(require, exports, module) {
 
     var $ = require('$-debug');
 
@@ -307,7 +307,7 @@ define("arale/switchable/0.9.10/plugins/autoplay-debug", ["$-debug"], function(r
 
 });
 
-define("arale/switchable/0.9.10/plugins/circular-debug", ["./effects-debug", "$-debug"], function(require, exports, module) {
+define("arale/switchable/0.9.11/plugins/circular-debug", ["./effects-debug", "$-debug"], function(require, exports, module) {
 
     var $ = require('$-debug');
 
@@ -424,7 +424,7 @@ define("arale/switchable/0.9.10/plugins/circular-debug", ["./effects-debug", "$-
 
 });
 
-define("arale/switchable/0.9.10/plugins/multiple-debug", ["../const-debug"], function(require, exports, module) {
+define("arale/switchable/0.9.11/plugins/multiple-debug", ["../const-debug"], function(require, exports, module) {
 
     var CONST = require('../const-debug');
 
@@ -458,7 +458,7 @@ define("arale/switchable/0.9.10/plugins/multiple-debug", ["../const-debug"], fun
 
 });
 
-define("arale/switchable/0.9.10/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug"], function(require, exports, module) {
+define("arale/switchable/0.9.11/switchable-debug", ["./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug"], function(require, exports, module) {
 
     // Switchable
     // -----------
