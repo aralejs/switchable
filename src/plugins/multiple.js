@@ -1,8 +1,5 @@
 define(function(require, exports, module) {
 
-    var CONST = require('../const');
-
-
     // 手风琴组件
     module.exports = {
 

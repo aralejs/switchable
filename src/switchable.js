@@ -8,7 +8,7 @@ define(function(require, exports, module) {
 
 
     var $ = require('$');
-    var Easing = require('easing');
+    require('easing');
     var Widget = require('widget');
 
     var CONST = require('./const');
@@ -83,7 +83,6 @@ define(function(require, exports, module) {
             role = role || this._getDatasetRole();
             if (!role) return;
 
-            var element = this.element;
             var triggers = this.get('triggers');
             var panels = this.get('panels');
 
