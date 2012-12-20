@@ -86,11 +86,12 @@ define(function(require, exports, module) {
         var from = start * step;
         var to = (start + 1) * step;
         var diff = isBackward ? viewDiff : -viewDiff * len;
+        var panelDiff = isBackward ? -viewDiff * len : viewDiff * len;
 
         // 调整 panels 到下一个视图中
         var toPanels = $(this.panels.get().slice(from, to));
         toPanels.css('position', 'relative');
-        toPanels.css(prop, -diff + 'px');
+        toPanels.css(prop, panelDiff + 'px');
 
         // 返回偏移量
         return diff;
