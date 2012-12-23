@@ -1,7 +1,6 @@
 define("arale/switchable/0.9.12/carousel-debug", [ "./switchable-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug" ], function(require, exports, module) {
     var Switchable = require("./switchable-debug");
     var $ = require("$-debug");
-    var CONST = require("./const-debug");
     // 旋转木马组件
     module.exports = Switchable.extend({
         attrs: {
@@ -35,8 +34,8 @@ define("arale/switchable/0.9.12/carousel-debug", [ "./switchable-debug", "$-debu
                 nextBtn = role.next;
                 this.set("nextBtn", nextBtn);
             }
-            prevBtn.addClass(CONST.PREV_BTN_CLASS);
-            nextBtn.addClass(CONST.NEXT_BTN_CLASS);
+            prevBtn.addClass(this.CONST.PREV_BTN_CLASS);
+            nextBtn.addClass(this.CONST.NEXT_BTN_CLASS);
         },
         _getDatasetRole: function(role) {
             var isHaveRole = false;
@@ -82,12 +81,12 @@ define("arale/switchable/0.9.12/carousel-debug", [ "./switchable-debug", "$-debu
         _updateButtonStatus: function(toIndex) {
             var prevBtn = this.get("prevBtn");
             var nextBtn = this.get("nextBtn");
-            prevBtn.removeClass(CONST.DISABLED_BTN_CLASS);
-            nextBtn.removeClass(CONST.DISABLED_BTN_CLASS);
+            prevBtn.removeClass(this.CONST.DISABLED_BTN_CLASS);
+            nextBtn.removeClass(this.CONST.DISABLED_BTN_CLASS);
             if (toIndex === 0) {
-                prevBtn.addClass(CONST.DISABLED_BTN_CLASS);
+                prevBtn.addClass(this.CONST.DISABLED_BTN_CLASS);
             } else if (toIndex === this.get("length") - 1) {
-                nextBtn.addClass(CONST.DISABLED_BTN_CLASS);
+                nextBtn.addClass(this.CONST.DISABLED_BTN_CLASS);
             }
         }
     });

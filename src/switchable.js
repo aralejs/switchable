@@ -11,7 +11,7 @@ define(function(require, exports, module) {
     require('easing');
     var Widget = require('widget');
 
-    var CONST = require('./const');
+    var CLASS_PREFIX = 'ui-switchable';
     var Effects = require('./plugins/effects');
     var Autoplay = require('./plugins/autoplay');
     var Circular = require('./plugins/circular');
@@ -30,12 +30,15 @@ define(function(require, exports, module) {
                     return $(val);
                 }
             },
+
             panels: {
                 value: [],
                 getter: function(val) {
                     return $(val);
                 }
             },
+
+            classPrefix: CLASS_PREFIX,
 
             // 是否包含 triggers，用于没有传入 triggers 时，是否自动生成的判断标准
             hasTriggers: true,
@@ -65,18 +68,22 @@ define(function(require, exports, module) {
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
             viewSize: [],
 
-            activeTriggerClass: CONST.ACTIVE_CLASS 
+            activeTriggerClass: CLASS_PREFIX + '-active' 
         },
 
         setup: function() {
+            this._initConstClass();
             this._parseRole();
             this._initElement();
             this._initPanels();
             this._initTriggers();
             this._initPlugins();
-            this.render();
         },
 
+        _initConstClass: function() {
+            var classPrefix = this.get('classPrefix');
+            this.CONST = require('./const')(classPrefix);
+        },
 
         _parseRole: function(role) {
             // var role = this.dataset && this.dataset.role;
@@ -116,7 +123,7 @@ define(function(require, exports, module) {
         },
 
         _initElement: function() {
-            this.element.addClass(CONST.UI_SWITCHABLE);
+            this.element.addClass(this.CONST.UI_SWITCHABLE);
         },
 
         _initPanels: function() {
@@ -125,8 +132,8 @@ define(function(require, exports, module) {
                 throw new Error('panels.length is ZERO');
             }
 
-            this.content = panels.parent().addClass(CONST.CONTENT_CLASS);
-            panels.addClass(CONST.PANEL_CLASS);
+            this.content = panels.parent().addClass(this.CONST.CONTENT_CLASS);
+            panels.addClass(this.CONST.PANEL_CLASS);
         },
 
         _initTriggers: function() {
@@ -148,8 +155,8 @@ define(function(require, exports, module) {
                 this.nav = triggers.parent();
             }
 
-            this.triggers.addClass(CONST.TRIGGER_CLASS);
-            this.nav.addClass(CONST.NAV_CLASS);
+            this.triggers.addClass(this.CONST.TRIGGER_CLASS);
+            this.nav.addClass(this.CONST.NAV_CLASS);
 
             this.triggers.each(function(i, trigger) {
                 $(trigger).data('value', i);

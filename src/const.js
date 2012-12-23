@@ -1,16 +1,18 @@
-define(function(require, exports) {
-
-    var UI_SWITCHABLE = 'ui-switchable';
+define(function(require, exports, module) {
 
     // 内部默认的 className
-    exports.UI_SWITCHABLE = UI_SWITCHABLE;
-    exports.NAV_CLASS = UI_SWITCHABLE + '-nav';
-    exports.CONTENT_CLASS = UI_SWITCHABLE + '-content';
-    exports.TRIGGER_CLASS = UI_SWITCHABLE + '-trigger';
-    exports.PANEL_CLASS = UI_SWITCHABLE + '-panel';
-    exports.ACTIVE_CLASS = UI_SWITCHABLE + '-active';
-    exports.PREV_BTN_CLASS = UI_SWITCHABLE + '-prev-btn';
-    exports.NEXT_BTN_CLASS = UI_SWITCHABLE + '-next-btn';
-    exports.DISABLED_BTN_CLASS = UI_SWITCHABLE + '-disabled-btn';
-
+  
+    module.exports = function(classPrefix){
+        return {
+            UI_SWITCHABLE: classPrefix,
+            NAV_CLASS: classPrefix + '-nav',
+            CONTENT_CLASS: classPrefix + '-content',
+            TRIGGER_CLASS: classPrefix + '-trigger',
+            PANEL_CLASS: classPrefix + '-panel',
+            ACTIVE_CLASS: classPrefix + '-active',
+            PREV_BTN_CLASS: classPrefix + '-prev-btn',
+            NEXT_BTN_CLASS: classPrefix + '-next-btn',
+            DISABLED_BTN_CLASS: classPrefix + '-disabled-btn'
+       }
+    };
 });

@@ -55,7 +55,7 @@
             element: '#demo1',
             activeIndex: 1,
             effect: 'fade'
-        });
+        }).render();
     });
 ````
 
@@ -122,6 +122,6 @@
             element: '#demo2',
             effect: 'scrolly',
             interval: 2000
-        });
+        }).render();
     });
 ````

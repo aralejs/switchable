@@ -62,7 +62,7 @@ seajs.use(['tabs', '$'], function(Tabs, $) {
         panels: '#demo1 .ui-switchable-content div',
         activeIndex: 2,
         effect: 'fade'
-    });
+    }).render();
 });
 ````
 
@@ -137,7 +137,7 @@ seajs.use(['slide', '$'], function(Slide, $) {
         effect: 'fade',
         easing: 'easeOutStrong',
         interval: 2000
-    });
+    }).render();
 });
 ````
 
@@ -212,7 +212,7 @@ seajs.use(['slide', '$'], function(Slide, $) {
         easing: 'easeBoth',
         interval: 200,
         autoplay: false
-    });
+    }).render();
 });
 ````
 
@@ -309,7 +309,7 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
         circular: true,
         prevBtn: '#scroller-prev',
         nextBtn: '#scroller-next'
-    });
+    }).render();
 });
 ````
 
@@ -337,7 +337,7 @@ seajs.use(['slide', '$'], function(Slide, $) {
         hasTriggers: false, 
         easing: 'easeOutStrong',
         duration: 2000
-    });
+    }).render();
 });
 ````
 
@@ -373,7 +373,7 @@ seajs.use(['accordion', '$'], function(Accordion, $) {
         element: '#accordion1',
         triggers: $('#accordion1 .ui-switchable-trigger'),
         panels: $('#accordion1 .ui-switchable-panel')
-    });
+    }).render();
 });
 ````
 
@@ -416,7 +416,7 @@ seajs.use(['slide'], function(Slide) {
         element: '#big',
         panels: '#big .ui-switchable-content li',
         effect: 'fade'
-    });
+    }).render();
 });
 ````
 

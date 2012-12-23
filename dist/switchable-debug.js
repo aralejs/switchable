@@ -1,17 +1,3 @@
-define("arale/switchable/0.9.12/const-debug", [], function(require, exports) {
-    var UI_SWITCHABLE = "ui-switchable";
-    // 内部默认的 className
-    exports.UI_SWITCHABLE = UI_SWITCHABLE;
-    exports.NAV_CLASS = UI_SWITCHABLE + "-nav";
-    exports.CONTENT_CLASS = UI_SWITCHABLE + "-content";
-    exports.TRIGGER_CLASS = UI_SWITCHABLE + "-trigger";
-    exports.PANEL_CLASS = UI_SWITCHABLE + "-panel";
-    exports.ACTIVE_CLASS = UI_SWITCHABLE + "-active";
-    exports.PREV_BTN_CLASS = UI_SWITCHABLE + "-prev-btn";
-    exports.NEXT_BTN_CLASS = UI_SWITCHABLE + "-next-btn";
-    exports.DISABLED_BTN_CLASS = UI_SWITCHABLE + "-disabled-btn";
-});
-
 define("arale/switchable/0.9.12/plugins/effects-debug", [ "$-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     var SCROLLX = "scrollx";
@@ -351,7 +337,24 @@ define("arale/switchable/0.9.12/plugins/multiple-debug", [], function(require, e
     };
 });
 
-define("arale/switchable/0.9.12/switchable-debug", [ "./const-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.12/const-debug", [], function(require, exports, module) {
+    // 内部默认的 className
+    module.exports = function(classPrefix) {
+        return {
+            UI_SWITCHABLE: classPrefix,
+            NAV_CLASS: classPrefix + "-nav",
+            CONTENT_CLASS: classPrefix + "-content",
+            TRIGGER_CLASS: classPrefix + "-trigger",
+            PANEL_CLASS: classPrefix + "-panel",
+            ACTIVE_CLASS: classPrefix + "-active",
+            PREV_BTN_CLASS: classPrefix + "-prev-btn",
+            NEXT_BTN_CLASS: classPrefix + "-next-btn",
+            DISABLED_BTN_CLASS: classPrefix + "-disabled-btn"
+        };
+    };
+});
+
+define("arale/switchable/0.9.12/switchable-debug", [ "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug" ], function(require, exports, module) {
     // Switchable
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
@@ -360,7 +363,7 @@ define("arale/switchable/0.9.12/switchable-debug", [ "./const-debug", "./plugins
     var $ = require("$-debug");
     require("arale/easing/1.0.0/easing-debug");
     var Widget = require("arale/widget/1.0.2/widget-debug");
-    var CONST = require("./const-debug");
+    var CLASS_PREFIX = "ui-switchable";
     var Effects = require("./plugins/effects-debug");
     var Autoplay = require("./plugins/autoplay-debug");
     var Circular = require("./plugins/circular-debug");
@@ -381,6 +384,7 @@ define("arale/switchable/0.9.12/switchable-debug", [ "./const-debug", "./plugins
                     return $(val);
                 }
             },
+            classPrefix: CLASS_PREFIX,
             // 是否包含 triggers，用于没有传入 triggers 时，是否自动生成的判断标准
             hasTriggers: true,
             // 触发类型
@@ -405,15 +409,19 @@ define("arale/switchable/0.9.12/switchable-debug", [ "./const-debug", "./plugins
             },
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
             viewSize: [],
-            activeTriggerClass: CONST.ACTIVE_CLASS
+            activeTriggerClass: CLASS_PREFIX + "-active"
         },
         setup: function() {
+            this._initConstClass();
             this._parseRole();
             this._initElement();
             this._initPanels();
             this._initTriggers();
             this._initPlugins();
-            this.render();
+        },
+        _initConstClass: function() {
+            var classPrefix = this.get("classPrefix");
+            this.CONST = require("./const-debug")(classPrefix);
         },
         _parseRole: function(role) {
             // var role = this.dataset && this.dataset.role;
@@ -447,15 +455,15 @@ define("arale/switchable/0.9.12/switchable-debug", [ "./const-debug", "./plugins
             return role;
         },
         _initElement: function() {
-            this.element.addClass(CONST.UI_SWITCHABLE);
+            this.element.addClass(this.CONST.UI_SWITCHABLE);
         },
         _initPanels: function() {
             var panels = this.panels = this.get("panels");
             if (panels.length === 0) {
                 throw new Error("panels.length is ZERO");
             }
-            this.content = panels.parent().addClass(CONST.CONTENT_CLASS);
-            panels.addClass(CONST.PANEL_CLASS);
+            this.content = panels.parent().addClass(this.CONST.CONTENT_CLASS);
+            panels.addClass(this.CONST.PANEL_CLASS);
         },
         _initTriggers: function() {
             var triggers = this.triggers = this.get("triggers");
@@ -468,8 +476,8 @@ define("arale/switchable/0.9.12/switchable-debug", [ "./const-debug", "./plugins
             } else {
                 this.nav = triggers.parent();
             }
-            this.triggers.addClass(CONST.TRIGGER_CLASS);
-            this.nav.addClass(CONST.NAV_CLASS);
+            this.triggers.addClass(this.CONST.TRIGGER_CLASS);
+            this.nav.addClass(this.CONST.NAV_CLASS);
             this.triggers.each(function(i, trigger) {
                 $(trigger).data("value", i);
             });

@@ -89,6 +89,6 @@
             panels: '.ui-switchable-content div',
             activeIndex: 2,
             effect: 'fade'
-        });
+        }).render();
     });
 ````

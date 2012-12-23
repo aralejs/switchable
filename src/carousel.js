@@ -2,8 +2,6 @@ define(function(require, exports, module) {
 
     var Switchable = require('./switchable');
     var $ = require('$');
-    var CONST = require('./const');
-
 
     // 旋转木马组件
     module.exports = Switchable.extend({
@@ -48,8 +46,8 @@ define(function(require, exports, module) {
                 this.set('nextBtn', nextBtn);
             }
 
-            prevBtn.addClass(CONST.PREV_BTN_CLASS);
-            nextBtn.addClass(CONST.NEXT_BTN_CLASS);
+            prevBtn.addClass(this.CONST.PREV_BTN_CLASS);
+            nextBtn.addClass(this.CONST.NEXT_BTN_CLASS);
         },
 
          _getDatasetRole: function(role) {
@@ -103,14 +101,14 @@ define(function(require, exports, module) {
             var prevBtn = this.get('prevBtn');
             var nextBtn = this.get('nextBtn');
 
-            prevBtn.removeClass(CONST.DISABLED_BTN_CLASS);
-            nextBtn.removeClass(CONST.DISABLED_BTN_CLASS);
+            prevBtn.removeClass(this.CONST.DISABLED_BTN_CLASS);
+            nextBtn.removeClass(this.CONST.DISABLED_BTN_CLASS);
 
             if (toIndex === 0) {
-                prevBtn.addClass(CONST.DISABLED_BTN_CLASS);
+                prevBtn.addClass(this.CONST.DISABLED_BTN_CLASS);
             }
             else if (toIndex === this.get('length') - 1) {
-                nextBtn.addClass(CONST.DISABLED_BTN_CLASS);
+                nextBtn.addClass(this.CONST.DISABLED_BTN_CLASS);
             }
         }
 
