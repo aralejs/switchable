@@ -1,5 +1,7 @@
 define(function(require) {
 
+    mocha.setup({ignoreLeaks: true});
+
     var Switchable = require('../src/switchable');
     var Carousel = require('../src/carousel');
     var Slide = require('../src/slide');
@@ -239,13 +241,15 @@ define(function(require) {
 
             cc.prev();
             testTriggerAndPanelActive(cc, 2);
+        });
 
+        it('Carousel disabled', function() {
             var cc2 = new Carousel({
                 element: '#demo1',
                 circular: false,
                 prevButtonClass: '.prev',
                 nextButtonClass: '.next'
-            });
+            }).render();
             expect(cc2.get('circular')).to.not.be.ok();
             var disabelClass = 'ui-switchable-disabled-btn';
             expect($(cc2.get('prevBtn')).attr('class')).
