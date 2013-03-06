@@ -4,15 +4,15 @@ define(function(require, exports, module) {
   
     module.exports = function(classPrefix){
         return {
-            UI_SWITCHABLE: classPrefix,
-            NAV_CLASS: classPrefix + '-nav',
-            CONTENT_CLASS: classPrefix + '-content',
-            TRIGGER_CLASS: classPrefix + '-trigger',
-            PANEL_CLASS: classPrefix + '-panel',
-            ACTIVE_CLASS: classPrefix + '-active',
-            PREV_BTN_CLASS: classPrefix + '-prev-btn',
-            NEXT_BTN_CLASS: classPrefix + '-next-btn',
-            DISABLED_BTN_CLASS: classPrefix + '-disabled-btn'
+            UI_SWITCHABLE: classPrefix || '',
+            NAV_CLASS: classPrefix ? classPrefix + '-nav' : '',
+            CONTENT_CLASS: classPrefix ? classPrefix + '-content' : '',
+            TRIGGER_CLASS: classPrefix ? classPrefix + '-trigger' : '',
+            PANEL_CLASS: classPrefix ? classPrefix + '-panel' : '',
+            ACTIVE_CLASS: classPrefix ? classPrefix + '-active' : '',
+            PREV_BTN_CLASS: classPrefix ? classPrefix + '-prev-btn' : '',
+            NEXT_BTN_CLASS: classPrefix ? classPrefix + '-next-btn' : '',
+            DISABLED_BTN_CLASS: classPrefix ? classPrefix + '-disabled-btn' : ''
        }
     };
 });
