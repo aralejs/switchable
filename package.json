@@ -21,7 +21,7 @@
     },
     "dependencies": {
         "$":"$",
-        "widget": "arale/widget/1.0.2/widget",
+        "widget": "arale/widget/1.0.3/widget",
         "easing": "arale/easing/1.0.0/easing"
     },
     "tests": ["switchable"]

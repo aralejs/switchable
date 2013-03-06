@@ -341,20 +341,20 @@ define("arale/switchable/0.9.12/const-debug", [], function(require, exports, mod
     // 内部默认的 className
     module.exports = function(classPrefix) {
         return {
-            UI_SWITCHABLE: classPrefix,
-            NAV_CLASS: classPrefix + "-nav",
-            CONTENT_CLASS: classPrefix + "-content",
-            TRIGGER_CLASS: classPrefix + "-trigger",
-            PANEL_CLASS: classPrefix + "-panel",
-            ACTIVE_CLASS: classPrefix + "-active",
-            PREV_BTN_CLASS: classPrefix + "-prev-btn",
-            NEXT_BTN_CLASS: classPrefix + "-next-btn",
-            DISABLED_BTN_CLASS: classPrefix + "-disabled-btn"
+            UI_SWITCHABLE: classPrefix || "",
+            NAV_CLASS: classPrefix ? classPrefix + "-nav" : "",
+            CONTENT_CLASS: classPrefix ? classPrefix + "-content" : "",
+            TRIGGER_CLASS: classPrefix ? classPrefix + "-trigger" : "",
+            PANEL_CLASS: classPrefix ? classPrefix + "-panel" : "",
+            ACTIVE_CLASS: classPrefix ? classPrefix + "-active" : "",
+            PREV_BTN_CLASS: classPrefix ? classPrefix + "-prev-btn" : "",
+            NEXT_BTN_CLASS: classPrefix ? classPrefix + "-next-btn" : "",
+            DISABLED_BTN_CLASS: classPrefix ? classPrefix + "-disabled-btn" : ""
         };
     };
 });
 
-define("arale/switchable/0.9.12/switchable-debug", [ "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.2/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.12/switchable-debug", [ "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.0.3/widget-debug", "arale/base/1.0.1/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.0.0/events-debug" ], function(require, exports, module) {
     // Switchable
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
@@ -362,7 +362,7 @@ define("arale/switchable/0.9.12/switchable-debug", [ "./plugins/effects-debug", 
     //  - https://github.com/kissyteam/kissy/blob/master/src/switchable/
     var $ = require("$-debug");
     require("arale/easing/1.0.0/easing-debug");
-    var Widget = require("arale/widget/1.0.2/widget-debug");
+    var Widget = require("arale/widget/1.0.3/widget-debug");
     var CLASS_PREFIX = "ui-switchable";
     var Effects = require("./plugins/effects-debug");
     var Autoplay = require("./plugins/autoplay-debug");
