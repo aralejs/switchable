@@ -2,11 +2,13 @@ define(function(require) {
 
     mocha.setup({ignoreLeaks: true});
 
-    var Switchable = require('../src/switchable');
-    var Carousel = require('../src/carousel');
-    var Slide = require('../src/slide');
-    var Accordion = require('../src/accordion');
     var $ = require('$');
+    var sinon = require('sinon');
+    var expect = require('expect');
+    var Switchable = require('switchable');
+    var Carousel = require('carousel');
+    var Slide = require('slide');
+    var Accordion = require('accordion');
 
     describe('Switchable', function() {
 
