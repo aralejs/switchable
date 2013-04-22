@@ -219,13 +219,31 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
   
   面板切换前触发。
 
+  ```js
+  instance.on('switch', function(toIndex, fromIndex) {
+  
+  });
+  ```
+
 ### switched
 
   面板切换后触发。
 
+    ```js
+  instance.on('switched', function(toIndex, fromIndex) {
+  
+  });
+  ```
+
 ### change:activeIndex
 
   面板改变时触发。
+
+  ```js
+  instance.on('change:activeIndex', function(toIndex, fromIndex) {
+  
+  });
+  ```
 
 
 ## 最佳实践
