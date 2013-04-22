@@ -221,7 +221,6 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 
   ```js
   instance.on('switch', function(toIndex, fromIndex) {
-  
   });
   ```
 
@@ -231,7 +230,6 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 
   ```js
   instance.on('switched', function(toIndex, fromIndex) {
-  
   });
   ```
 
@@ -241,7 +239,6 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 
   ```js
   instance.on('change:activeIndex', function(toIndex, fromIndex) {
-  
   });
   ```
 
