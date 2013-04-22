@@ -5,6 +5,7 @@
 ---
 
 <h2>Tabs - 普通标签页</h2>
+
 <style>
     .ui-switchable * {
         margin: 0;
@@ -32,6 +33,7 @@
         border: 1px solid #AEC7E5;
     }
 </style>
+
 <div id="demo1" class="section">
     <ul class="ui-switchable-nav-test" data-role="nav">
         <li data-role="trigger">标题 A</li>
@@ -105,8 +107,8 @@
     .hidden {
         display: none
     }
-
 </style>
+
 <div id="demo2" class="section loading" data-effect="fade" data-easing="easeOutStrong">
     <ol class="ui-switchable-content-test" data-role="content">
         <li><a href="http://fun.alipay.com/buy/index.htm?src=5buy03" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/2lOsygtTn7.jpg"/></a></li>

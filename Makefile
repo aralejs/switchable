@@ -4,17 +4,17 @@ build-doc:
 	@nico build -v -C $(THEME)/nico.js
 
 debug:
-	@nico server -v -C $(THEME)/nico.js --watch debug
+	@nico server -C $(THEME)/nico.js --watch debug
 
 server:
-	@nico server -v -C $(THEME)/nico.js
+	@nico server -C $(THEME)/nico.js
 
 watch:
-	@nico server -v -C $(THEME)/nico.js --watch
+	@nico server -C $(THEME)/nico.js --watch
 
-publish: clean build-doc
-	@ghp-import _site
-	@git push origin gh-pages
+publish-doc: clean build-doc
+	@rm -fr _site/sea-modules
+	@spm publish --doc _site
 
 clean:
 	@rm -fr _site
@@ -22,14 +22,22 @@ clean:
 
 reporter = spec
 url = tests/runner.html
-test:
-	@mocha-phantomjs --reporter=${reporter} http://127.0.0.1:8000/$(url)
+test-task:
+	@mocha-phantomjs --reporter=${reporter} http://127.0.0.1:8000/${url}
+
+test-src:
+	@node $(THEME)/server.js _site $(MAKE) test-task
+
+test-dist:
+	@$(MAKE) test-src url=tests/runner.html?dist
+
+test: test-src test-dist
 
 coverage:
 	@rm -fr _site/src-cov
 	@jscoverage --encoding=utf8 src _site/src-cov
-	@$(MAKE) test reporter=json-cov url=tests/runner.html?coverage=1 | node $(THEME)/html-cov.js > coverage.html
-	@echo "Build coverage to coverage.html"
+	@$(MAKE) test-dist reporter=json-cov url=tests/runner.html?cov | node $(THEME)/html-cov.js > tests/coverage.html
+	@echo "Build coverage to tests/coverage.html"
 
 
 .PHONY: build-doc debug server publish clean test coverage

@@ -109,6 +109,7 @@ seajs.use(['tabs', '$'], function(Tabs, $) {
         visibility: visible
     }
 </style>
+
 <div id="demo2" class="section loading">
     <ol class="ui-switchable-content">
         <li><a href="http://fun.alipay.com/buy/index.htm?src=5buy03" target="_blank"><img alt="" src="https://i.alipayobjects.com/e/201205/2lOsygtTn7.jpg"/></a></li>
