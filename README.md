@@ -229,7 +229,7 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 
   面板切换后触发。
 
-    ```js
+  ```js
   instance.on('switched', function(toIndex, fromIndex) {
   
   });
