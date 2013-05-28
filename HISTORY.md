@@ -1,6 +1,9 @@
 # History
 
 ---
+## 0.9.14
+
+`tag:improved` 对 arale/widget 的依赖从 1.0.3 升级到 1.1.0 。
 
 ## 0.9.12
 

@@ -337,6 +337,7 @@ seajs.use(['slide', '$'], function(Slide, $) {
         panels: '#demo5 .news-items li',
         hasTriggers: false, 
         easing: 'easeOutStrong',
+        interval: 3000,
         duration: 2000
     }).render();
 });

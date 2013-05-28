@@ -261,6 +261,9 @@ define(function(require) {
             expect($(cc2.get('nextBtn')).
                     attr('class')).to.contain(disabelClass);
 
+            cc2.get('prevBtn').click();
+            cc2.get('nextBtn').click();
+
         });
 
         it('Slide', function() {
