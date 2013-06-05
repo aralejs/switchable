@@ -6,6 +6,11 @@
     "keywords": ["widget"],
     "tag": "widget",
     "homepage": "http://aralejs.org/switchable",
+    "author": "玉伯 <lifesinger@gmail.com>",
+    "maintainers": [
+        "玉伯 <lifesinger@gmail.com>",
+        "康辉 <kangpangpang@gmail.com>"
+    ],
     "repository": {
         "type": "git",
         "url": "https://github.com/aralejs/switchable.git"
@@ -15,7 +20,7 @@
     },
     "spm": {
         "alias": {
-            "$":"$",
+            "$": "$",
             "widget": "arale/widget/1.1.0/widget",
             "easing": "arale/easing/1.0.0/easing"
         },
