@@ -268,7 +268,7 @@ seajs.use(['slide', '$'], function(Slide, $) {
         display: inline !important; /* fix ie6 双边距 bug */
     }
 </style>
-<div id="demo4" class="section scrollable" data-widget="carousel" data-effect="scrollx" data-easing="easeOutStrong" data-step="5" data-view-size="[680]" data-circular="true">
+<div id="demo4" class="section scrollable" >
     <span id="scroller-prev" class="prev" data-role="prev">&lsaquo; 上一页</span>
     <span id="scroller-next" class="next" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
