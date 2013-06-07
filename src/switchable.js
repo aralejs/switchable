@@ -61,7 +61,7 @@ define(function(require, exports, module) {
             length: {
                 readOnly: true,
                 getter: function() {
-                    return this.panels.length / this.get('step');
+                    return Math.ceil(this.panels.length / this.get('step'));
                 }
             },
 
@@ -108,7 +108,7 @@ define(function(require, exports, module) {
 
         _getDatasetRole: function(role) {
             var element = this.element;
-            var role = role || {};
+            role = role || {};
             var isHaveRole = false;
             var roles = ['trigger', 'panel', 'nav', 'content'];
             $.each(roles, function(index, key) {

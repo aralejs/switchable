@@ -59,7 +59,7 @@ define("arale/switchable/0.9.14/switchable-debug", [ "$-debug", "arale/easing/1.
             length: {
                 readOnly: true,
                 getter: function() {
-                    return this.panels.length / this.get("step");
+                    return Math.ceil(this.panels.length / this.get("step"));
                 }
             },
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
@@ -96,7 +96,7 @@ define("arale/switchable/0.9.14/switchable-debug", [ "$-debug", "arale/easing/1.
         },
         _getDatasetRole: function(role) {
             var element = this.element;
-            var role = role || {};
+            role = role || {};
             var isHaveRole = false;
             var roles = [ "trigger", "panel", "nav", "content" ];
             $.each(roles, function(index, key) {
