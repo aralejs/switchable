@@ -1,4 +1,4 @@
-define("arale/switchable/0.9.14/accordion-debug", [ "./switchable-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.0/widget-debug", "arale/base/1.1.0/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.14/accordion-debug", [ "./switchable-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.0/widget-debug", "arale/base/1.1.0/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug" ], function(require, exports, module) {
     var Switchable = require("./switchable-debug");
     // 手风琴组件
     var Accordion = Switchable.extend({
@@ -11,7 +11,7 @@ define("arale/switchable/0.9.14/accordion-debug", [ "./switchable-debug", "$-deb
     module.exports = Accordion;
 });
 
-define("arale/switchable/0.9.14/switchable-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.0/widget-debug", "arale/base/1.1.0/base-debug", "arale/class/1.0.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/0.9.14/plugins/effects-debug", "arale/switchable/0.9.14/plugins/autoplay-debug", "arale/switchable/0.9.14/plugins/circular-debug", "arale/switchable/0.9.14/plugins/multiple-debug", "arale/switchable/0.9.14/const-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.14/switchable-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.0/widget-debug", "arale/base/1.1.0/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/0.9.14/plugins/effects-debug", "arale/switchable/0.9.14/plugins/autoplay-debug", "arale/switchable/0.9.14/plugins/circular-debug", "arale/switchable/0.9.14/plugins/multiple-debug", "arale/switchable/0.9.14/const-debug" ], function(require, exports, module) {
     // Switchable
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
