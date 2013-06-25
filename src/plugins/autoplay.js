@@ -75,7 +75,8 @@ define(function(require, exports, module) {
 
         destroy: function() {
             var EVENT_NS = '.' + this.cid;
-            this.stop();
+
+            this.stop && this.stop();
 
             if (this._scrollDetect) {
                 this._scrollDetect.stop();
