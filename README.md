@@ -31,7 +31,7 @@ Switchable 提供了切换的基本操作，并通过参数配置实现了自动
     
 ### activeTriggerClass `String`
     
-触发器被选中时的class,默认`ui-active`。
+触发器被选中时的class,默认`ui-switchable-active`。
 
 ### activeIndex `Number`
 
@@ -139,17 +139,13 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 
 是否支持循环切换。默认`true`
 
-### prevButtonClass `String`
+### prevBtn `selector`
     
-`前一个`触发器class. 默认为`ui-switchable-prev-btn`。
+指定 `前一个`触发器. 默认会加上类名`ui-switchable-prev-btn`。
 
-### nextButtonClass `String`
+### nextBtn `selector`
   
-`后一个`触发器class. 默认为`ui-switchable-next-btn`。
-
-### disableButtonClass `String`
-
-触发器不可用时的class. 默认为`ui-switchable-disable-btn`。
+指定 `后一个`触发器. 默认会加上类名 `ui-switchable-next-btn`。
 
 
 ## Slide (卡盘)
