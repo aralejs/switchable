@@ -1,6 +1,6 @@
 define(function(require) {
 
-    mocha.setup({ignoreLeaks: true});
+    //mocha.setup({ignoreLeaks: true});
 
     var $ = require('$');
     var sinon = require('sinon');

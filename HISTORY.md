@@ -1,6 +1,10 @@
 # History
 
 ---
+## 0.9.16
+
+`tag:fixed` [#20](https://github.com/aralejs/switchable/issues/20) Circular bugfix.
+
 ## 0.9.15
 
 `tag:improved` 升级 arale/widget@1.1.1

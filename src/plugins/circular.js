@@ -27,10 +27,9 @@ define(function(require, exports, module) {
         var toIndex = panelInfo.toIndex;
         var fromIndex = panelInfo.fromIndex;
         var len = this.get('length');
-        var isNext = this.get('_isNext');
 
-        var isBackwardCritical = (fromIndex === 0 && toIndex === len - 1 && !isNext);
-        var isForwardCritical = (fromIndex === len - 1 && toIndex === 0 && isNext);
+        var isBackwardCritical = (fromIndex === 0 && toIndex === len - 1);
+        var isForwardCritical = (fromIndex === len - 1 && toIndex === 0);
 
         var isBackward = isBackwardCritical ||
                 (!isForwardCritical && toIndex < fromIndex);

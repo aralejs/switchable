@@ -19,9 +19,7 @@ define(function(require, exports, module) {
                 getter: function(val) {
                     return $(val).eq(0);
                 }
-            },
-
-            _isNext: false
+            }
         },
 
         _parseRole: function(role) {
@@ -74,7 +72,6 @@ define(function(require, exports, module) {
             this.get('prevBtn').click(function(ev) {
                 ev.preventDefault();
                 if (circular || that.get('activeIndex') > 0) {
-                    that.set('_isNext', false);
                     that.prev();
                 }
             });
@@ -83,7 +80,6 @@ define(function(require, exports, module) {
                 ev.preventDefault();
                 var len = that.get('length') - 1;
                 if (circular || that.get('activeIndex') < len) {
-                    that.set('_isNext', true);
                     that.next();
                 }
             });

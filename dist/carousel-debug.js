@@ -1,4 +1,4 @@
-define("arale/switchable/0.9.15/carousel-debug", [ "./switchable-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.16/carousel-debug", [ "./switchable-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug" ], function(require, exports, module) {
     var Switchable = require("./switchable-debug");
     var $ = require("$-debug");
     // 旋转木马组件
@@ -14,8 +14,7 @@ define("arale/switchable/0.9.15/carousel-debug", [ "./switchable-debug", "$-debu
                 getter: function(val) {
                     return $(val).eq(0);
                 }
-            },
-            _isNext: false
+            }
         },
         _parseRole: function(role) {
             role = Switchable.prototype._getDatasetRole.call(this) || {};
@@ -58,7 +57,6 @@ define("arale/switchable/0.9.15/carousel-debug", [ "./switchable-debug", "$-debu
             this.get("prevBtn").click(function(ev) {
                 ev.preventDefault();
                 if (circular || that.get("activeIndex") > 0) {
-                    that.set("_isNext", false);
                     that.prev();
                 }
             });
@@ -66,7 +64,6 @@ define("arale/switchable/0.9.15/carousel-debug", [ "./switchable-debug", "$-debu
                 ev.preventDefault();
                 var len = that.get("length") - 1;
                 if (circular || that.get("activeIndex") < len) {
-                    that.set("_isNext", true);
                     that.next();
                 }
             });
@@ -92,7 +89,7 @@ define("arale/switchable/0.9.15/carousel-debug", [ "./switchable-debug", "$-debu
     });
 });
 
-define("arale/switchable/0.9.15/switchable-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/0.9.15/plugins/effects-debug", "arale/switchable/0.9.15/plugins/autoplay-debug", "arale/switchable/0.9.15/plugins/circular-debug", "arale/switchable/0.9.15/plugins/multiple-debug", "arale/switchable/0.9.15/const-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/0.9.16/plugins/effects-debug", "arale/switchable/0.9.16/plugins/autoplay-debug", "arale/switchable/0.9.16/plugins/circular-debug", "arale/switchable/0.9.16/plugins/multiple-debug", "arale/switchable/0.9.16/const-debug" ], function(require, exports, module) {
     // Switchable
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
@@ -102,10 +99,10 @@ define("arale/switchable/0.9.15/switchable-debug", [ "$-debug", "arale/easing/1.
     require("arale/easing/1.0.0/easing-debug");
     var Widget = require("arale/widget/1.1.1/widget-debug");
     var CLASS_PREFIX = "ui-switchable";
-    var Effects = require("arale/switchable/0.9.15/plugins/effects-debug");
-    var Autoplay = require("arale/switchable/0.9.15/plugins/autoplay-debug");
-    var Circular = require("arale/switchable/0.9.15/plugins/circular-debug");
-    var Multiple = require("arale/switchable/0.9.15/plugins/multiple-debug");
+    var Effects = require("arale/switchable/0.9.16/plugins/effects-debug");
+    var Autoplay = require("arale/switchable/0.9.16/plugins/autoplay-debug");
+    var Circular = require("arale/switchable/0.9.16/plugins/circular-debug");
+    var Multiple = require("arale/switchable/0.9.16/plugins/multiple-debug");
     var Switchable = Widget.extend({
         attrs: {
             // 用户传入的 triggers 和 panels
@@ -159,7 +156,7 @@ define("arale/switchable/0.9.15/switchable-debug", [ "$-debug", "arale/easing/1.
         },
         _initConstClass: function() {
             var classPrefix = this.get("classPrefix");
-            this.CONST = require("arale/switchable/0.9.15/const-debug")(classPrefix);
+            this.CONST = require("arale/switchable/0.9.16/const-debug")(classPrefix);
         },
         _parseRole: function(role) {
             // var role = this.dataset && this.dataset.role;
@@ -364,7 +361,7 @@ define("arale/switchable/0.9.15/switchable-debug", [ "$-debug", "arale/easing/1.
     }
 });
 
-define("arale/switchable/0.9.15/plugins/effects-debug", [ "$-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.16/plugins/effects-debug", [ "$-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     var SCROLLX = "scrollx";
     var SCROLLY = "scrolly";
@@ -495,7 +492,7 @@ define("arale/switchable/0.9.15/plugins/effects-debug", [ "$-debug" ], function(
     module.exports.Effects = Effects;
 });
 
-define("arale/switchable/0.9.15/plugins/autoplay-debug", [ "$-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.16/plugins/autoplay-debug", [ "$-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     // 自动播放插件
     module.exports = {
@@ -589,11 +586,11 @@ define("arale/switchable/0.9.15/plugins/autoplay-debug", [ "$-debug" ], function
     }
 });
 
-define("arale/switchable/0.9.15/plugins/circular-debug", [ "$-debug", "arale/switchable/0.9.15/plugins/effects-debug" ], function(require, exports, module) {
+define("arale/switchable/0.9.16/plugins/circular-debug", [ "$-debug", "arale/switchable/0.9.16/plugins/effects-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     var SCROLLX = "scrollx";
     var SCROLLY = "scrolly";
-    var Effects = require("arale/switchable/0.9.15/plugins/effects-debug").Effects;
+    var Effects = require("arale/switchable/0.9.16/plugins/effects-debug").Effects;
     // 无缝循环滚动插件
     module.exports = {
         // 仅在开启滚动效果时需要
@@ -611,9 +608,8 @@ define("arale/switchable/0.9.15/plugins/circular-debug", [ "$-debug", "arale/swi
         var toIndex = panelInfo.toIndex;
         var fromIndex = panelInfo.fromIndex;
         var len = this.get("length");
-        var isNext = this.get("_isNext");
-        var isBackwardCritical = fromIndex === 0 && toIndex === len - 1 && !isNext;
-        var isForwardCritical = fromIndex === len - 1 && toIndex === 0 && isNext;
+        var isBackwardCritical = fromIndex === 0 && toIndex === len - 1;
+        var isForwardCritical = fromIndex === len - 1 && toIndex === 0;
         var isBackward = isBackwardCritical || !isForwardCritical && toIndex < fromIndex;
         var isCritical = isBackwardCritical || isForwardCritical;
         var isX = this.get("scrollType") === SCROLLX;
@@ -679,7 +675,7 @@ define("arale/switchable/0.9.15/plugins/circular-debug", [ "$-debug", "arale/swi
     }
 });
 
-define("arale/switchable/0.9.15/plugins/multiple-debug", [], function(require, exports, module) {
+define("arale/switchable/0.9.16/plugins/multiple-debug", [], function(require, exports, module) {
     // 手风琴组件
     module.exports = {
         isNeeded: function() {
@@ -703,7 +699,7 @@ define("arale/switchable/0.9.15/plugins/multiple-debug", [], function(require, e
     };
 });
 
-define("arale/switchable/0.9.15/const-debug", [], function(require, exports, module) {
+define("arale/switchable/0.9.16/const-debug", [], function(require, exports, module) {
     // 内部默认的 className
     module.exports = function(classPrefix) {
         return {
