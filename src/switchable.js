@@ -46,14 +46,7 @@ define(function(require, exports, module) {
             delay: 100,
 
             // 初始切换到哪个面板
-            activeIndex: {
-                value: 0,
-                setter: function(val) {
-                    val = Math.max(0, val);
-                    val = Math.min(this.get('length') - 1, val);
-                    return val;
-                }
-            },
+            activeIndex: 0,
 
             // 一屏内有多少个 panels
             step: 1,
