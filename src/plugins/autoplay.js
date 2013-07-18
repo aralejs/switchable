@@ -2,7 +2,6 @@ define(function(require, exports, module) {
 
     var $ = require('$');
 
-
     // 自动播放插件
     module.exports = {
 
@@ -13,10 +12,7 @@ define(function(require, exports, module) {
             interval: 5000,
 
             // 滚出可视区域后，是否停止自动播放
-            pauseOnScroll: true,
-
-            // 鼠标悬停时，是否停止自动播放
-            pauseOnHover: true
+            pauseOnScroll: true
         },
 
         isNeeded: function() {
@@ -68,9 +64,7 @@ define(function(require, exports, module) {
             }
 
             // 鼠标悬停时，停止自动播放
-            if (this.get('pauseOnHover')) {
-                this.element.hover(stop, start);
-            }
+            this.element.hover(stop, start);
         },
 
         destroy: function() {
