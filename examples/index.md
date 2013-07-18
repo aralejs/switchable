@@ -244,6 +244,7 @@ seajs.use(['slide', '$'], function(Slide, $) {
         padding: 5px;
         font-size: 18px;
         cursor: pointer;
+        list-style: none;
     }
     .scrollable .ui-switchable-nav li.ui-switchable-active {
         color: #C8282B;
@@ -269,8 +270,8 @@ seajs.use(['slide', '$'], function(Slide, $) {
     }
 </style>
 <div id="demo4" class="section scrollable" >
-    <span id="scroller-prev" class="prev" data-role="prev">&lsaquo; 上一页</span>
-    <span id="scroller-next" class="next" data-role="next">下一页 &rsaquo;</span>
+    <span class="prev" data-role="prev">&lsaquo; 上一页</span>
+    <span class="next" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
         <div class="ui-switchable-content" data-role="content">
             <img alt="" src="http://farm1.static.flickr.com/143/321464099_a7cfcb95cf_t.jpg"/>
@@ -287,7 +288,7 @@ seajs.use(['slide', '$'], function(Slide, $) {
             <img alt="" src="http://farm4.static.flickr.com/3023/3323897466_e61624f6de_t.jpg"/>
             <img alt="" src="http://farm4.static.flickr.com/3650/3323058611_d35c894fab_t.jpg"/>
             <img alt="" src="http://farm4.static.flickr.com/3635/3323893254_3183671257_t.jpg"/>
-            <img alt="" src="http://farm4.static.flickr.com/3624/3323893148_8318838fbd_t.jpg"/>
+            <img alt="" src="http://farm4.static.flickr.com/3635/3323893254_3183671257_t.jpg"/>
         </div>
         <ul class="ui-switchable-nav" data-role="nav">
             <li class="ui-switchable-active">&bull;</li>
@@ -301,15 +302,11 @@ seajs.use(['slide', '$'], function(Slide, $) {
 seajs.use(['carousel', '$'], function(Carousel, $) {
     carousel = new Carousel({
         element: '#demo4',
-        panels: '#demo4 .ui-switchable-content img',
-        triggers: '#demo4 .ui-switchable-nav li',
         easing: 'easeOutStrong',
         effect: 'scrollx',
         step: 5,
         viewSize: [680],
-        circular: true,
-        prevBtn: '#scroller-prev',
-        nextBtn: '#scroller-next'
+        circular: true
     }).render();
 });
 ````
@@ -375,49 +372,6 @@ seajs.use(['accordion', '$'], function(Accordion, $) {
         element: '#accordion1',
         triggers: $('#accordion1 .ui-switchable-trigger'),
         panels: $('#accordion1 .ui-switchable-panel')
-    }).render();
-});
-````
-
-<h2>超大轮播</h2>
-<style>
-    #big { position: relative; border: 1px solid #B6D1E6; overflow: hidden; }
-    #big .ui-switchable-nav { position: absolute; bottom: 5px; right: 5px; z-index: 99; }
-    #big .ui-switchable-nav li {
-        float: left;
-        width: 16px;
-        height: 16px;
-        line-height: 16px;
-        margin-left: 3px;
-        background-color: #FCF2CF;
-        border: 1px solid #F47500;
-        color: #D94B01;
-        text-align: center;
-        cursor: pointer;
-    }
-    #big .ui-switchable-nav li.ui-switchable-active {
-        width: 18px;
-        height: 18px;
-        line-height: 18px;
-        margin-top: -1px;
-        color: #FFF;
-        background-color: #FFB442;
-        font-weight: bold;
-    }
-</style>
-<div id="big" class="section" style="height:450px;">
-    <ul class="ui-switchable-content">
-        <li><a href="http://item.taobao.com/item.htm?id=7002076261" style="height:450px;" target="_blank"><img src="http://img02.taobaocdn.com/imgextra/i2/438942225/T27Z0bXeRdXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
-        <li><a href="http://gearband.tmall.com/view_page-74632436.htm" style="height:450px;" target="_blank"><img src="http://img03.taobaocdn.com/imgextra/i3/438942225/T2eMBHXkFaXXXXXXXX_!!438942225.jpg" alt=""/></a></li>
-    </ul>
-</div>
-
-````javascript
-seajs.use(['slide'], function(Slide) {
-    slide4 = new Slide({
-        element: '#big',
-        panels: '#big .ui-switchable-content li',
-        effect: 'fade'
     }).render();
 });
 ````

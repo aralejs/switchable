@@ -210,7 +210,6 @@ define(function(require, exports, module) {
         // 切换到指定 index
         switchTo: function(toIndex) {
             this.set('activeIndex', toIndex);
-            return this;
         },
 
         // change 事件触发的前提是当前值和先前值不一致, 所以无需验证 toIndex !== fromIndex

@@ -22,7 +22,7 @@
 </style>
 <div id="accordion1" class="section" data-widget="accordion">
     <div class="ui-switchable-trigger ui-switchable-active" data-role="trigger"><i class="ui-icon"></i><h3>标题A</h3></div>
-    <div class="ui-switchable-panel" data-role="panel">
+    <div class="ui-switchable-panel" style="display:none;" data-role="panel">
         1、支持鼠标滑过和点击触点两种方式<br/>
         2、支持同时展开多个面板
     </div>

@@ -123,8 +123,7 @@
         slide = new Slide({
             element: '#demo2',
             effect: 'scrolly',
-            interval: 2000,
-            circular: true
+            interval: 2000
         }).render();
     });
 ````

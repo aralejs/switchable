@@ -54,8 +54,8 @@
 
 
 <div id="demo4" class="section scrollable">
-    <span id="scroller-prev" class="prev" data-role="prev">&lsaquo; 上一页</span>
-    <span id="scroller-next" class="next" data-role="next">下一页 &rsaquo;</span>
+    <span class="prev" data-role="prev">&lsaquo; 上一页</span>
+    <span class="next" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
         <div class="ui-switchable-content" data-role="content">
             <img src="https://i.alipayobjects.com/e/201306/SzpUxptFt.png" alt="" class="ui-switchable-panel">
@@ -72,16 +72,13 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
     carousel = new Carousel({
         element: '#demo4',
         panels: '#demo4 .ui-switchable-content img',
-        //triggers: '#demo4 .ui-switchable-nav li',
         hasTriggers: false,
         easing: 'easeOutStrong',
         effect: 'scrollx',
         step: 2,
         viewSize: [396],
         circular: false,
-        autoplay: true,
-        prevBtn: '#scroller-prev',
-        nextBtn: '#scroller-next'
+        autoplay: true
     }).render();
 });
 
