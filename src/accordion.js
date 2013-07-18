@@ -20,7 +20,6 @@ define(function (require, exports, module) {
             this.get('triggers').eq(toIndex).toggleClass(this.get('activeTriggerClass'));
         },
 
-
         _switchPanel: function (panelInfo) {
             panelInfo.toPanels.toggle();
         }

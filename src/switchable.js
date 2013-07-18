@@ -8,7 +8,6 @@ define(function(require, exports, module) {
 
 
     var $ = require('$');
-    require('easing');
     var Widget = require('widget');
 
     var CLASS_PREFIX = 'ui-switchable';
@@ -45,11 +44,6 @@ define(function(require, exports, module) {
             triggerType: 'hover', // or 'click'
             // 触发延迟
             delay: 100,
-
-            // 切换效果，可取 scrollx | scrolly | fade 或直接传入 effect function
-            effect: 'none',
-            easing: 'linear',
-            duration: 500,
 
             // 初始切换到哪个面板
             activeIndex: 0,
@@ -296,7 +290,6 @@ define(function(require, exports, module) {
             if (!plugin.isNeeded.call(this)) return;
 
             var pluginAttrs = plugin.attrs;
-            var methods = plugin.methods;
 
             if (pluginAttrs) {
                 for (var key in pluginAttrs) {
@@ -304,15 +297,6 @@ define(function(require, exports, module) {
                             // 不覆盖用户传入的配置
                             !(key in this.attrs)) {
                         this.set(key, pluginAttrs[key]);
-                    }
-                }
-            }
-
-            if (methods) {
-                for (var method in methods) {
-                    if (methods.hasOwnProperty(method)) {
-                        // 覆盖实例方法。
-                        this[method] = methods[method];
                     }
                 }
             }
