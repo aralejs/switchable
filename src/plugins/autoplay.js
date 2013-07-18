@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
+    var win = $(window);
 
     // 自动播放插件
     module.exports = {
@@ -9,10 +10,7 @@ define(function(require, exports, module) {
             autoplay: true,
 
             // 自动播放的间隔时间
-            interval: 5000,
-
-            // 滚出可视区域后，是否停止自动播放
-            pauseOnScroll: true
+            interval: 5000
         },
 
         isNeeded: function() {
@@ -56,12 +54,10 @@ define(function(require, exports, module) {
             this.start = start;
 
             // 滚出可视区域后，停止自动播放
-            if (this.get('pauseOnScroll')) {
-                this._scrollDetect = throttle(function() {
-                    that[isInViewport(element) ? 'start' : 'stop']();
-                });
-                win.on('scroll' + EVENT_NS, this._scrollDetect);
-            }
+            this._scrollDetect = throttle(function() {
+                that[isInViewport(element) ? 'start' : 'stop']();
+            });
+            win.on('scroll' + EVENT_NS, this._scrollDetect);
 
             // 鼠标悬停时，停止自动播放
             this.element.hover(stop, start);
@@ -103,8 +99,6 @@ define(function(require, exports, module) {
         return f;
     }
 
-
-    var win = $(window);
 
     function isInViewport(element) {
         var scrollTop = win.scrollTop();
