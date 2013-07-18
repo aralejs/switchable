@@ -1,9 +1,11 @@
 # History
 
 ---
-## 0.9.16
+## 1.0.0
 
 `tag:fixed` [#20](https://github.com/aralejs/switchable/issues/20) Circular bugfix.
+
+`tag:change` 去除配置项 pauseOnHover, pauseOnScroll
 
 ## 0.9.15
 

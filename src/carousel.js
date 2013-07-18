@@ -22,14 +22,9 @@ define(function(require, exports, module) {
             }
         },
 
-        _parseRole: function(role) {
-            role = Switchable.prototype._getDatasetRole.call(this) || {};
-            role = this._getDatasetRole(role);
+        _initTriggers: function(role) {
+            Switchable.prototype._initTriggers.call(this, role);
 
-            Switchable.prototype._parseRole.call(this, role);
-            // var role = this.dataset && this.dataset.role;
-
-            if (!role) return;
             // attr 里没找到时，才根据 data-role 来解析
             var prevBtn = this.get('prevBtn');
             var nextBtn = this.get('nextBtn');
@@ -48,23 +43,22 @@ define(function(require, exports, module) {
             nextBtn.addClass(this.CONST.NEXT_BTN_CLASS);
         },
 
-         _getDatasetRole: function(role) {
-            var isHaveRole = false;
+         _getDatasetRole: function() {
+            var role = Switchable.prototype._getDatasetRole.call(this);
+
             var element = this.element;
             var roles = ['next', 'prev'];
             $.each(roles, function(index, key) {
               var elems = $('[data-role=' + key + ']', element); 
               if (elems.length) {
                 role[key] = elems;
-                isHaveRole = true;
               }
             });
-            if (!isHaveRole) return null;
             return role;
         },
 
-        _initTriggers: function() {
-            Switchable.prototype._initTriggers.call(this);
+        _bindTriggers: function() {
+            Switchable.prototype._bindTriggers.call(this);
 
             var that = this;
             var circular = this.get('circular');
@@ -107,7 +101,5 @@ define(function(require, exports, module) {
                 nextBtn.addClass(this.CONST.DISABLED_BTN_CLASS);
             }
         }
-
     });
-
 });

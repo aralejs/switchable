@@ -11,8 +11,7 @@ define(function (require, exports, module) {
 
     // 切换效果插件
     module.exports = {
-
-        attr: {
+        attrs: {
             // 切换效果，可取 scrollx | scrolly | fade 或直接传入 effect function
             effect: 'none',
             easing: 'linear',
@@ -34,7 +33,6 @@ define(function (require, exports, module) {
             //    这些特效需要将 panels 都显示出来
             // 3. 在 CSS 里，需要给 container 设定高宽和 overflow: hidden
             panels.show();
-
             var effect = this.get('effect');
             var step = this.get('step');
 

@@ -9,7 +9,6 @@ define(function (require, exports, module) {
 
     // 无缝循环滚动插件
     module.exports = {
-
         // 仅在开启滚动效果时需要
         isNeeded: function () {
             var effect = this.get('effect');

@@ -67,9 +67,12 @@ define(function(require, exports, module) {
         setup: function() {
             this._initConstClass();
             this._initElement();
-            this._parseRole();
-            this._initPanels();
-            this._initTriggers();
+
+            var role = this._getDatasetRole();
+            this._initPanels(role);
+            // 配置中的 triggers > dataset > 自动生成
+            this._initTriggers(role);
+            this._bindTriggers();
             this._initPlugins();
         },
 
@@ -81,11 +84,21 @@ define(function(require, exports, module) {
             this.element.addClass(this.CONST.UI_SWITCHABLE);
         },
 
-        // 配置中的 triggers > dataset > 自动生成
-        _parseRole: function() {
-            var role = this._getDatasetRole();
+        // 从 HTML 标记中获取各个 role, 替代原来的 markupType
+        _getDatasetRole: function() {
+            var element = this.element;
+            var role = {};
+            var roles = ['trigger', 'panel', 'nav', 'content'];
+            $.each(roles, function(index, key) {
+              var elems = $('[data-role=' + key + ']', element); 
+              if (elems.length) {
+                role[key] = elems;
+              }
+            });
+            return role;
+        },
 
-            var triggers = this.get('triggers');
+        _initPanels: function(role) {
             var panels = this.get('panels');
 
             // 先获取 panels 和 content
@@ -103,6 +116,12 @@ define(function(require, exports, module) {
             if (!this.content) {
                 this.content = panels.parent();
             }
+            this.content.addClass(this.CONST.CONTENT_CLASS);
+            this.get('panels').addClass(this.CONST.PANEL_CLASS);
+        },
+
+        _initTriggers: function (role) {
+            var triggers = this.get('triggers');
 
             // 再获取 triggers 和 nav
             if (triggers.length > 0) {
@@ -137,46 +156,11 @@ define(function(require, exports, module) {
             if (!this.nav && triggers.length) {
                 this.nav = triggers.parent();
             }
-        },
 
-        // 从 HTML 标记中获取各个 role, 替代原来的 markupType
-        _getDatasetRole: function() {
-            var element = this.element;
-            var role = {};
-            var roles = ['trigger', 'panel', 'nav', 'content'];
-            $.each(roles, function(index, key) {
-              var elems = $('[data-role=' + key + ']', element); 
-              if (elems.length) {
-                role[key] = elems;
-              }
-            });
-            return role;
-        },
-
-        _initPanels: function() {
-            this.content.addClass(this.CONST.CONTENT_CLASS);
-            this.get('panels').addClass(this.CONST.PANEL_CLASS);
-        },
-
-        _initTriggers: function () {
-            var triggers = this.get('triggers');
-            if (!triggers.length) return;
-
-            triggers.addClass(this.CONST.TRIGGER_CLASS);
-            this.nav.addClass(this.CONST.NAV_CLASS);
-
-            triggers.each(function (i, trigger) {
+            this.nav && this.nav.addClass(this.CONST.NAV_CLASS);
+            triggers.addClass(this.CONST.TRIGGER_CLASS).each(function (i, trigger) {
                 $(trigger).data('value', i);
             });
-            this._bindTriggers();
-        },
-
-        _initPlugins: function() {
-            this._plugins = [];
-
-            this._plug(Effects);
-            this._plug(Autoplay);
-            this._plug(Circular);
         },
 
         _bindTriggers: function() {
@@ -216,6 +200,13 @@ define(function(require, exports, module) {
             }
         },
 
+        _initPlugins: function() {
+            this._plugins = [];
+
+            this._plug(Effects);
+            this._plug(Autoplay);
+            this._plug(Circular);
+        },
         // 切换到指定 index
         switchTo: function(toIndex) {
             this.set('activeIndex', toIndex);
@@ -284,10 +275,7 @@ define(function(require, exports, module) {
             this.switchTo(index);
         },
 
-
         _plug: function(plugin) {
-            if (!plugin.isNeeded.call(this)) return;
-
             var pluginAttrs = plugin.attrs;
 
             if (pluginAttrs) {
@@ -299,6 +287,8 @@ define(function(require, exports, module) {
                     }
                 }
             }
+            if (!plugin.isNeeded.call(this)) return;
+
 
             if (plugin.install) {
                 plugin.install.call(this);
