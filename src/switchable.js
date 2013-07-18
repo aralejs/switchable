@@ -46,7 +46,14 @@ define(function(require, exports, module) {
             delay: 100,
 
             // 初始切换到哪个面板
-            activeIndex: 0,
+            activeIndex: {
+                value: 0,
+                setter: function(val) {
+                    val = Math.max(0, val);
+                    val = Math.min(this.get('length') - 1, val);
+                    return val;
+                }
+            },
 
             // 一屏内有多少个 panels
             step: 1,
@@ -88,8 +95,23 @@ define(function(require, exports, module) {
             var triggers = this.get('triggers');
             var panels = this.get('panels');
 
+            // 先获取 panels 和 content
+            if (panels.length > 0) {
+            } else if (role.panel) {
+                this.set('panels', panels = role.panel);
+            } else if (role.content) {
+                this.set('panels', panels = role.content.find('> *'));
+                this.content = role.content;
+            }
 
-            // 先获取 triggers 和 nav
+            if (panels.length === 0) {
+                throw new Error('panels.length is ZERO');
+            }
+            if (!this.content) {
+                this.content = panels.parent();
+            }
+
+            // 再获取 triggers 和 nav
             if (triggers.length > 0) {
             }
             // attr 里没找到时，才根据 data-role 来解析
@@ -121,22 +143,6 @@ define(function(require, exports, module) {
 
             if (!this.nav && triggers.length) {
                 this.nav = triggers.parent();
-            }
-
-            // 再处理 panels 和 content
-            if (panels.length > 0) {
-            } else if (role.panel) {
-                this.set('panels', panels = role.panel);
-            } else if (role.content) {
-                this.set('panels', panels = role.content.find('> *'));
-                this.content = role.content;
-            }
-
-            if (panels.length === 0) {
-                throw new Error('panels.length is ZERO');
-            }
-            if (!this.content) {
-                this.content = panels.parent();
             }
         },
 
@@ -255,7 +261,7 @@ define(function(require, exports, module) {
 
             var fromPanels, toPanels;
 
-            // todo: 什么时候 fromIndex 为 <0
+            // 初始情况下 fromIndex 为 undefined
             if (fromIndex > -1) {
                 fromPanels = panels.slice(fromIndex * step, (fromIndex + 1) * step);
             }

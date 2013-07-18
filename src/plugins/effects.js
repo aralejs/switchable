@@ -1,6 +1,8 @@
-define(function(require, exports, module) {
+define(function (require, exports, module) {
 
     var $ = require('$');
+
+    require('easing');
 
     var SCROLLX = 'scrollx';
     var SCROLLY = 'scrolly';
@@ -10,12 +12,19 @@ define(function(require, exports, module) {
     // 切换效果插件
     module.exports = {
 
-        isNeeded: function() {
+        attr: {
+            // 切换效果，可取 scrollx | scrolly | fade 或直接传入 effect function
+            effect: 'none',
+            easing: 'linear',
+            duration: 500
+        },
+
+        isNeeded: function () {
             return this.get('effect') !== 'none';
         },
 
-        install: function() {
-            var panels = this.panels;
+        install: function () {
+            var panels = this.get('panels');
 
             // 注：
             // 1. 所有 panel 的尺寸应该相同
@@ -68,7 +77,7 @@ define(function(require, exports, module) {
                 var min = activeIndex * step;
                 var max = min + step - 1;
 
-                panels.each(function(i, panel) {
+                panels.each(function (i, panel) {
                     var isActivePanel = i >= min && i <= max;
                     $(panel).css({
                         opacity: isActivePanel ? 1 : 0,
@@ -79,7 +88,7 @@ define(function(require, exports, module) {
             }
 
             // 覆盖 switchPanel 方法
-            this._switchPanel = function(panelInfo) {
+            this._switchPanel = function (panelInfo) {
                 var effect = this.get('effect');
                 var fn = $.isFunction(effect) ? effect : Effects[effect];
                 fn.call(this, panelInfo);
@@ -92,7 +101,7 @@ define(function(require, exports, module) {
     var Effects = {
 
         // 淡隐淡现效果
-        fade: function(panelInfo) {
+        fade: function (panelInfo) {
             // 简单起见，目前不支持 step > 1 的情景。若需要此效果时，可修改结构来达成。
             if (this.get('step') > 1) {
                 throw new Error('Effect "fade" only supports step === 1');
@@ -100,30 +109,29 @@ define(function(require, exports, module) {
 
             var fromPanel = panelInfo.fromPanels.eq(0);
             var toPanel = panelInfo.toPanels.eq(0);
-            var anim = this.anim;
 
-            if (anim) {
+            if (this.anim) {
                 // 立刻停止，以开始新的
-                anim.stop(false, true);
+                this.anim.stop(false, true);
             }
 
             // 首先显示下一张
             toPanel.css('opacity', 1);
 
-            if (fromPanel[0]) {
+            if (panelInfo.fromIndex > -1) {
+                var that = this;
                 var duration = this.get('duration');
                 var easing = this.get('easing');
-                var that = this;
 
                 // 动画切换
                 this.anim = fromPanel.animate({ opacity: 0 }, duration, easing,
-                        function() {
-                            that.anim = null; // free
+                    function () {
+                        that.anim = null; // free
 
-                            // 切换 z-index
-                            toPanel.css('zIndex', 9);
-                            fromPanel.css('zIndex', 1);
-                        });
+                        // 切换 z-index
+                        toPanel.css('zIndex', 9);
+                        fromPanel.css('zIndex', 1);
+                    });
             }
             // 初始情况下没有必要动画切换
             else {
@@ -132,7 +140,7 @@ define(function(require, exports, module) {
         },
 
         // 水平/垂直滚动效果
-        scroll: function(panelInfo) {
+        scroll: function (panelInfo) {
             var isX = this.get('effect') === SCROLLX;
             var diff = this.get('viewSize')[isX ? 0 : 1] * panelInfo.toIndex;
 
@@ -149,9 +157,9 @@ define(function(require, exports, module) {
                 var easing = this.get('easing');
 
                 this.anim = this.content.animate(props, duration, easing,
-                        function() {
-                            that.anim = null; // free
-                        });
+                    function () {
+                        that.anim = null; // free
+                    });
             }
             else {
                 this.content.css(props);
