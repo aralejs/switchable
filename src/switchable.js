@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
     // 感谢：
-    //  - https://github.com/kissyteam/kissy/blob/master/src/switchable/
+    //  - https://github.com/kissyteam/kissy/tree/6707ecc4cdfddd59e21698c8eb4a50b65dbe7632/src/switchable
 
 
     var $ = require('$');
@@ -15,11 +15,10 @@ define(function(require, exports, module) {
     var Effects = require('./plugins/effects');
     var Autoplay = require('./plugins/autoplay');
     var Circular = require('./plugins/circular');
-    var Multiple = require('./plugins/multiple');
+    var ConstClass = require('./const');
 
 
     var Switchable = Widget.extend({
-
         attrs: {
 
             // 用户传入的 triggers 和 panels
@@ -61,7 +60,7 @@ define(function(require, exports, module) {
             length: {
                 readOnly: true,
                 getter: function() {
-                    return Math.ceil(this.panels.length / this.get('step'));
+                    return Math.ceil(this.get('panels').length / this.get('step'));
                 }
             },
 
@@ -73,8 +72,8 @@ define(function(require, exports, module) {
 
         setup: function() {
             this._initConstClass();
-            this._parseRole();
             this._initElement();
+            this._parseRole();
             this._initPanels();
             this._initTriggers();
             this._initPlugins();
@@ -82,83 +81,98 @@ define(function(require, exports, module) {
 
         _initConstClass: function() {
             var classPrefix = this.get('classPrefix');
-            this.CONST = require('./const')(classPrefix);
+            this.CONST = ConstClass(classPrefix);
+        },
+        _initElement: function() {
+            this.element.addClass(this.CONST.UI_SWITCHABLE);
         },
 
-        _parseRole: function(role) {
-            // var role = this.dataset && this.dataset.role;
-            role = role || this._getDatasetRole();
-            if (!role) return;
+        // 配置中的 triggers > dataset > 自动生成
+        _parseRole: function() {
+            var role = this._getDatasetRole();
 
             var triggers = this.get('triggers');
             var panels = this.get('panels');
 
+
+            // 先获取 triggers 和 nav
+            if (triggers.length > 0) {
+            }
             // attr 里没找到时，才根据 data-role 来解析
-            if (triggers.length === 0 && (role.trigger || role.nav)) {
-                triggers = role.trigger || role.nav.find('> *');
+            else if (role.trigger) {
+                this.set('triggers', triggers = role.trigger);
+            } else if (role.nav) {
+                triggers = role.nav.find('> *');
+
+                // 空的 nav 标记
+                if (triggers.length === 0) {
+                    triggers = generateTriggersMarkup(
+                        this.get('length'),
+                        this.get('activeIndex'),
+                        this.get('activeTriggerClass'), true).appendTo(role.nav);
+                }
+                this.set('triggers', triggers);
+
+                this.nav = role.nav;
+            }
+            // 用户没有传入 triggers，也没有通过 data-role 指定时，如果
+            // hasTriggers 为 true，则自动生成 triggers
+            else if (this.get('hasTriggers')) {
+                this.nav = generateTriggersMarkup(
+                        this.get('length'),
+                        this.get('activeIndex'),
+                        this.get('activeTriggerClass')).appendTo(this.element);
+                this.set('triggers', triggers = this.nav.children());
             }
 
-            if (panels.length === 0 && (role.panel || role.content)) {
-                panels = role.panel || role.content.find('> *');
+            if (!this.nav && triggers.length) {
+                this.nav = triggers.parent();
             }
 
-            this.set('triggers', triggers);
-            this.set('panels', panels);
+            // 再处理 panels 和 content
+            if (panels.length > 0) {
+            } else if (role.panel) {
+                this.set('panels', panels = role.panel);
+            } else if (role.content) {
+                this.set('panels', panels = role.content.find('> *'));
+                this.content = role.content;
+            }
+
+            if (panels.length === 0) {
+                throw new Error('panels.length is ZERO');
+            }
+            if (!this.content) {
+                this.content = panels.parent();
+            }
         },
 
-        _getDatasetRole: function(role) {
+        // 从 HTML 标记中获取各个 role, 替代原来的 markupType
+        _getDatasetRole: function() {
             var element = this.element;
-            role = role || {};
-            var isHaveRole = false;
+            var role = {};
             var roles = ['trigger', 'panel', 'nav', 'content'];
             $.each(roles, function(index, key) {
               var elems = $('[data-role=' + key + ']', element); 
               if (elems.length) {
                 role[key] = elems;
-                isHaveRole = true;
               }
             });
-            if (!isHaveRole) return null;
             return role;
         },
 
-        _initElement: function() {
-            this.element.addClass(this.CONST.UI_SWITCHABLE);
-        },
-
         _initPanels: function() {
-            var panels = this.panels = this.get('panels');
-            if (panels.length === 0) {
-                throw new Error('panels.length is ZERO');
-            }
-
-            this.content = panels.parent().addClass(this.CONST.CONTENT_CLASS);
-            panels.addClass(this.CONST.PANEL_CLASS);
+            this.content.addClass(this.CONST.CONTENT_CLASS);
+            this.get('panels').addClass(this.CONST.PANEL_CLASS);
         },
 
-        _initTriggers: function() {
-            var triggers = this.triggers = this.get('triggers');
+        _initTriggers: function () {
+            var triggers = this.get('triggers');
+            if (!triggers.length) return;
 
-            // 用户没有传入 triggers，也没有通过 data-role 指定时，如果
-            // hasTriggers 为 true，则自动生成 triggers
-            if (triggers.length === 0 && this.get('hasTriggers')) {
-                this.nav = generateTriggersMarkup(
-                        this.get('length'),
-                        this.get('activeIndex'),
-                        this.get('activeTriggerClass')
-                ).appendTo(this.element);
-
-                // update triggers
-                this.triggers = this.nav.children();
-            }
-            else {
-                this.nav = triggers.parent();
-            }
-
-            this.triggers.addClass(this.CONST.TRIGGER_CLASS);
+            triggers.addClass(this.CONST.TRIGGER_CLASS);
             this.nav.addClass(this.CONST.NAV_CLASS);
 
-            this.triggers.each(function(i, trigger) {
+            triggers.each(function (i, trigger) {
                 $(trigger).data('value', i);
             });
             this._bindTriggers();
@@ -170,19 +184,18 @@ define(function(require, exports, module) {
             this._plug(Effects);
             this._plug(Autoplay);
             this._plug(Circular);
-            this._plug(Multiple);
         },
 
-
         _bindTriggers: function() {
-            var that = this;
+            var that = this,
+                triggers = this.get('triggers');
 
             if (this.get('triggerType') === 'click') {
-                this.triggers.click(focus);
+                triggers.click(focus);
             }
             // hover
             else {
-                this.triggers.hover(focus, leave);
+                triggers.hover(focus, leave);
             }
 
             function focus(ev) {
@@ -210,17 +223,15 @@ define(function(require, exports, module) {
             }
         },
 
-
         // 切换到指定 index
         switchTo: function(toIndex) {
             this.set('activeIndex', toIndex);
             return this;
         },
 
+        // change 事件触发的前提是当前值和先前值不一致, 所以无需验证 toIndex !== fromIndex
         _onRenderActiveIndex: function(toIndex, fromIndex) {
-            if (this._triggerIsValid(toIndex, fromIndex)) {
-                this._switchTo(toIndex, fromIndex);
-            }
+            this._switchTo(toIndex, fromIndex);
         },
 
         _switchTo: function(toIndex, fromIndex) {
@@ -230,13 +241,8 @@ define(function(require, exports, module) {
             this.trigger('switched', toIndex, fromIndex);
         },
 
-        // 触发是否有效
-        _triggerIsValid: function(toIndex, fromIndex) {
-            return toIndex !== fromIndex;
-        },
-
         _switchTrigger: function(toIndex, fromIndex) {
-            var triggers = this.triggers;
+            var triggers = this.get('triggers');
             if (triggers.length < 1) return;
 
             triggers.eq(fromIndex).removeClass(this.get('activeTriggerClass'));
@@ -250,15 +256,14 @@ define(function(require, exports, module) {
         },
 
         _getPanelInfo: function(toIndex, fromIndex) {
-            var panels = this.panels.get();
+            var panels = this.get('panels').get();
             var step = this.get('step');
 
             var fromPanels, toPanels;
 
+            // todo: 什么时候 fromIndex 为 <0
             if (fromIndex > -1) {
-                var begin = fromIndex * step;
-                var end = (fromIndex + 1) * step;
-                fromPanels = panels.slice(begin, end);
+                fromPanels = panels.slice(fromIndex * step, (fromIndex + 1) * step);
             }
 
             toPanels = panels.slice(toIndex * step, (toIndex + 1) * step);
@@ -321,6 +326,7 @@ define(function(require, exports, module) {
 
 
         destroy: function() {
+            // todo: events, stop, clearTimeout(that._switchTimer);
             $.each(this._plugins, function(i, plugin) {
                 if (plugin.destroy) {
                     plugin.destroy.call(this);
@@ -337,7 +343,7 @@ define(function(require, exports, module) {
     // Helpers
     // -------
 
-    function generateTriggersMarkup(length, activeIndex, activeTriggerClass) {
+    function generateTriggersMarkup(length, activeIndex, activeTriggerClass, justChildren) {
         var nav = $('<ul>');
 
         for (var i = 0; i < length; i++) {
@@ -349,7 +355,7 @@ define(function(require, exports, module) {
             }).appendTo(nav);
         }
 
-        return nav;
+        return justChildren ? nav.children() : nav;
     }
 
 });
