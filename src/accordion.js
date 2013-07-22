@@ -14,7 +14,7 @@ define(function (require, exports, module) {
             autoplay: false
         },
         switchTo: function (toIndex) {
-            if (this.get("multiple")) {
+            if (this.get('multiple')) {
                 this._switchTo(toIndex, toIndex);
             } else {
                 Switchable.prototype.switchTo.call(this, toIndex);
@@ -22,7 +22,7 @@ define(function (require, exports, module) {
         },
 
         _switchTrigger: function (toIndex, fromIndex) {
-            if (this.get("multiple")) {
+            if (this.get('multiple')) {
                 this.get('triggers').eq(toIndex).toggleClass(this.get('activeTriggerClass'));
             } else {
                 Switchable.prototype._switchTrigger.call(this, toIndex, fromIndex);
@@ -30,7 +30,7 @@ define(function (require, exports, module) {
         },
 
         _switchPanel: function (panelInfo) {
-            if (this.get("multiple")) {
+            if (this.get('multiple')) {
                 panelInfo.toPanels.toggle();
             } else {
                 Switchable.prototype._switchPanel.call(this, panelInfo);
