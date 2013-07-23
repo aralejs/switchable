@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     module.exports = {
 
         attrs: {
-            autoplay: true,
+            autoplay: false,
 
             // 自动播放的间隔时间
             interval: 5000

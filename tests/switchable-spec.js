@@ -86,8 +86,8 @@ define(function(require) {
                 element: '#demo1'
             });
             expect(switchable instanceof Switchable).to.be(true);
-            expect(switchable.triggers.length).to.be(3);
-            expect(switchable.panels.length).to.be(3);
+            expect(switchable.get('triggers').length).to.be(3);
+            expect(switchable.get('panels').length).to.be(3);
             var navClass = 'ui-switchable-nav';
             var contentClass = 'ui-switchable-content';
             expect($('.' + navClass).attr('class')).to.contain(navClass);
@@ -102,8 +102,8 @@ define(function(require) {
             });
 
             expect(switchable instanceof Switchable).to.be(true);
-            expect(switchable.triggers.length).to.be(3);
-            expect(switchable.panels.length).to.be(3);
+            expect(switchable.get('triggers').length).to.be(3);
+            expect(switchable.get('panels').length).to.be(3);
         });
 
         it('Switchable 属性配置', function() {
@@ -121,10 +121,10 @@ define(function(require) {
                 element: '#demo3',
                 navClass: 'ui-switchable-nav'
             });
-            expect(switchable.triggers.length).to.be(3);
-            expect(switchable.panels.length).to.be(3);
-            expect($(switchable.triggers[0]).html()).to.be('1');
-            expect($(switchable.triggers[1]).html()).to.be('2');
+            expect(switchable.get('triggers').length).to.be(3);
+            expect(switchable.get('panels').length).to.be(3);
+            expect($(switchable.get('triggers')[0]).html()).to.be('1');
+            expect($(switchable.get('triggers')[1]).html()).to.be('2');
         });
 
         it('触发默认位置', function() {
@@ -161,7 +161,7 @@ define(function(require) {
             });
 
             testTriggerAndPanelActive(sw, 0);
-            var triggers = sw.triggers;
+            var triggers = sw.get('triggers');
 
             $(triggers[1]).trigger('click');
             testTriggerAndPanelActive(sw, 1);
@@ -180,7 +180,7 @@ define(function(require) {
             });
 
             testTriggerAndPanelActive(sw, 0);
-            var triggers = sw.triggers;
+            var triggers = sw.get('triggers');
 
             $(triggers[1]).trigger('click');
             testTriggerAndPanelActive(sw, 1);
@@ -277,7 +277,7 @@ define(function(require) {
             var ac = new Accordion({
                 element: '#demo1'
             });
-            expect(ac.get('multiple')).to.not.be.ok();
+            expect(ac.get('multiple')).not.to.be.ok();
             expect(ac.get('triggerType')).to.equal('click');
         });
 

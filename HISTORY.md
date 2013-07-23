@@ -5,7 +5,9 @@
 
 `tag:fixed` [#20](https://github.com/aralejs/switchable/issues/20) Circular bugfix.
 
-`tag:change` 去除配置项 pauseOnHover, pauseOnScroll
+`tag:changed` 去除配置项 pauseOnHover, pauseOnScroll.
+
+`tag:changed` 去除 obj.triggers/obj.panels, 以 obj.get('triggers')/obj.get('panels') 取代之
 
 ## 0.9.15
 
@@ -21,5 +23,5 @@
 
 `tag:fixed` [#10](https://github.com/aralejs/switchable/issues/10) className 可以通过配置取消。
 
-`tag:change` 依赖升级到 arale.widget@1.0.3 。
+`tag:improved` 依赖升级到 arale.widget@1.0.3 。
 

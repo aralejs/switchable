@@ -9,7 +9,7 @@ define(function (require, exports, module) {
             triggerType: 'click',
 
             // 是否运行展开多个
-            multiple: true,
+            multiple: false,
 
             autoplay: false
         },
