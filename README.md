@@ -167,11 +167,11 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 
   容器元素。
 
-### triggers `Array`
+### obj.get('triggers') `Array`
 
   触发器集合， 可能为空。
 
-### panels `Array`
+### obj.get('panels') `Array`
 
   切换面板结合，可以为空值。
 
