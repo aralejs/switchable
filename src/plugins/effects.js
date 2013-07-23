@@ -115,6 +115,7 @@ define(function (require, exports, module) {
 
             // 首先显示下一张
             toPanel.css('opacity', 1);
+            toPanel.show();
 
             if (panelInfo.fromIndex > -1) {
                 var that = this;
@@ -129,6 +130,7 @@ define(function (require, exports, module) {
                         // 切换 z-index
                         toPanel.css('zIndex', 9);
                         fromPanel.css('zIndex', 1);
+                        fromPanel.css('display', 'none');
                     });
             }
             // 初始情况下没有必要动画切换
