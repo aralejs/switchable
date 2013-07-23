@@ -1,23 +1,22 @@
-define("arale/switchable/0.9.16/tabs-debug", [ "./switchable-debug", "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./plugins/multiple-debug", "./const-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.0/tabs-debug", [ "./switchable-debug", "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./const-debug" ], function(require, exports, module) {
     var Switchable = require("./switchable-debug");
     // 展现型标签页组件
     module.exports = Switchable.extend({});
 });
 
-define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/0.9.16/plugins/effects-debug", "arale/switchable/0.9.16/plugins/autoplay-debug", "arale/switchable/0.9.16/plugins/circular-debug", "arale/switchable/0.9.16/plugins/multiple-debug", "arale/switchable/0.9.16/const-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/1.0.0/plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "arale/switchable/1.0.0/plugins/autoplay-debug", "arale/switchable/1.0.0/plugins/circular-debug", "arale/switchable/1.0.0/const-debug" ], function(require, exports, module) {
     // Switchable
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
     // 感谢：
-    //  - https://github.com/kissyteam/kissy/blob/master/src/switchable/
+    //  - https://github.com/kissyteam/kissy/tree/6707ecc4cdfddd59e21698c8eb4a50b65dbe7632/src/switchable
     var $ = require("$-debug");
-    require("arale/easing/1.0.0/easing-debug");
     var Widget = require("arale/widget/1.1.1/widget-debug");
     var CLASS_PREFIX = "ui-switchable";
-    var Effects = require("arale/switchable/0.9.16/plugins/effects-debug");
-    var Autoplay = require("arale/switchable/0.9.16/plugins/autoplay-debug");
-    var Circular = require("arale/switchable/0.9.16/plugins/circular-debug");
-    var Multiple = require("arale/switchable/0.9.16/plugins/multiple-debug");
+    var Effects = require("arale/switchable/1.0.0/plugins/effects-debug");
+    var Autoplay = require("arale/switchable/1.0.0/plugins/autoplay-debug");
+    var Circular = require("arale/switchable/1.0.0/plugins/circular-debug");
+    var ConstClass = require("arale/switchable/1.0.0/const-debug");
     var Switchable = Widget.extend({
         attrs: {
             // 用户传入的 triggers 和 panels
@@ -42,10 +41,6 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
             // or 'click'
             // 触发延迟
             delay: 100,
-            // 切换效果，可取 scrollx | scrolly | fade 或直接传入 effect function
-            effect: "none",
-            easing: "linear",
-            duration: 500,
             // 初始切换到哪个面板
             activeIndex: 0,
             // 一屏内有多少个 panels
@@ -54,7 +49,7 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
             length: {
                 readOnly: true,
                 getter: function() {
-                    return Math.ceil(this.panels.length / this.get("step"));
+                    return Math.ceil(this.get("panels").length / this.get("step"));
                 }
             },
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
@@ -63,89 +58,83 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
         },
         setup: function() {
             this._initConstClass();
-            this._parseRole();
             this._initElement();
-            this._initPanels();
-            this._initTriggers();
+            var role = this._getDatasetRole();
+            this._initPanels(role);
+            // 配置中的 triggers > dataset > 自动生成
+            this._initTriggers(role);
+            this._bindTriggers();
             this._initPlugins();
         },
         _initConstClass: function() {
             var classPrefix = this.get("classPrefix");
-            this.CONST = require("arale/switchable/0.9.16/const-debug")(classPrefix);
+            this.CONST = ConstClass(classPrefix);
         },
-        _parseRole: function(role) {
-            // var role = this.dataset && this.dataset.role;
-            role = role || this._getDatasetRole();
-            if (!role) return;
-            var triggers = this.get("triggers");
-            var panels = this.get("panels");
-            // attr 里没找到时，才根据 data-role 来解析
-            if (triggers.length === 0 && (role.trigger || role.nav)) {
-                triggers = role.trigger || role.nav.find("> *");
-            }
-            if (panels.length === 0 && (role.panel || role.content)) {
-                panels = role.panel || role.content.find("> *");
-            }
-            this.set("triggers", triggers);
-            this.set("panels", panels);
+        _initElement: function() {
+            this.element.addClass(this.CONST.UI_SWITCHABLE);
         },
-        _getDatasetRole: function(role) {
+        // 从 HTML 标记中获取各个 role, 替代原来的 markupType
+        _getDatasetRole: function() {
             var element = this.element;
-            role = role || {};
-            var isHaveRole = false;
+            var role = {};
             var roles = [ "trigger", "panel", "nav", "content" ];
             $.each(roles, function(index, key) {
                 var elems = $("[data-role=" + key + "]", element);
                 if (elems.length) {
                     role[key] = elems;
-                    isHaveRole = true;
                 }
             });
-            if (!isHaveRole) return null;
             return role;
         },
-        _initElement: function() {
-            this.element.addClass(this.CONST.UI_SWITCHABLE);
-        },
-        _initPanels: function() {
-            var panels = this.panels = this.get("panels");
+        _initPanels: function(role) {
+            var panels = this.get("panels");
+            // 先获取 panels 和 content
+            if (panels.length > 0) {} else if (role.panel) {
+                this.set("panels", panels = role.panel);
+            } else if (role.content) {
+                this.set("panels", panels = role.content.find("> *"));
+                this.content = role.content;
+            }
             if (panels.length === 0) {
                 throw new Error("panels.length is ZERO");
             }
-            this.content = panels.parent().addClass(this.CONST.CONTENT_CLASS);
-            panels.addClass(this.CONST.PANEL_CLASS);
+            if (!this.content) {
+                this.content = panels.parent();
+            }
+            this.content.addClass(this.CONST.CONTENT_CLASS);
+            this.get("panels").addClass(this.CONST.PANEL_CLASS);
         },
-        _initTriggers: function() {
-            var triggers = this.triggers = this.get("triggers");
-            // 用户没有传入 triggers，也没有通过 data-role 指定时，如果
-            // hasTriggers 为 true，则自动生成 triggers
-            if (triggers.length === 0 && this.get("hasTriggers")) {
+        _initTriggers: function(role) {
+            var triggers = this.get("triggers");
+            // 再获取 triggers 和 nav
+            if (triggers.length > 0) {} else if (role.trigger) {
+                this.set("triggers", triggers = role.trigger);
+            } else if (role.nav) {
+                triggers = role.nav.find("> *");
+                // 空的 nav 标记
+                if (triggers.length === 0) {
+                    triggers = generateTriggersMarkup(this.get("length"), this.get("activeIndex"), this.get("activeTriggerClass"), true).appendTo(role.nav);
+                }
+                this.set("triggers", triggers);
+                this.nav = role.nav;
+            } else if (this.get("hasTriggers")) {
                 this.nav = generateTriggersMarkup(this.get("length"), this.get("activeIndex"), this.get("activeTriggerClass")).appendTo(this.element);
-                // update triggers
-                this.triggers = this.nav.children();
-            } else {
+                this.set("triggers", triggers = this.nav.children());
+            }
+            if (!this.nav && triggers.length) {
                 this.nav = triggers.parent();
             }
-            this.triggers.addClass(this.CONST.TRIGGER_CLASS);
-            this.nav.addClass(this.CONST.NAV_CLASS);
-            this.triggers.each(function(i, trigger) {
+            this.nav && this.nav.addClass(this.CONST.NAV_CLASS);
+            triggers.addClass(this.CONST.TRIGGER_CLASS).each(function(i, trigger) {
                 $(trigger).data("value", i);
             });
-            this._bindTriggers();
-        },
-        _initPlugins: function() {
-            this._plugins = [];
-            this._plug(Effects);
-            this._plug(Autoplay);
-            this._plug(Circular);
-            this._plug(Multiple);
         },
         _bindTriggers: function() {
-            var that = this;
+            var that = this, triggers = this.get("triggers");
             if (this.get("triggerType") === "click") {
-                this.triggers.click(focus);
+                triggers.click(focus);
             } else {
-                this.triggers.hover(focus, leave);
+                triggers.hover(focus, leave);
             }
             function focus(ev) {
                 that._onFocusTrigger(ev.type, $(this).data("value"));
@@ -165,15 +154,19 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
                 }, this.get("delay"));
             }
         },
+        _initPlugins: function() {
+            this._plugins = [];
+            this._plug(Effects);
+            this._plug(Autoplay);
+            this._plug(Circular);
+        },
         // 切换到指定 index
         switchTo: function(toIndex) {
             this.set("activeIndex", toIndex);
-            return this;
         },
+        // change 事件触发的前提是当前值和先前值不一致, 所以无需验证 toIndex !== fromIndex
         _onRenderActiveIndex: function(toIndex, fromIndex) {
-            if (this._triggerIsValid(toIndex, fromIndex)) {
-                this._switchTo(toIndex, fromIndex);
-            }
+            this._switchTo(toIndex, fromIndex);
         },
         _switchTo: function(toIndex, fromIndex) {
             this.trigger("switch", toIndex, fromIndex);
@@ -181,12 +174,8 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
             this._switchPanel(this._getPanelInfo(toIndex, fromIndex));
             this.trigger("switched", toIndex, fromIndex);
         },
-        // 触发是否有效
-        _triggerIsValid: function(toIndex, fromIndex) {
-            return toIndex !== fromIndex;
-        },
         _switchTrigger: function(toIndex, fromIndex) {
-            var triggers = this.triggers;
+            var triggers = this.get("triggers");
             if (triggers.length < 1) return;
             triggers.eq(fromIndex).removeClass(this.get("activeTriggerClass"));
             triggers.eq(toIndex).addClass(this.get("activeTriggerClass"));
@@ -197,13 +186,12 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
             panelInfo.toPanels.show();
         },
         _getPanelInfo: function(toIndex, fromIndex) {
-            var panels = this.panels.get();
+            var panels = this.get("panels").get();
             var step = this.get("step");
             var fromPanels, toPanels;
+            // 初始情况下 fromIndex 为 undefined
             if (fromIndex > -1) {
-                var begin = fromIndex * step;
-                var end = (fromIndex + 1) * step;
-                fromPanels = panels.slice(begin, end);
+                fromPanels = panels.slice(fromIndex * step, (fromIndex + 1) * step);
             }
             toPanels = panels.slice(toIndex * step, (toIndex + 1) * step);
             return {
@@ -227,9 +215,7 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
             this.switchTo(index);
         },
         _plug: function(plugin) {
-            if (!plugin.isNeeded.call(this)) return;
             var pluginAttrs = plugin.attrs;
-            var methods = plugin.methods;
             if (pluginAttrs) {
                 for (var key in pluginAttrs) {
                     if (pluginAttrs.hasOwnProperty(key) && // 不覆盖用户传入的配置
@@ -238,20 +224,14 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
                     }
                 }
             }
-            if (methods) {
-                for (var method in methods) {
-                    if (methods.hasOwnProperty(method)) {
-                        // 覆盖实例方法。
-                        this[method] = methods[method];
-                    }
-                }
-            }
+            if (!plugin.isNeeded.call(this)) return;
             if (plugin.install) {
                 plugin.install.call(this);
             }
             this._plugins.push(plugin);
         },
         destroy: function() {
+            // todo: events, stop, clearTimeout(that._switchTimer);
             $.each(this._plugins, function(i, plugin) {
                 if (plugin.destroy) {
                     plugin.destroy.call(this);
@@ -263,7 +243,7 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
     module.exports = Switchable;
     // Helpers
     // -------
-    function generateTriggersMarkup(length, activeIndex, activeTriggerClass) {
+    function generateTriggersMarkup(length, activeIndex, activeTriggerClass, justChildren) {
         var nav = $("<ul>");
         for (var i = 0; i < length; i++) {
             var className = i === activeIndex ? activeTriggerClass : "";
@@ -272,22 +252,29 @@ define("arale/switchable/0.9.16/switchable-debug", [ "$-debug", "arale/easing/1.
                 html: i + 1
             }).appendTo(nav);
         }
-        return nav;
+        return justChildren ? nav.children() : nav;
     }
 });
 
-define("arale/switchable/0.9.16/plugins/effects-debug", [ "$-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.0/plugins/effects-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
+    require("arale/easing/1.0.0/easing-debug");
     var SCROLLX = "scrollx";
     var SCROLLY = "scrolly";
     var FADE = "fade";
     // 切换效果插件
     module.exports = {
+        attrs: {
+            // 切换效果，可取 scrollx | scrolly | fade 或直接传入 effect function
+            effect: "none",
+            easing: "linear",
+            duration: 500
+        },
         isNeeded: function() {
             return this.get("effect") !== "none";
         },
         install: function() {
-            var panels = this.panels;
+            var panels = this.get("panels");
             // 注：
             // 1. 所有 panel 的尺寸应该相同
             //    最好指定第一个 panel 的 width 和 height
@@ -356,17 +343,17 @@ define("arale/switchable/0.9.16/plugins/effects-debug", [ "$-debug" ], function(
             }
             var fromPanel = panelInfo.fromPanels.eq(0);
             var toPanel = panelInfo.toPanels.eq(0);
-            var anim = this.anim;
-            if (anim) {
+            if (this.anim) {
                 // 立刻停止，以开始新的
-                anim.stop(false, true);
+                this.anim.stop(false, true);
             }
             // 首先显示下一张
             toPanel.css("opacity", 1);
-            if (fromPanel[0]) {
+            toPanel.show();
+            if (panelInfo.fromIndex > -1) {
+                var that = this;
                 var duration = this.get("duration");
                 var easing = this.get("easing");
-                var that = this;
                 // 动画切换
                 this.anim = fromPanel.animate({
                     opacity: 0
@@ -376,6 +363,7 @@ define("arale/switchable/0.9.16/plugins/effects-debug", [ "$-debug" ], function(
                     // 切换 z-index
                     toPanel.css("zIndex", 9);
                     fromPanel.css("zIndex", 1);
+                    fromPanel.css("display", "none");
                 });
             } else {
                 toPanel.css("zIndex", 9);
@@ -407,18 +395,15 @@ define("arale/switchable/0.9.16/plugins/effects-debug", [ "$-debug" ], function(
     module.exports.Effects = Effects;
 });
 
-define("arale/switchable/0.9.16/plugins/autoplay-debug", [ "$-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.0/plugins/autoplay-debug", [ "$-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
+    var win = $(window);
     // 自动播放插件
     module.exports = {
         attrs: {
-            autoplay: true,
+            autoplay: false,
             // 自动播放的间隔时间
-            interval: 5e3,
-            // 滚出可视区域后，是否停止自动播放
-            pauseOnScroll: true,
-            // 鼠标悬停时，是否停止自动播放
-            pauseOnHover: true
+            interval: 5e3
         },
         isNeeded: function() {
             return this.get("autoplay");
@@ -453,16 +438,12 @@ define("arale/switchable/0.9.16/plugins/autoplay-debug", [ "$-debug" ], function
             this.stop = stop;
             this.start = start;
             // 滚出可视区域后，停止自动播放
-            if (this.get("pauseOnScroll")) {
-                this._scrollDetect = throttle(function() {
-                    that[isInViewport(element) ? "start" : "stop"]();
-                });
-                win.on("scroll" + EVENT_NS, this._scrollDetect);
-            }
+            this._scrollDetect = throttle(function() {
+                that[isInViewport(element) ? "start" : "stop"]();
+            });
+            win.on("scroll" + EVENT_NS, this._scrollDetect);
             // 鼠标悬停时，停止自动播放
-            if (this.get("pauseOnHover")) {
-                this.element.hover(stop, start);
-            }
+            this.element.hover(stop, start);
         },
         destroy: function() {
             var EVENT_NS = "." + this.cid;
@@ -490,7 +471,6 @@ define("arale/switchable/0.9.16/plugins/autoplay-debug", [ "$-debug" ], function
         };
         return f;
     }
-    var win = $(window);
     function isInViewport(element) {
         var scrollTop = win.scrollTop();
         var scrollBottom = scrollTop + win.height();
@@ -501,11 +481,11 @@ define("arale/switchable/0.9.16/plugins/autoplay-debug", [ "$-debug" ], function
     }
 });
 
-define("arale/switchable/0.9.16/plugins/circular-debug", [ "$-debug", "arale/switchable/0.9.16/plugins/effects-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.0/plugins/circular-debug", [ "$-debug", "arale/switchable/1.0.0/plugins/effects-debug", "arale/easing/1.0.0/easing-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     var SCROLLX = "scrollx";
     var SCROLLY = "scrolly";
-    var Effects = require("arale/switchable/0.9.16/plugins/effects-debug").Effects;
+    var Effects = require("arale/switchable/1.0.0/plugins/effects-debug").Effects;
     // 无缝循环滚动插件
     module.exports = {
         // 仅在开启滚动效果时需要
@@ -515,34 +495,38 @@ define("arale/switchable/0.9.16/plugins/circular-debug", [ "$-debug", "arale/swi
             return circular && (effect === SCROLLX || effect === SCROLLY);
         },
         install: function() {
-            this.set("scrollType", this.get("effect"));
+            this._scrollType = this.get("effect");
             this.set("effect", "scrollCircular");
         }
     };
     Effects.scrollCircular = function(panelInfo) {
         var toIndex = panelInfo.toIndex;
         var fromIndex = panelInfo.fromIndex;
-        var len = this.get("length");
-        var isBackwardCritical = fromIndex === 0 && toIndex === len - 1;
-        var isForwardCritical = fromIndex === len - 1 && toIndex === 0;
-        var isBackward = isBackwardCritical || !isForwardCritical && toIndex < fromIndex;
-        var isCritical = isBackwardCritical || isForwardCritical;
-        var isX = this.get("scrollType") === SCROLLX;
+        var isX = this._scrollType === SCROLLX;
         var prop = isX ? "left" : "top";
         var viewDiff = this.get("viewSize")[isX ? 0 : 1];
         var diff = -viewDiff * toIndex;
-        // 开始动画前，先停止掉上一动画
-        if (this.anim) {
-            this.anim.stop(false, true);
-        }
-        // 在临界点时，先调整 panels 位置
-        if (isCritical) {
-            diff = adjustPosition.call(this, isBackward, prop, viewDiff);
-        }
         var props = {};
         props[prop] = diff + "px";
         // 开始动画
         if (fromIndex > -1) {
+            // 开始动画前，先停止掉上一动画
+            if (this.anim) {
+                this.anim.stop(false, true);
+            }
+            var len = this.get("length");
+            // scroll 的 0 -> len-1 应该是正常的从 0->1->2->.. len-1 的切换
+            var isBackwardCritical = false;
+            //(fromIndex === 0 && toIndex === len - 1);
+            // len-1 -> 0
+            var isForwardCritical = fromIndex === len - 1 && toIndex === 0;
+            var isBackward = isBackwardCritical || !isForwardCritical && toIndex < fromIndex;
+            var isCritical = isBackwardCritical || isForwardCritical;
+            // 在临界点时，先调整 panels 位置
+            if (isCritical) {
+                diff = adjustPosition.call(this, isBackward, prop, viewDiff);
+                props[prop] = diff + "px";
+            }
             var duration = this.get("duration");
             var easing = this.get("easing");
             var that = this;
@@ -568,7 +552,7 @@ define("arale/switchable/0.9.16/plugins/circular-debug", [ "$-debug", "arale/swi
         var diff = isBackward ? viewDiff : -viewDiff * len;
         var panelDiff = isBackward ? -viewDiff * len : viewDiff * len;
         // 调整 panels 到下一个视图中
-        var toPanels = $(this.panels.get().slice(from, to));
+        var toPanels = $(this.get("panels").get().slice(from, to));
         toPanels.css("position", "relative");
         toPanels.css(prop, panelDiff + "px");
         // 返回偏移量
@@ -582,7 +566,7 @@ define("arale/switchable/0.9.16/plugins/circular-debug", [ "$-debug", "arale/swi
         var from = start * step;
         var to = (start + 1) * step;
         // 滚动完成后，复位到正常状态
-        var toPanels = $(this.panels.get().slice(from, to));
+        var toPanels = $(this.get("panels").get().slice(from, to));
         toPanels.css("position", "");
         toPanels.css(prop, "");
         // 瞬移到正常位置
@@ -590,31 +574,7 @@ define("arale/switchable/0.9.16/plugins/circular-debug", [ "$-debug", "arale/swi
     }
 });
 
-define("arale/switchable/0.9.16/plugins/multiple-debug", [], function(require, exports, module) {
-    // 手风琴组件
-    module.exports = {
-        isNeeded: function() {
-            return this.get("multiple");
-        },
-        methods: {
-            switchTo: function(toIndex) {
-                this._switchTo(toIndex, toIndex);
-            },
-            _switchTrigger: function(toIndex) {
-                this.triggers.eq(toIndex).toggleClass(this.get("activeTriggerClass"));
-            },
-            _triggerIsValid: function() {
-                // multiple 模式下，再次触发意味着切换展开/收缩状态
-                return true;
-            },
-            _switchPanel: function(panelInfo) {
-                panelInfo.toPanels.toggle();
-            }
-        }
-    };
-});
-
-define("arale/switchable/0.9.16/const-debug", [], function(require, exports, module) {
+define("arale/switchable/1.0.0/const-debug", [], function(require, exports, module) {
     // 内部默认的 className
     module.exports = function(classPrefix) {
         return {
