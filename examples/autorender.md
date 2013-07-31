@@ -1,6 +1,6 @@
 # DATA API 方式
 
-- order: 2
+- order: 6
 
 ---
 

@@ -1,0 +1,213 @@
+# Slide - 卡盘轮播
+
+- order: 3
+
+---
+
+
+<style>
+.slide-demo {
+    margin: 20px 0;
+    padding: 0;
+}
+.hidden {
+    display: none;
+}
+</style>
+
+## Alipay 轮播: 数字形式
+
+````css
+#slide-demo-1 {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-1 .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-1 .ui-switchable-content .ui-switchable-panel {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-1 .ui-switchable-content .ui-switchable-panel img {
+    margin-left: -660px;
+}
+#slide-demo-1 .ui-switchable-nav {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    font-size: 12px;
+}
+#slide-demo-1 .ui-switchable-nav .ui-switchable-trigger {
+    float: left;
+    width: 15px;
+    height: 15px;
+    line-height: 17px;
+    margin-left: 5px;
+    background-color: #FFF;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    text-align: center;
+    color: black;
+    cursor: pointer;
+    list-style: none;
+}
+#slide-demo-1 .ui-switchable-nav .ui-switchable-active {
+    color: #FFF;
+    background-color: #e96c3e;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+````
+
+````html
+<div id="slide-demo-1" class="slide-demo">
+    <ul class="ui-switchable-content" data-role="content">
+        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
+    </ul>
+</div>
+````
+
+````javascript
+seajs.use(['slide'], function(Slide) {
+    slide = new Slide({
+        element: '#slide-demo-1',
+        effect: 'scrolly',
+        interval: 3000
+    }).render();
+});
+````
+
+
+## Alipay 轮播: 原点形式
+
+````css
+#slide-demo-2 {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-2 .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-2 .ui-switchable-content .ui-switchable-panel {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-2 .ui-switchable-content .ui-switchable-panel img {
+    margin-left: -660px;
+}
+#slide-demo-2 .ui-switchable-nav {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    text-align: center;
+}
+#slide-demo-2 .ui-switchable-nav .ui-switchable-trigger {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    margin-left: 5px;
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    color: white;
+    cursor: pointer;
+    list-style: none;
+}
+#slide-demo-2 .ui-switchable-nav .ui-switchable-active {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+````
+
+````html
+<div id="slide-demo-2" class="slide-demo">
+    <ul data-role="content" class="ui-switchable-content">
+        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
+    </ul>
+    <ul data-role="nav">
+        <li>●</li>
+        <li>●</li>
+        <li>●</li>
+    </ul>
+</div>
+````
+
+````javascript
+seajs.use(['slide'], function(Slide) {
+    slide = new Slide({
+        element: '#slide-demo-2',
+        effect: 'fade',
+        activeIndex: 1
+    }).render();
+});
+````
+
+
+
+## Alipay 轮播: 文字条
+
+````css
+#slide-demo-3 {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+}
+#slide-demo-3 .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-3 .ui-switchable-content .ui-switchable-panel {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+}
+````
+
+````html
+<div id="slide-demo-3" class="slide-demo">
+    <ul data-role="content" class="ui-switchable-content">
+        <li> class="ui-switchable-panel"<strong>公告1: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+        <li class="hidden ui-switchable-panel"><strong>公告2: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+        <li class="hidden ui-switchable-panel"><strong>公告3: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+    </ul>
+</div>
+````
+
+````javascript
+seajs.use(['slide'], function(Slide) {
+    slide = new Slide({
+        element: '#slide-demo-3',
+        effect: 'scrollx',
+        hasTriggers: false
+    }).render();
+});
+````

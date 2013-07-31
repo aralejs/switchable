@@ -1,6 +1,6 @@
 # Tabs - 普通标签页
 
-- order: 5
+- order: 2
 
 ---
 
