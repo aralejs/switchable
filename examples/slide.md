@@ -145,14 +145,14 @@ seajs.use(['slide'], function(Slide) {
 ````html
 <div id="slide-demo-2" class="slide-demo">
     <ul data-role="content" class="ui-switchable-content">
-        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
-        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
+        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
     </ul>
-    <ul data-role="nav">
-        <li>●</li>
-        <li>●</li>
-        <li>●</li>
+    <ul data-role="nav" class="ui-switchable-nav">
+        <li class="ui-switchable-trigger">●</li>
+        <li class="ui-switchable-trigger ui-switchable-active">●</li>
+        <li class="ui-switchable-trigger">●</li>
     </ul>
 </div>
 ````
@@ -262,3 +262,95 @@ seajs.use(['slide', '$'], function(Slide, $) {
 
 ## Alipay 轮播: 缩略形式
 
+````css
+#slide-demo-4 {
+    position: relative;
+    width: 500px;
+    height: 200px;
+    overflow: hidden;
+}
+#slide-demo-4 .ui-switchable-content {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#slide-demo-4 .ui-switchable-content .ui-switchable-panel {
+    position: relative;
+    width: 100%;
+    height: 169px;
+    overflow: hidden;
+}
+#slide-demo-4 .ui-switchable-content .ui-switchable-panel img {
+    margin-left: -660px;
+}
+#slide-demo-4 .ui-switchable-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10000px;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-trigger {
+    position: relative;
+    float: left;
+    width: 167px;
+    height: 30px;
+    line-height: 30px;
+    border-right: 1px solid white;
+    cursor: pointer;
+    list-style: none;
+    background: #c7c7c7;
+    color: white;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-active {
+    background: #f60;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-trigger .arrow {
+    position: absolute;
+    left: 50%;
+    top: -8px;
+    margin-left: -8px;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+
+    visibility: hidden;
+}
+#slide-demo-4 .ui-switchable-nav .ui-switchable-active .arrow {
+    visibility: visible;
+    color: #f60;
+}
+````
+
+````html
+<div id="slide-demo-4" class="slide-demo">
+    <ul data-role="content" class="ui-switchable-content">
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
+        <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
+        <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
+    </ul>
+    <ul data-role="nav" class="ui-switchable-nav">
+        <li class="ui-switchable-trigger"><span>缩略/标题一</span><b class="arrow">◆</b></li>
+        <li class="ui-switchable-trigger ui-switchable-active"><span>缩略/标题二</span><b class="arrow">◆</b></li>
+        <li class="ui-switchable-trigger"><span>缩略/标题三</span><b class="arrow">◆</b></li>
+    </ul>
+</div>
+````
+
+````javascript
+seajs.use(['slide'], function(Slide) {
+    slide = new Slide({
+        element: '#slide-demo-4',
+        effect: 'fade',
+        activeIndex: 1
+    }).render();
+});
+````
