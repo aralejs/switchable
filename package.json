@@ -31,6 +31,5 @@
             "./accordion.js",
             "./carousel.js"
         ]
-    },
-    "tests": ["switchable"]
+    }
 }

@@ -174,40 +174,91 @@ seajs.use(['slide'], function(Slide) {
 ````css
 #slide-demo-3 {
     position: relative;
-    width: 100%;
+    width: 600px;
+    height: 30px;
+    padding: 0 60px 0 20px;
+    line-height: 30px;
+    overflow: hidden;
+    background: #eaeaea;
+    font-size: 12px;
+}
+#slide-demo-3 .wrapper, #slide-demo-3 .wrapper .ui-switchable-content .ui-switchable-panel {
+    width: 600px;
     height: 30px;
     line-height: 30px;
     overflow: hidden;
 }
-#slide-demo-3 .ui-switchable-content {
+#slide-demo-3 .wrapper .ui-switchable-content {
     margin: 0;
     padding: 0;
     list-style: none;
 }
-#slide-demo-3 .ui-switchable-content .ui-switchable-panel {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    overflow: hidden;
+#slide-demo-3 .nav {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    margin: 0;
+}
+#slide-demo-3 .nav a {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    width: 12px;
+    height: 12px;
+    line-height: 10px;
+    font-size: 16px;
+    text-align: center;
+    border: 1px solid #cdcdcd;
+    color: #999;
+    background: white;
+}
+#slide-demo-3 .nav a:hover {
+    color: #f50;
+}
+#slide-demo-3 .nav #next {
+    border-left: none;
 }
 ````
 
 ````html
 <div id="slide-demo-3" class="slide-demo">
-    <ul data-role="content" class="ui-switchable-content">
-        <li> class="ui-switchable-panel"<strong>公告1: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
-        <li class="hidden ui-switchable-panel"><strong>公告2: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
-        <li class="hidden ui-switchable-panel"><strong>公告3: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
-    </ul>
+    <div class="wrapper">
+        <ul data-role="content" class="ui-switchable-content">
+            <li class="ui-switchable-panel"><strong>公告1: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+            <li class="hidden ui-switchable-panel"><strong>公告2: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+            <li class="hidden ui-switchable-panel"><strong>公告3: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
+        </ul>
+    </div>
+    <p class="nav">
+        <a id="prev" href="#">‹</a>
+        <a id="next" href="#">›</a>
+    </p>
 </div>
 ````
 
 ````javascript
-seajs.use(['slide'], function(Slide) {
+seajs.use(['slide', '$'], function(Slide, $) {
     slide = new Slide({
         element: '#slide-demo-3',
         effect: 'scrollx',
         hasTriggers: false
     }).render();
+
+    // 自定义 prev/next
+    $("#slide-demo-3 #prev").click(function(e) {
+        e.preventDefault();
+
+        slide.prev();
+    });
+
+    $("#slide-demo-3 #next").click(function(e) {
+        e.preventDefault();
+
+        slide.next();
+    });
 });
 ````
+
+
+## Alipay 轮播: 缩略形式
+
