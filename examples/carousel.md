@@ -11,51 +11,54 @@
 另外, viewSize 默认是自动计算, 但有时设置不准确, 特别是 panels 和容器设置了乱七八糟的 padding 时. 所以这是需要手工指定 viewSize.
 
 
-<style>
-    .scrollable {
+````css
+    #carousel-demo-1 {
         position: relative;
-        width: 794px;
-        margin: 40px 0;
+        width: 664px;
+        margin: 40px 0 20px;
     }
-    .scrollable .prev, .scrollable .next {
+    #carousel-demo-1 .ui-switchable-prev-btn, #carousel-demo-1 .ui-switchable-next-btn {
         position: absolute;
         top: -30px;
         color: #666;
         cursor: pointer;
     }
-    .scrollable .prev { 
+    #carousel-demo-1 .ui-switchable-prev-btn {
         left: 10px; 
     }
-    .scrollable .next { right: 10px; }
-    .scrollable .disable { color: #ddd; cursor: default; }
+    #carousel-demo-1 .ui-switchable-next-btn {
+        right: 10px;
+    }
+    #carousel-demo-1 .ui-switchable-disabled-btn {
+        color: #ddd;
+        cursor: default;
+    }
 
-    .scroller {
-        width: 792px;
+    #carousel-demo-1 .scroller {
+        width: 664px;
         height: 120px;
         border: 1px solid #ccc;
         background-color: #F9F9F9;
         overflow: hidden;
     }
-    .scroller .ui-switchable-content {
+    #carousel-demo-1 .scroller .ui-switchable-content {
         padding: 20px 0;
-        height: 81px;
+        height: 80px;
     }
-    .scroller .ui-switchable-content img {
+    #carousel-demo-1 .scroller .ui-switchable-content img {
         float: left;
-        width: 360px;
-        height: 75px;
-        padding: 2px;
+        display: block;
+        width: 300px;
+        height: 80px;
         margin: 0 15px;
-        background-color: #fff;
         border: 1px solid #ccc;
-        display: inline !important; /* fix ie6 双边距 bug */
     }
-</style>
+````
 
-
-<div id="demo4" class="section scrollable">
-    <span class="prev" data-role="prev">&lsaquo; 上一页</span>
-    <span class="next" data-role="next">下一页 &rsaquo;</span>
+````html
+<div id="carousel-demo-1">
+    <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
+    <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
         <div class="ui-switchable-content" data-role="content">
             <img src="https://i.alipayobjects.com/e/201306/SzpUxptFt.png" alt="" class="ui-switchable-panel">
@@ -64,23 +67,21 @@
         </div>
     </div>
 </div>
+````
 
 
-
-````javascript
+````js
 seajs.use(['carousel', '$'], function(Carousel, $) {
     carousel = new Carousel({
-        element: '#demo4',
-        panels: '#demo4 .ui-switchable-content img',
+        element: '#carousel-demo-1',
         hasTriggers: false,
         easing: 'easeOutStrong',
         effect: 'scrollx',
         step: 2,
-        viewSize: [396],
+        viewSize: [332],
         circular: false,
         autoplay: true
     }).render();
 });
-
 
 ````
