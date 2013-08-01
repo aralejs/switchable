@@ -4,32 +4,26 @@
 
 ---
 
-<style>
-    .ui-switchable * {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-    }
-    #demo1 {
+````css
+    #tab-demo-1 {
         font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         position: relative;
         width: 750px;
         padding-top: 29px;
+        margin: 20px 0;
     }
 
-    #demo1 a {
-        text-decoration: none;
-    }
-
-    #demo1 .ui-switchable-nav {
+    #tab-demo-1 .ui-switchable-nav {
         position: absolute;
+        top: 0;
         left: 20px;
-        margin-top: -29px;
+        margin: 0;
+        padding: 0;
         z-index: 99;
-        list-style-type: none; 
+        list-style: none;
     }
 
-    #demo1 .ui-switchable-nav li {
+    #tab-demo-1 .ui-switchable-nav li {
         float: left;
         width: 130px;
         height: 27px;
@@ -42,49 +36,49 @@
         list-style: none;
     }
 
-    #demo1 .ui-switchable-nav li.ui-switchable-active {
+    #tab-demo-1 .ui-switchable-nav .ui-switchable-active {
         background-position: 0 -40px;
         cursor: default;
     }
 
-    #demo1 .ui-switchable-content {
+    #tab-demo-1 .ui-switchable-content {
         position: relative;
         height: 150px;
         padding: 20px;
         border: 1px solid #AEC7E5;
     }
-</style>
+````
 
-<div class="s-section">
-    <div id="demo1" class="s-demo">
-    <ul class="ui-switchable-nav">
-        <li>标题 A</li>
-        <li>标题 B</li>
-        <li>标题 C</li>
-        <li>标题 D</li>
-    </ul>
-    <div class="ui-switchable-content">
-        <div style="display: none">
-        内容 A
-        <pre>
-          - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
-          - 鼠标快速滑过非当前 trigger, 不触发
-          - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
-          - click 或 Tab 切换到 trigger, 立即触发
-          - switch / switched 事件的触发
-        </pre>
-        </div>
+````html
+    <div id="tab-demo-1">
+        <ul class="ui-switchable-nav">
+            <li>标题 A</li>
+            <li>标题 B</li>
+            <li>标题 C</li>
+            <li>标题 D</li>
+        </ul>
+        <div class="ui-switchable-content">
+            <div style="display: none">
+                内容 A
+                <pre>
+                  - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
+                  - 鼠标快速滑过非当前 trigger, 不触发
+                  - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
+                  - click 或 Tab 切换到 trigger, 立即触发
+                  - switch / switched 事件的触发
+                </pre>
+            </div>
             <div style="display: none">内容 B</div>
             <div style="display: none">内容 C</div>
             <div style="display: none">内容 D</div>
         </div>
     </div>
-</div>
+````
 
-````javascript
+````js
     seajs.use(['tabs'], function(Tabs) {
         tabs = new Tabs({
-            element: '#demo1',
+            element: '#tab-demo-1',
             triggers: '.ui-switchable-nav li',
             panels: '.ui-switchable-content div',
             activeIndex: 2,
