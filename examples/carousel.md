@@ -92,5 +92,4 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
         autoplay: true
     }).render();
 });
-
 ````
