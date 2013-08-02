@@ -4,13 +4,23 @@
 
 ---
 
+<style>
+.tab-demo {
+    margin: 20px 0;
+    padding: 0;
+}
+.hidden {
+    display: none;
+}
+</style>
+
+
 ````css
     #tab-demo-1 {
         font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
         position: relative;
         width: 750px;
         padding-top: 29px;
-        margin: 20px 0;
     }
 
     #tab-demo-1 .ui-switchable-nav {
@@ -50,7 +60,7 @@
 ````
 
 ````html
-    <div id="tab-demo-1">
+    <div id="tab-demo-1" class="tab-demo">
         <ul class="ui-switchable-nav">
             <li>标题 A</li>
             <li>标题 B</li>
@@ -58,7 +68,7 @@
             <li>标题 D</li>
         </ul>
         <div class="ui-switchable-content">
-            <div style="display: none">
+            <div class="hidden">
                 内容 A
                 <pre>
                   - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
@@ -68,9 +78,9 @@
                   - switch / switched 事件的触发
                 </pre>
             </div>
-            <div style="display: none">内容 B</div>
-            <div style="display: none">内容 C</div>
-            <div style="display: none">内容 D</div>
+            <div class="hidden">内容 B</div>
+            <div class="hidden">内容 C</div>
+            <div class="hidden">内容 D</div>
         </div>
     </div>
 ````

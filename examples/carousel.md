@@ -10,12 +10,22 @@
 调整 step 和 viewSize 的情况. step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑动窗口的大小, 一般为 panels 的整数倍.
 另外, viewSize 默认是自动计算, 但有时设置不准确, 特别是 panels 和容器设置了乱七八糟的 padding 时. 所以这是需要手工指定 viewSize.
 
+<style>
+.carousel-demo {
+    margin: 40px 0 20px;
+    padding: 0;
+}
+.hidden {
+    display: none;
+}
+</style>
+
+
 
 ````css
     #carousel-demo-1 {
         position: relative;
         width: 664px;
-        margin: 40px 0 20px;
     }
     #carousel-demo-1 .ui-switchable-prev-btn, #carousel-demo-1 .ui-switchable-next-btn {
         position: absolute;
@@ -56,7 +66,7 @@
 ````
 
 ````html
-<div id="carousel-demo-1">
+<div id="carousel-demo-1" class="carousel-demo">
     <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
     <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
