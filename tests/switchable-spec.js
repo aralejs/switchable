@@ -197,6 +197,8 @@ define(function(require) {
 
             clock.tick(500);
             testTriggerAndPanelActive(sw, 1);
+
+            clock.restore();
         });
 
         it('activeIndex事件监听', function() {
