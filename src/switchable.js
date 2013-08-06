@@ -10,7 +10,6 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Widget = require('widget');
 
-    var CLASS_PREFIX = 'ui-switchable';
     var Effects = require('./plugins/effects');
     var Autoplay = require('./plugins/autoplay');
     var Circular = require('./plugins/circular');
@@ -36,7 +35,7 @@ define(function(require, exports, module) {
                 }
             },
 
-            classPrefix: CLASS_PREFIX,
+            classPrefix: 'ui-switchable',
 
             // 是否包含 triggers，用于没有传入 triggers 时，是否自动生成的判断标准
             hasTriggers: true,
@@ -61,7 +60,11 @@ define(function(require, exports, module) {
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
             viewSize: [],
 
-            activeTriggerClass: CLASS_PREFIX + '-active' 
+            activeTriggerClass:  {
+                getter: function(val) {
+                    return val ? val : this.get("classPrefix") + '-active';
+                }
+            }
         },
 
         setup: function() {

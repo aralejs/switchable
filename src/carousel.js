@@ -19,6 +19,11 @@ define(function(require, exports, module) {
                 getter: function(val) {
                     return $(val).eq(0);
                 }
+            },
+            disabledBtnClass: {
+                getter: function(val) {
+                    return val ? val : this.get("classPrefix") + '-disabled-btn';
+                }
             }
         },
 
@@ -90,15 +95,16 @@ define(function(require, exports, module) {
         _updateButtonStatus: function(toIndex) {
             var prevBtn = this.get('prevBtn');
             var nextBtn = this.get('nextBtn');
+            var disabledBtnClass = this.get("disabledBtnClass");
 
-            prevBtn.removeClass(this.CONST.DISABLED_BTN_CLASS);
-            nextBtn.removeClass(this.CONST.DISABLED_BTN_CLASS);
+            prevBtn.removeClass(disabledBtnClass);
+            nextBtn.removeClass(disabledBtnClass);
 
             if (toIndex === 0) {
-                prevBtn.addClass(this.CONST.DISABLED_BTN_CLASS);
+                prevBtn.addClass(disabledBtnClass);
             }
             else if (toIndex === this.get('length') - 1) {
-                nextBtn.addClass(this.CONST.DISABLED_BTN_CLASS);
+                nextBtn.addClass(disabledBtnClass);
             }
         }
     });

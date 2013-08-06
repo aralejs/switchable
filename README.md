@@ -93,17 +93,17 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 * `nav` 触发器容器
 
 ```html
-<div>
+<!-- 容器元素 -->
+<div id="J_Slide">
     <span data-role="prev">上一页</span>
-    <ul class="ui-switchable-nav-test" data-role="nav">
+    <ul class="ui-switchable-nav" data-role="nav">
         <li data-role="trigger">标题 A</li>
         <li data-role="trigger">标题 B</li>
         <li data-role="trigger">标题 C</li>
         <li data-role="trigger">标题 D</li>
         <li data-role="trigger">标题 E</li>
     </ul>
-    <div id="J_Slide">  <!-- 容器元素 -->
-        <div class="ui-switchable-content" data-role="content">  <!-- 面板列表 -->
+    <div class="ui-switchable-content" data-role="content">  <!-- 面板列表 -->
         <div data-role="panel">内容 A</div>
         <div style="display: none" data-role="panel">内容 B</div>
         <div style="display: none" data-role="panel">内容 C</div>
@@ -147,6 +147,9 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
   
 指定 `后一个`触发器. 默认会加上类名 `ui-switchable-next-btn`。
 
+### disabledBtnClass `String`
+
+prev/next 按钮不可用状态时的样式类
 
 ## Slide (卡盘)
 

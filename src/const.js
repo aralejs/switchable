@@ -10,8 +10,7 @@ define(function(require, exports, module) {
             TRIGGER_CLASS: classPrefix ? classPrefix + '-trigger' : '',
             PANEL_CLASS: classPrefix ? classPrefix + '-panel' : '',
             PREV_BTN_CLASS: classPrefix ? classPrefix + '-prev-btn' : '',
-            NEXT_BTN_CLASS: classPrefix ? classPrefix + '-next-btn' : '',
-            DISABLED_BTN_CLASS: classPrefix ? classPrefix + '-disabled-btn' : ''
+            NEXT_BTN_CLASS: classPrefix ? classPrefix + '-next-btn' : ''
        }
     };
 });
