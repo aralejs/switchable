@@ -9,7 +9,6 @@ define(function(require, exports, module) {
             CONTENT_CLASS: classPrefix ? classPrefix + '-content' : '',
             TRIGGER_CLASS: classPrefix ? classPrefix + '-trigger' : '',
             PANEL_CLASS: classPrefix ? classPrefix + '-panel' : '',
-            ACTIVE_CLASS: classPrefix ? classPrefix + '-active' : '',
             PREV_BTN_CLASS: classPrefix ? classPrefix + '-prev-btn' : '',
             NEXT_BTN_CLASS: classPrefix ? classPrefix + '-next-btn' : '',
             DISABLED_BTN_CLASS: classPrefix ? classPrefix + '-disabled-btn' : ''

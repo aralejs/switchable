@@ -173,3 +173,98 @@ seajs.use(['slide'], function(Slide) {
     }).render();
 });
 ````
+
+
+
+## 自定义 Class
+
+DOM 中, 默认会给 element 添加  `${classPrefix}` 类, data-role="content" 添加 `${classPrefix}-content`, data-role="nav" 添加 `${classPrefix}-nav`,
+data-role="panel" 添加 `${classPrefix}-panel`, data-role="trigger" 添加 `${classPrefix}-trigger`,
+data-role="prev" 添加 `${classPrefix}-prev-btn`, data-role="next" 添加 `${classPrefix}-next-btn`, prev/next 元素不可用状态时添加 `${classPrefix}-disabled-btn`,
+当前激活的 trigger 添加 `${classPrefix}-active`.
+
+可以通过设置 classPrefix 为 `null` 或 `''` , 这样不会在 DOM 中添加 class.
+
+````css
+    #tab-demo-x {
+        font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        position: relative;
+        width: 750px;
+        padding-top: 29px;
+    }
+
+    #tab-demo-x .nav {
+        position: absolute;
+        top: 0;
+        left: 20px;
+        margin: 0;
+        padding: 0;
+        z-index: 99;
+        list-style: none;
+    }
+
+    #tab-demo-x .nav li {
+        float: left;
+        width: 130px;
+        height: 27px;
+        line-height: 21px;
+        text-align: center;
+        background: url(assets/tabs-sprite.gif) no-repeat 0 6px;
+        margin-right: 3px;
+        padding-top: 8px;
+        cursor: pointer;
+        list-style: none;
+    }
+
+    #tab-demo-x .nav .active {
+        background-position: 0 -40px;
+        cursor: default;
+    }
+
+    #tab-demo-x .content {
+        position: relative;
+        height: 150px;
+        padding: 20px;
+        border: 1px solid #AEC7E5;
+    }
+````
+
+````html
+    <div id="tab-demo-x" class="tab-demo">
+        <ul class="nav">
+            <li>标题 A</li>
+            <li>标题 B</li>
+            <li>标题 C</li>
+            <li>标题 D</li>
+        </ul>
+        <div class="content">
+            <div class="hidden">
+                内容 A
+                <pre>
+                  - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
+                  - 鼠标快速滑过非当前 trigger, 不触发
+                  - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
+                  - click 或 Tab 切换到 trigger, 立即触发
+                  - switch / switched 事件的触发
+                </pre>
+            </div>
+            <div class="hidden">内容 B</div>
+            <div class="hidden">内容 C</div>
+            <div class="hidden">内容 D</div>
+        </div>
+    </div>
+````
+
+````js
+    seajs.use(['tabs'], function(Tabs) {
+        tabs = new Tabs({
+            classPrefix: '',
+            element: '#tab-demo-x',
+            triggers: '.nav li',
+            panels: '.content div',
+            activeIndex: 2,
+            effect: 'fade',
+            activeTriggerClass: 'active'
+        }).render();
+    });
+````
