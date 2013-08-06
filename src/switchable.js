@@ -13,8 +13,6 @@ define(function(require, exports, module) {
     var Effects = require('./plugins/effects');
     var Autoplay = require('./plugins/autoplay');
     var Circular = require('./plugins/circular');
-    var ConstClass = require('./const');
-
 
     var Switchable = Widget.extend({
         attrs: {
@@ -80,8 +78,7 @@ define(function(require, exports, module) {
         },
 
         _initConstClass: function() {
-            var classPrefix = this.get('classPrefix');
-            this.CONST = ConstClass(classPrefix);
+            this.CONST = constClass(this.get('classPrefix'));
         },
         _initElement: function() {
             this.element.addClass(this.CONST.UI_SWITCHABLE);
@@ -333,4 +330,17 @@ define(function(require, exports, module) {
         return justChildren ? nav.children() : nav;
     }
 
+
+    // 内部默认的 className
+    function constClass(classPrefix){
+        return {
+            UI_SWITCHABLE: classPrefix || '',
+            NAV_CLASS: classPrefix ? classPrefix + '-nav' : '',
+            CONTENT_CLASS: classPrefix ? classPrefix + '-content' : '',
+            TRIGGER_CLASS: classPrefix ? classPrefix + '-trigger' : '',
+            PANEL_CLASS: classPrefix ? classPrefix + '-panel' : '',
+            PREV_BTN_CLASS: classPrefix ? classPrefix + '-prev-btn' : '',
+            NEXT_BTN_CLASS: classPrefix ? classPrefix + '-next-btn' : ''
+       }
+    }
 });
