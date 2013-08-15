@@ -95,7 +95,7 @@
             panels: '.ui-switchable-content div',
             activeIndex: 2,
             effect: 'fade'
-        }).render();
+        });
     });
 ````
 
@@ -170,7 +170,7 @@ seajs.use(['slide'], function(Slide) {
         element: '#slide-demo-1',
         effect: 'scrolly',
         interval: 3000
-    }).render();
+    });
 });
 ````
 
@@ -265,6 +265,6 @@ data-role="prev" 添加 `${classPrefix}-prev-btn`, data-role="next" 添加 `${cl
             activeIndex: 2,
             effect: 'fade',
             activeTriggerClass: 'active'
-        }).render();
+        });
     });
 ````

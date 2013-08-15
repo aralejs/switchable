@@ -93,6 +93,10 @@
             panels: '.ui-switchable-content div',
             activeIndex: 2,
             effect: 'fade'
-        }).render();
+        });
+
+        setTimeout(function() {
+            tabs.set("activeIndex", "0");
+        }, 3000);
     });
 ````

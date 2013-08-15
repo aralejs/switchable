@@ -1,4 +1,4 @@
-define("arale/switchable/1.0.0/accordion-debug", [ "./switchable-debug", "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "./plugins/autoplay-debug", "./plugins/circular-debug", "./const-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.0/accordion-debug", [ "./switchable-debug", "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "./plugins/autoplay-debug", "./plugins/circular-debug" ], function(require, exports, module) {
     var Switchable = require("./switchable-debug");
     // 手风琴组件
     var Accordion = Switchable.extend({
@@ -33,7 +33,7 @@ define("arale/switchable/1.0.0/accordion-debug", [ "./switchable-debug", "$-debu
     module.exports = Accordion;
 });
 
-define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/1.0.0/plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "arale/switchable/1.0.0/plugins/autoplay-debug", "arale/switchable/1.0.0/plugins/circular-debug", "arale/switchable/1.0.0/const-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/1.0.0/plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "arale/switchable/1.0.0/plugins/autoplay-debug", "arale/switchable/1.0.0/plugins/circular-debug" ], function(require, exports, module) {
     // Switchable
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
@@ -41,11 +41,9 @@ define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1
     //  - https://github.com/kissyteam/kissy/tree/6707ecc4cdfddd59e21698c8eb4a50b65dbe7632/src/switchable
     var $ = require("$-debug");
     var Widget = require("arale/widget/1.1.1/widget-debug");
-    var CLASS_PREFIX = "ui-switchable";
     var Effects = require("arale/switchable/1.0.0/plugins/effects-debug");
     var Autoplay = require("arale/switchable/1.0.0/plugins/autoplay-debug");
     var Circular = require("arale/switchable/1.0.0/plugins/circular-debug");
-    var ConstClass = require("arale/switchable/1.0.0/const-debug");
     var Switchable = Widget.extend({
         attrs: {
             // 用户传入的 triggers 和 panels
@@ -62,7 +60,7 @@ define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1
                     return $(val);
                 }
             },
-            classPrefix: CLASS_PREFIX,
+            classPrefix: "ui-switchable",
             // 是否包含 triggers，用于没有传入 triggers 时，是否自动生成的判断标准
             hasTriggers: true,
             // 触发类型
@@ -71,7 +69,12 @@ define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1
             // 触发延迟
             delay: 100,
             // 初始切换到哪个面板
-            activeIndex: 0,
+            activeIndex: {
+                value: 0,
+                setter: function(val) {
+                    return parseInt(val) || 0;
+                }
+            },
             // 一屏内有多少个 panels
             step: 1,
             // 有多少屏
@@ -83,7 +86,11 @@ define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1
             },
             // 可见视图区域的大小。一般不需要设定此值，仅当获取值不正确时，用于手工指定大小
             viewSize: [],
-            activeTriggerClass: CLASS_PREFIX + "-active"
+            activeTriggerClass: {
+                getter: function(val) {
+                    return val ? val : this.get("classPrefix") + "-active";
+                }
+            }
         },
         setup: function() {
             this._initConstClass();
@@ -94,10 +101,11 @@ define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1
             this._initTriggers(role);
             this._bindTriggers();
             this._initPlugins();
+            // 渲染默认初始状态
+            this.render();
         },
         _initConstClass: function() {
-            var classPrefix = this.get("classPrefix");
-            this.CONST = ConstClass(classPrefix);
+            this.CONST = constClass(this.get("classPrefix"));
         },
         _initElement: function() {
             this.element.addClass(this.CONST.UI_SWITCHABLE);
@@ -282,6 +290,18 @@ define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1
             }).appendTo(nav);
         }
         return justChildren ? nav.children() : nav;
+    }
+    // 内部默认的 className
+    function constClass(classPrefix) {
+        return {
+            UI_SWITCHABLE: classPrefix || "",
+            NAV_CLASS: classPrefix ? classPrefix + "-nav" : "",
+            CONTENT_CLASS: classPrefix ? classPrefix + "-content" : "",
+            TRIGGER_CLASS: classPrefix ? classPrefix + "-trigger" : "",
+            PANEL_CLASS: classPrefix ? classPrefix + "-panel" : "",
+            PREV_BTN_CLASS: classPrefix ? classPrefix + "-prev-btn" : "",
+            NEXT_BTN_CLASS: classPrefix ? classPrefix + "-next-btn" : ""
+        };
     }
 });
 
@@ -601,21 +621,4 @@ define("arale/switchable/1.0.0/plugins/circular-debug", [ "$-debug", "arale/swit
         // 瞬移到正常位置
         this.content.css(prop, isBackward ? -viewDiff * (len - 1) : "");
     }
-});
-
-define("arale/switchable/1.0.0/const-debug", [], function(require, exports, module) {
-    // 内部默认的 className
-    module.exports = function(classPrefix) {
-        return {
-            UI_SWITCHABLE: classPrefix || "",
-            NAV_CLASS: classPrefix ? classPrefix + "-nav" : "",
-            CONTENT_CLASS: classPrefix ? classPrefix + "-content" : "",
-            TRIGGER_CLASS: classPrefix ? classPrefix + "-trigger" : "",
-            PANEL_CLASS: classPrefix ? classPrefix + "-panel" : "",
-            ACTIVE_CLASS: classPrefix ? classPrefix + "-active" : "",
-            PREV_BTN_CLASS: classPrefix ? classPrefix + "-prev-btn" : "",
-            NEXT_BTN_CLASS: classPrefix ? classPrefix + "-next-btn" : "",
-            DISABLED_BTN_CLASS: classPrefix ? classPrefix + "-disabled-btn" : ""
-        };
-    };
 });

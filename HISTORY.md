@@ -10,6 +10,9 @@
 
 `tag:changed` 去除 obj.triggers/obj.panels, 以 obj.get('triggers')/obj.get('panels') 取代之
 
+`tag:changed` 去除 new Obj() 之后的 render(). 对于 Switchable 来说, 不需要手工调用 render(), 直接 new 完就是初始状态.
+不过如果用户再次调用 render(), 也没关系. render 中有判断是否已经 render 过, 也不会重复绑定事件和插入 DOM
+
 ## 0.9.15
 
 `tag:improved` 升级 arale/widget@1.1.1

@@ -43,7 +43,12 @@ define(function(require, exports, module) {
             delay: 100,
 
             // 初始切换到哪个面板
-            activeIndex: 0,
+            activeIndex: {
+                value: 0,
+                setter: function(val) {
+                  return parseInt(val) || 0;
+                }
+            },
 
             // 一屏内有多少个 panels
             step: 1,
@@ -75,6 +80,9 @@ define(function(require, exports, module) {
             this._initTriggers(role);
             this._bindTriggers();
             this._initPlugins();
+
+            // 渲染默认初始状态
+            this.render();
         },
 
         _initConstClass: function() {
