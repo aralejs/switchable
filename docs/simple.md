@@ -1,17 +1,13 @@
-# Switchable
+# Switchable Simple
 
 ---
 
-[![Build Status](https://secure.travis-ci.org/aralejs/switchable.png)](https://travis-ci.org/aralejs/switchable)
-[![Coverage Status](https://coveralls.io/repos/aralejs/switchable/badge.png?branch=master)](https://coveralls.io/r/aralejs/switchable)
-
-
-Switchable 提供了切换的基本操作，并通过参数配置实现了自动播放，循环，切换等操作，并提供不同的特点封装成了Tabs, Slide, Carousel模块。用户可以根据自己的需求引用不同的模块。
+Switchable Simple提供了切换的最基本操作，并通过参数配置实现了切换，data-api，简单动画效果，数据延时加载等操作，并封装成了Tabs模块。
 
 ---
 
 
-## 继承配置说明 [Simple Switchable](./docs/simple.html)
+## 配置说明
 
 ### triggers `String|Array`
     
@@ -49,45 +45,9 @@ Switchable 提供了切换的基本操作，并通过参数配置实现了自动
 
 动画效果，目前支持,`easeNode`默认, `easeIn`, `easeOut`, `easeBoth`, `easeInStrong`, `easeOutStrong`, `easeBothStrong`, `elasticIn`, `elasticOut`, `elasticBoth`, `backIn`, `backOut`, `backBoth`, `bounceIn`, `bounceOut`, `bounceBoth`。
 
-## 配置说明
-
-### autoplay `Boolean`
-
-是否自动切换，默认为`false`, 开启后，不需要触发触发器，可以实现自动播放。
-
-### interval `Number`
-
-自动播放间隔时间, 以毫秒为单位, 默认为 `3000`。
-
-### pauseOnHover `Boolean`
-
-triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 默认为 `true`。
-
-### steps `Number`
-
-步长，表示每次切换时需要间隔多少个panels, 默认为`1`。如果为`0`或者`负数`，将按视图内的panel个数来切换（切换一整页）。
-
-### viewSize `Array`
-
-可见视图区域的大小. 如果 css 中不设置 panel 的高宽或初始没有 panel , 则需要这里手工指定大小, 默认为 [].
-  
-`当 panel 的高宽 css 中不指定时，需要设置 viewSize 为单个 panel 的高宽.`
-
-### circular `Boolean`
-
-是否循环切换, 默认为 `true`, 是否循环播放, 当切换到最初/最后一个时, 是否切换到最后/最初一个。
-
-### triggerCreator `Function`
-
-在用户没有指定 trigger 的时候自动生成 trigger 并插入 element 中。
-
-设置后将按 return 的 string 生成 dom。如果不指定，将不会自动生成 trigger 。
-
-默认值待定（还没想好 class 的解决方案）。
-
 ## DATA API 配置属性
 
-目前项目支持data-api的形式配置相关属性，并以role的形式配置到项目中，主要有下面7个role。
+目前项目支持data-api的形式配置相关属性，并以role的形式配置到项目中，主要有下面5个role。
 
 其中前面4个仅在属性配置中没有发现对应的`panels` 和 `triggers` 相关配置时，才会生效。
 并且如果同时配置了下面的role， panel的优先级高于content. trigger高于nav.
@@ -103,7 +63,6 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 ```html
 <!-- 容器元素 -->
 <div id="J_Slide">
-    <span data-role="prev">上一页</span>
     <ul class="ui-switchable-nav" data-role="nav">
         <li data-role="trigger">标题 A</li>
         <li data-role="trigger">标题 B</li>
@@ -117,20 +76,15 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
         <div style="display: none" data-role="panel">内容 C</div>
         <div style="display: none" data-role="panel">内容 D</div>
         <div style="display: none" data-role="panel">
-          <textarea data-role="lazy">
-            我是内容 E，只在 switch 到我的时候才插入 dom 上
-          </textarea>
+        	<textarea data-role="lazy">
+        		我是内容 E，只在 switch 到我的时候才插入 dom 上
+        	</textarea>
         </div>
     </div>
-    <span data-role="next">下一页</span>
 </div>
 ```
 
 * `lazy` 在 lazy（使用textarea） value 中的内容会在被 switch 到的时候才插入到 dom 树上
-
-* `prev` 上一页 
-
-* `next` 下一页 
 
 `content` 及 `nav` 更像是语法糖般的存在
 
@@ -138,39 +92,9 @@ triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 
 
 ## 具体组件配置属性
 
-## Carousel (旋转木马)
+## Tabs (普通标签页)
 
-### circular `Boolean`
-
-是否支持循环切换。默认`true`
-
-### prevBtn `selector`
-    
-指定 `前一个`触发器. 
-
-### nextBtn `selector`
-  
-指定 `后一个`触发器. 
-
-### disabledBtnClass `String`
-
-prev/next 按钮不可用状态时的样式类
-
-### adaptive `Boolean`
-
-是否根据容器高宽自适应的调整步进值（steps）。默认为 `true`。
-
-仅在 `step < 1` 时生效。 __推荐使用 css 来控制容器的最小高宽__
-
-## Slide (卡盘)
-
-### autoplay `Boolean`
-
-  是否自动切换，默认为`true`。
-
-### circular `Boolean`
-
-  是否循环切换，默认为`true`。
+配置和基础类相同。
 
 ## 属性
 
@@ -204,11 +128,11 @@ prev/next 按钮不可用状态时的样式类
       
 ### .prev()
 
-  切换到上一视图（可能有多个panel）。
+  切换到上一 panel。
 
 ### .next()
 
-  切换到下一视图（可能有多个panel）。
+  切换到下一 panel。
 
 ### .destroy()
 
@@ -250,14 +174,14 @@ prev/next 按钮不可用状态时的样式类
 
 1. 直接使用：
 
-  ```js
-  seajs.use(['tabs'], function(Tabs) {
-      var t = new Tabs({
-          element: '#demo1',
-          switchTo: 1,
-          effect: 'fade'
-      });
-  });
-  ```
+	```js
+	seajs.use(['tabs'], function(Tabs) {
+	    var t = new Tabs({
+	        element: '#demo1',
+	        switchTo: 1,
+	        effect: 'fade'
+	    });
+	});
+	```
 
 2. 也可以适用自动渲染。详情可以参考[examples/autorender.html](../examples/autorender.html)
