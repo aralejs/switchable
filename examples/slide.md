@@ -81,7 +81,7 @@
 
 ````javascript
 seajs.use(['slide'], function(Slide) {
-    slide = new Slide({
+    var slide = new Slide({
         element: '#slide-demo-1',
         effect: 'scrolly',
         interval: 3000
@@ -159,7 +159,7 @@ seajs.use(['slide'], function(Slide) {
 
 ````javascript
 seajs.use(['slide'], function(Slide) {
-    slide = new Slide({
+    var slide = new Slide({
         element: '#slide-demo-2',
         effect: 'fade',
         activeIndex: 1
@@ -236,9 +236,9 @@ seajs.use(['slide'], function(Slide) {
 </div>
 ````
 
-````javascript
+````js
 seajs.use(['slide', '$'], function(Slide, $) {
-    slide = new Slide({
+    var slide = new Slide({
         element: '#slide-demo-3',
         effect: 'scrollx',
         hasTriggers: false
@@ -345,9 +345,9 @@ seajs.use(['slide', '$'], function(Slide, $) {
 </div>
 ````
 
-````javascript
+````js
 seajs.use(['slide'], function(Slide) {
-    slide = new Slide({
+    var slide = new Slide({
         element: '#slide-demo-4',
         effect: 'fade',
         activeIndex: 1
