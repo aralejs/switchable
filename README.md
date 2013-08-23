@@ -55,10 +55,6 @@ Switchable 提供了切换的基本操作，并通过参数配置实现了自动
 
 自动播放间隔时间, 以毫秒为单位, 默认为 `3000`。
 
-### pauseOnHover `Boolean`
-
-triggerType 为 `hover` 时, 鼠标悬停在 slide 上是否暂停自动播放, 默认为 `true`。
-
 ### circular `Boolean`
 
 是否循环切换, 默认为 `true`, 是否循环播放, 当切换到最初/最后一个时, 是否切换到最后/最初一个。
