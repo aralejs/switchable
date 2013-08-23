@@ -272,7 +272,6 @@ define(function(require) {
             new Slide({
                 element: '#demo1'
             });
-            //TODO test autoplay?
         });
 
         it('Accordion', function() {
@@ -318,6 +317,19 @@ define(function(require) {
             });
             expect(sw._plugins.length).to.be(2);
         });
+
+
+        it('destroy', function() {
+
+            var sw = new Switchable({
+                element: '#demo1',
+                autoplay: true,
+                effect: 'scrollx'
+            });
+
+            sw.destroy()
+            expect(sw._plugins).to.be(undefined);
+        })
 
     });
 });

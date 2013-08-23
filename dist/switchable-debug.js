@@ -233,10 +233,11 @@ define("arale/switchable/1.0.0/switchable-debug", [ "$-debug", "arale/widget/1.1
             this._plugins.push(plugin);
         },
         destroy: function() {
-            // todo: events, stop, clearTimeout(that._switchTimer);
+            // todo: events
+            var that = this;
             $.each(this._plugins, function(i, plugin) {
                 if (plugin.destroy) {
-                    plugin.destroy.call(this);
+                    plugin.destroy.call(that);
                 }
             });
             Switchable.superclass.destroy.call(this);

@@ -306,10 +306,12 @@ define(function(require, exports, module) {
 
 
         destroy: function() {
-            // todo: events, stop, clearTimeout(that._switchTimer);
+            // todo: events
+            var that = this;
+
             $.each(this._plugins, function(i, plugin) {
                 if (plugin.destroy) {
-                    plugin.destroy.call(this);
+                    plugin.destroy.call(that);
                 }
             });
 
