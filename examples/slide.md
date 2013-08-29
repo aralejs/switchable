@@ -20,7 +20,7 @@
 ````css
 #slide-demo-1 {
     position: relative;
-    width: 100%;
+    width: 740px;
     height: 200px;
     overflow: hidden;
 }
@@ -31,7 +31,7 @@
 }
 #slide-demo-1 .ui-switchable-content .ui-switchable-panel {
     position: relative;
-    width: 100%;
+    width: 740px;
     height: 200px;
     overflow: hidden;
 }
@@ -83,7 +83,7 @@
 seajs.use(['slide'], function(Slide) {
     var slide = new Slide({
         element: '#slide-demo-1',
-        effect: 'scrolly',
+        effect: 'scrollx',
         interval: 3000
     }).render();
 });
