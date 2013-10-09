@@ -2,6 +2,10 @@
 
 ---
 
+## 1.0.1
+
+`tag:fixed` [#28](https://github.com/aralejs/switchable/issues/28) Effect width max value.
+
 ## 1.0.0
 
 `tag:fixed` [#20](https://github.com/aralejs/switchable/issues/20) Circular bugfix.

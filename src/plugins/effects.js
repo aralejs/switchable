@@ -53,7 +53,7 @@ define(function (require, exports, module) {
                 if (effect === SCROLLX) {
                     panels.css('float', 'left');
                     // 设置最大宽度，以保证有空间让 panels 水平排布
-                    content.width('9999px');
+                    content.width(Number.MAX_VALUE);
                 }
 
                 // 只有 scrollX, scrollY 需要设置 viewSize
