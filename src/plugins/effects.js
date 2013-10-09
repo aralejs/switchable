@@ -53,7 +53,8 @@ define(function (require, exports, module) {
                 if (effect === SCROLLX) {
                     panels.css('float', 'left');
                     // 设置最大宽度，以保证有空间让 panels 水平排布
-                    content.width(Number.MAX_VALUE);
+                    // 134217727 为 IE6 下 width 最大数值
+                    content.width('134217726px');
                 }
 
                 // 只有 scrollX, scrollY 需要设置 viewSize
