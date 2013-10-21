@@ -4,6 +4,8 @@
 
 ## 1.0.1
 
+`tag:fixed` [#29](https://github.com/aralejs/switchable/issues/29) 循环切换首个到末个时, 无须经过中间 panel , 而应直接切换.
+
 `tag:fixed` [#28](https://github.com/aralejs/switchable/issues/28) Effect width max value.
 
 ## 1.0.0
