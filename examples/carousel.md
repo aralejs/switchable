@@ -92,7 +92,7 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
 });
 ````
 
-使用 Carousel 实现的 Slide
+## 使用 Carousel 实现的 Slide
 
 ````css
 #carousel-demo-2 {
