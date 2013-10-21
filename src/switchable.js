@@ -230,6 +230,9 @@ define(function(require, exports, module) {
             this._switchTrigger(toIndex, fromIndex);
             this._switchPanel(this._getPanelInfo(toIndex, fromIndex));
             this.trigger('switched', toIndex, fromIndex);
+
+            // 恢复手工向后切换标识
+            this._isBackward = undefined;
         },
 
         _switchTrigger: function(toIndex, fromIndex) {
@@ -269,6 +272,9 @@ define(function(require, exports, module) {
 
         // 切换到上一视图
         prev: function() {
+            //  设置手工向后切换标识, 外部调用 prev 一样
+            this._isBackward = true;
+
             var fromIndex = this.get('activeIndex');
             // 考虑循环切换的情况
             var index = (fromIndex - 1 + this.get('length')) % this.get('length');

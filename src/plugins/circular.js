@@ -43,13 +43,17 @@ define(function (require, exports, module) {
 
             var len = this.get('length');
             // scroll 的 0 -> len-1 应该是正常的从 0->1->2->.. len-1 的切换
-            var isBackwardCritical = false;//(fromIndex === 0 && toIndex === len - 1);
+            var isBackwardCritical = fromIndex === 0 && toIndex === len - 1;
             // len-1 -> 0
-            var isForwardCritical = (fromIndex === len - 1 && toIndex === 0);
-            var isBackward = isBackwardCritical ||
-                (!isForwardCritical && toIndex < fromIndex);
-            var isCritical = isBackwardCritical || isForwardCritical;
-
+            var isForwardCritical = fromIndex === len - 1 && toIndex === 0;
+            var isBackward = this._isBackward;
+            // isBackward 使用下面的判断方式, 会在 nav 上 trigger 从 0 -> len-1 切换时,
+            // 不经过 0->1->2->...-> len-1, 而是 0 反向切换到 len-1;
+            // 而上面的判断方式, nav 上的 trigger 切换是正常的, 只有调用 prev 才从 0 反向切换到 len-1;
+            //var isBackward = isBackwardCritical ||
+            //    (!isForwardCritical && toIndex < fromIndex);
+            // 从第一个反向滚动到最后一个 or 从最后一个正向滚动到第一个
+            var isCritical = (isBackward && isBackwardCritical) || (!isBackward && isForwardCritical);
 
             // 在临界点时，先调整 panels 位置
             if (isCritical) {
