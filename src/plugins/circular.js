@@ -46,7 +46,7 @@ define(function (require, exports, module) {
             var isBackwardCritical = fromIndex === 0 && toIndex === len - 1;
             // len-1 -> 0
             var isForwardCritical = fromIndex === len - 1 && toIndex === 0;
-            var isBackward = this._isBackward;
+            var isBackward = this._isBackward === undefined ? toIndex < fromIndex : this._isBackward;
             // isBackward 使用下面的判断方式, 会在 nav 上 trigger 从 0 -> len-1 切换时,
             // 不经过 0->1->2->...-> len-1, 而是 0 反向切换到 len-1;
             // 而上面的判断方式, nav 上的 trigger 切换是正常的, 只有调用 prev 才从 0 反向切换到 len-1;

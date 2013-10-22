@@ -283,6 +283,8 @@ define(function(require, exports, module) {
 
         // 切换到下一视图
         next: function() {
+            this._isBackward = false;
+
             var fromIndex = this.get('activeIndex');
             var index = (fromIndex + 1) % this.get('length');
             this.switchTo(index);
