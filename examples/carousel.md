@@ -171,6 +171,8 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
         <div class="ui-switchable-content" data-role="content">
             <img src="./assets/slide_1.jpg" alt="" class="ui-switchable-panel">
             <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
+            <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
+            <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
             <img src="./assets/slide_3.jpg" alt="" class="ui-switchable-panel">
         </div>
     </div>
