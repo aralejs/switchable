@@ -36,8 +36,10 @@ define(function (require, exports, module) {
             var effect = this.get('effect');
             var step = this.get('step');
 
+            var isFunction = $.isFunction(effect);
+
             // 初始化滚动效果
-            if (effect.indexOf('scroll') === 0) {
+            if (!isFunction && effect.indexOf('scroll') === 0) {
                 var content = this.content;
                 var firstPanel = panels.eq(0);
 
@@ -71,7 +73,7 @@ define(function (require, exports, module) {
                 }
             }
             // 初始化淡隐淡出效果
-            else if (effect === FADE) {
+            else if (!isFunction && effect === FADE) {
                 var activeIndex = this.get('activeIndex');
                 var min = activeIndex * step;
                 var max = min + step - 1;
