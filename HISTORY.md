@@ -2,6 +2,10 @@
 
 ---
 
+## 1.0.2
+
+`tag:improved` 有些地方 `$(selector, element)` 改成 `this.$(selector)`, 查找当前 element 下的元素
+
 ## 1.0.1
 
 `tag:fixed` [#29](https://github.com/aralejs/switchable/issues/29) 循环切换首个到末个时, 无须经过中间 panel , 而应直接切换.

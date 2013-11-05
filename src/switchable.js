@@ -94,11 +94,11 @@ define(function(require, exports, module) {
 
         // 从 HTML 标记中获取各个 role, 替代原来的 markupType
         _getDatasetRole: function() {
-            var element = this.element;
+            var self = this;
             var role = {};
             var roles = ['trigger', 'panel', 'nav', 'content'];
             $.each(roles, function(index, key) {
-              var elems = $('[data-role=' + key + ']', element); 
+              var elems = self.$('[data-role=' + key + ']');
               if (elems.length) {
                 role[key] = elems;
               }

@@ -51,10 +51,10 @@ define(function(require, exports, module) {
          _getDatasetRole: function() {
             var role = Switchable.prototype._getDatasetRole.call(this);
 
-            var element = this.element;
+            var self = this;
             var roles = ['next', 'prev'];
             $.each(roles, function(index, key) {
-              var elems = $('[data-role=' + key + ']', element); 
+              var elems = self.$('[data-role=' + key + ']');
               if (elems.length) {
                 role[key] = elems;
               }
