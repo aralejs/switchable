@@ -22,6 +22,9 @@ Switchable 继承了 [widget](http://aralejs.org/widget/)，可使用其中包�
 
 面板列表，支持直接传入选择器，也可以是元素数组。
 
+**注意: 如果页面上有多个 Switchable 组件, triggers 和 panels 的 selector 最好写的更加精确些, 比如 `triggers: '#banner .ui-switchable-nav li'`,
+而不是 `triggers: '.ui-switchable-nav li'`, 这样能避免多个组件引用 triggers/panels 的冲突.**
+
 ### triggerType `String`
     
 触发类型，默认`hover`.还可以选择`click`
