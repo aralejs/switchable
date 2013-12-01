@@ -6,7 +6,7 @@
 
 `tag:improved` 有些地方 `$(selector, element)` 改成 `this.$(selector)`, 查找当前 element 下的元素
 
-`tag:improved` [#32](https://github.com/aralejs/switchable/issues/32) data-role 应该换成 data-switchable-role
+`tag:changed` [#32](https://github.com/aralejs/switchable/issues/32) data-role 应该换成 data-switchable-role
 
 `tag:fixed` [#33](https://github.com/aralejs/switchable/issues/33) Effect width max value in 360.
 

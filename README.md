@@ -95,21 +95,21 @@ Switchable 继承了 [widget](http://aralejs.org/widget/)，可使用其中包�
 ```html
 <!-- 容器元素 -->
 <div id="J_Slide">
-    <span data-role="prev">上一页</span>
-    <ul class="ui-switchable-nav" data-role="nav">
-        <li data-role="trigger">标题 A</li>
-        <li data-role="trigger">标题 B</li>
-        <li data-role="trigger">标题 C</li>
-        <li data-role="trigger">标题 D</li>
-        <li data-role="trigger">标题 E</li>
+    <span data-switchable-role="prev">上一页</span>
+    <ul class="ui-switchable-nav" data-switchable-role="nav">
+        <li data-switchable-role="trigger">标题 A</li>
+        <li data-switchable-role="trigger">标题 B</li>
+        <li data-switchable-role="trigger">标题 C</li>
+        <li data-switchable-role="trigger">标题 D</li>
+        <li data-switchable-role="trigger">标题 E</li>
     </ul>
-    <div class="ui-switchable-content" data-role="content">  <!-- 面板列表 -->
-        <div data-role="panel">内容 A</div>
-        <div style="display: none" data-role="panel">内容 B</div>
-        <div style="display: none" data-role="panel">内容 C</div>
-        <div style="display: none" data-role="panel">内容 D</div>
+    <div class="ui-switchable-content" data-switchable-role="content">  <!-- 面板列表 -->
+        <div data-switchable-role="panel">内容 A</div>
+        <div style="display: none" data-switchable-role="panel">内容 B</div>
+        <div style="display: none" data-switchable-role="panel">内容 C</div>
+        <div style="display: none" data-switchable-role="panel">内容 D</div>
     </div>
-    <span data-role="next">下一页</span>
+    <span data-switchable-role="next">下一页</span>
 </div>
 ```
 * `prev` 上一页 (仅在Carousel组件生效)
