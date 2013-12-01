@@ -64,10 +64,10 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
 
 ````html
 <div id="carousel-demo-1" class="carousel-demo">
-    <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
-    <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
+    <span class="ui-switchable-prev-btn" data-switchable-role="prev">&lsaquo; 上一页</span>
+    <span class="ui-switchable-next-btn" data-switchable-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
-        <div class="ui-switchable-content" data-role="content">
+        <div class="ui-switchable-content" data-switchable-role="content">
             <img src="https://i.alipayobjects.com/e/201306/SzpUxptFt.png" alt="" class="ui-switchable-panel">
             <img src="https://i.alipayobjects.com/e/201306/SzpaKukGz.png" alt="" class="ui-switchable-panel">
             <img src="https://i.alipayobjects.com/e/201306/SzpBApQi5.png" alt="" class="ui-switchable-panel">
@@ -165,10 +165,10 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
 
 ````html
 <div id="carousel-demo-2" class="carousel-demo">
-    <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
-    <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
+    <span class="ui-switchable-prev-btn" data-switchable-role="prev">&lsaquo; 上一页</span>
+    <span class="ui-switchable-next-btn" data-switchable-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
-        <div class="ui-switchable-content" data-role="content">
+        <div class="ui-switchable-content" data-switchable-role="content">
             <img src="./assets/slide_1.jpg" alt="" class="ui-switchable-panel">
             <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
             <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">

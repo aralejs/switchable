@@ -42,7 +42,7 @@ define("arale/switchable/1.0.2/carousel-debug", [ "./switchable-debug", "$-debug
             var self = this;
             var roles = [ "next", "prev" ];
             $.each(roles, function(index, key) {
-                var elems = self.$("[data-role=" + key + "]");
+                var elems = self.$("[data-switchable-role=" + key + "]");
                 if (elems.length) {
                     role[key] = elems;
                 }
@@ -172,7 +172,7 @@ define("arale/switchable/1.0.2/switchable-debug", [ "$-debug", "arale/widget/1.1
             var role = {};
             var roles = [ "trigger", "panel", "nav", "content" ];
             $.each(roles, function(index, key) {
-                var elems = self.$("[data-role=" + key + "]");
+                var elems = self.$("[data-switchable-role=" + key + "]");
                 if (elems.length) {
                     role[key] = elems;
                 }

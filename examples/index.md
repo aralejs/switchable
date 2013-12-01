@@ -101,7 +101,7 @@
 ````
 
 
-## data-role 形式
+## data-switchable-role 形式
 
 ````css
 #slide-demo-1 {
@@ -157,7 +157,7 @@
 
 ````html
 <div id="slide-demo-1" class="slide-demo">
-    <ul class="ui-switchable-content" data-role="content">
+    <ul class="ui-switchable-content" data-switchable-role="content">
         <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
@@ -179,9 +179,9 @@ seajs.use(['slide'], function(Slide) {
 
 ## 自定义 Class
 
-DOM 中, 默认会给 element 添加  `${classPrefix}` 类, data-role="content" 添加 `${classPrefix}-content`, data-role="nav" 添加 `${classPrefix}-nav`,
-data-role="panel" 添加 `${classPrefix}-panel`, data-role="trigger" 添加 `${classPrefix}-trigger`,
-data-role="prev" 添加 `${classPrefix}-prev-btn`, data-role="next" 添加 `${classPrefix}-next-btn`, prev/next 元素不可用状态时添加 `${classPrefix}-disabled-btn`,
+DOM 中, 默认会给 element 添加  `${classPrefix}` 类, data-switchable-role="content" 添加 `${classPrefix}-content`, data-switchable-role="nav" 添加 `${classPrefix}-nav`,
+data-switchable-role="panel" 添加 `${classPrefix}-panel`, data-switchable-role="trigger" 添加 `${classPrefix}-trigger`,
+data-switchable-role="prev" 添加 `${classPrefix}-prev-btn`, data-switchable-role="next" 添加 `${classPrefix}-next-btn`, prev/next 元素不可用状态时添加 `${classPrefix}-disabled-btn`,
 当前激活的 trigger 添加 `${classPrefix}-active`.
 
 可以通过设置 classPrefix 为 `null` 或 `''` , 这样不会在 DOM 中添加 class.

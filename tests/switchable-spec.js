@@ -38,13 +38,13 @@ define(function(require) {
             var elem = [];
             elem.push('<div id="demo1">');
             elem.push('<span id="scroller-prev" class="prev"');
-            elem.push(' data-role="prev">上一页</span>');
+            elem.push(' data-switchable-role="prev">上一页</span>');
             elem.push('<span id="scroller-next" class="next" ');
-            elem.push(' data-role="next">下一页</span>');
-            elem.push('<ul class="ui-switchable-nav" data-role="nav"> ');
+            elem.push(' data-switchable-role="next">下一页</span>');
+            elem.push('<ul class="ui-switchable-nav" data-switchable-role="nav"> ');
             elem.push('<li>NA</li>><li>NB</li>><li>NC</li></ul>');
             elem.push('<div class="ui-switchable-content"');
-            elem.push(' data-role="content">');
+            elem.push(' data-switchable-role="content">');
             elem.push('<div style="display: none">CA</div>');
             elem.push('<div style="display: none">CB</div>');
             elem.push('<div style="display: none">CC</div></div>');
@@ -66,7 +66,7 @@ define(function(require) {
             var elem3 = [];
             elem3.push('<div id="demo3">');
             elem3.push('<div class="ui-switchable-content"');
-            elem3.push(' data-role="content">');
+            elem3.push(' data-switchable-role="content">');
             elem3.push('<div>CA</div>');
             elem3.push('<div style="display: none">CB</div>');
             elem3.push('<div style="display: none">CC</div></div>');
