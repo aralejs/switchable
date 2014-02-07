@@ -68,9 +68,14 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
     <span class="ui-switchable-next-btn" data-switchable-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
         <div class="ui-switchable-content" data-switchable-role="content">
-            <img src="https://i.alipayobjects.com/e/201306/SzpUxptFt.png" alt="" class="ui-switchable-panel">
-            <img src="https://i.alipayobjects.com/e/201306/SzpaKukGz.png" alt="" class="ui-switchable-panel">
-            <img src="https://i.alipayobjects.com/e/201306/SzpBApQi5.png" alt="" class="ui-switchable-panel">
+            <img src="" alt="1" class="ui-switchable-panel">
+            <img src="" alt="2" class="ui-switchable-panel">
+            <img src="" alt="3" class="ui-switchable-panel">
+            <img src="" alt="4" class="ui-switchable-panel">
+            <img src="" alt="5" class="ui-switchable-panel">
+            <img src="" alt="6" class="ui-switchable-panel">
+            <img src="" alt="7" class="ui-switchable-panel">
+            <img src="" alt="8" class="ui-switchable-panel">
         </div>
     </div>
 </div>
@@ -79,12 +84,13 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
 
 ````js
 seajs.use(['carousel', '$'], function(Carousel, $) {
+    var panelLength = $('#carousel-demo-1 .ui-switchable-panel').length;
     carousel = new Carousel({
         element: '#carousel-demo-1',
         hasTriggers: false,
         easing: 'easeOutStrong',
         effect: 'scrollx',
-        step: 2,
+        step: panelLength/(panelLength - 1),
         viewSize: [332],
         circular: false,
         autoplay: true
