@@ -98,7 +98,7 @@ define(function(require, exports, module) {
             var role = {};
             var roles = ['trigger', 'panel', 'nav', 'content'];
             $.each(roles, function(index, key) {
-              var elems = self.$('[data-switchable-role=' + key + ']');
+              var elems = self.$('[data-role=' + key + ']');
               if (elems.length) {
                 role[key] = elems;
               }
@@ -134,7 +134,7 @@ define(function(require, exports, module) {
             // 再获取 triggers 和 nav
             if (triggers.length > 0) {
             }
-            // attr 里没找到时，才根据 data-switchable-role 来解析
+            // attr 里没找到时，才根据 data-role 来解析
             else if (role.trigger) {
                 this.set('triggers', triggers = role.trigger);
             } else if (role.nav) {
@@ -151,7 +151,7 @@ define(function(require, exports, module) {
 
                 this.nav = role.nav;
             }
-            // 用户没有传入 triggers，也没有通过 data-switchable-role 指定时，如果
+            // 用户没有传入 triggers，也没有通过 data-role 指定时，如果
             // hasTriggers 为 true，则自动生成 triggers
             else if (this.get('hasTriggers')) {
                 this.nav = generateTriggersMarkup(

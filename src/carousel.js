@@ -54,7 +54,7 @@ define(function(require, exports, module) {
             var self = this;
             var roles = ['next', 'prev'];
             $.each(roles, function(index, key) {
-              var elems = self.$('[data-switchable-role=' + key + ']');
+              var elems = self.$('[data-role=' + key + ']');
               if (elems.length) {
                 role[key] = elems;
               }

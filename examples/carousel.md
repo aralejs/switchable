@@ -55,7 +55,7 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
     #carousel-demo-1 .scroller .ui-switchable-content img {
         float: left;
         display: block;
-        width: 300px;
+        width: 190px;
         height: 80px;
         margin: 0 15px;
         border: 1px solid #ccc;
@@ -64,18 +64,15 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
 
 ````html
 <div id="carousel-demo-1" class="carousel-demo">
-    <span class="ui-switchable-prev-btn" data-switchable-role="prev">&lsaquo; 上一页</span>
-    <span class="ui-switchable-next-btn" data-switchable-role="next">下一页 &rsaquo;</span>
+    <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
+    <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
-        <div class="ui-switchable-content" data-switchable-role="content">
+        <div class="ui-switchable-content" data-role="content">
             <img src="" alt="1" class="ui-switchable-panel">
             <img src="" alt="2" class="ui-switchable-panel">
             <img src="" alt="3" class="ui-switchable-panel">
             <img src="" alt="4" class="ui-switchable-panel">
             <img src="" alt="5" class="ui-switchable-panel">
-            <img src="" alt="6" class="ui-switchable-panel">
-            <img src="" alt="7" class="ui-switchable-panel">
-            <img src="" alt="8" class="ui-switchable-panel">
         </div>
     </div>
 </div>
@@ -90,8 +87,8 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
         hasTriggers: false,
         easing: 'easeOutStrong',
         effect: 'scrollx',
-        step: panelLength/(panelLength - 1),
-        viewSize: [332],
+        step: panelLength/(panelLength - 2),
+        viewSize: [232],
         circular: false,
         autoplay: true
     }).render();
@@ -171,10 +168,10 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
 
 ````html
 <div id="carousel-demo-2" class="carousel-demo">
-    <span class="ui-switchable-prev-btn" data-switchable-role="prev">&lsaquo; 上一页</span>
-    <span class="ui-switchable-next-btn" data-switchable-role="next">下一页 &rsaquo;</span>
+    <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
+    <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
-        <div class="ui-switchable-content" data-switchable-role="content">
+        <div class="ui-switchable-content" data-role="content">
             <img src="./assets/slide_1.jpg" alt="" class="ui-switchable-panel">
             <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">
             <img src="./assets/slide_2.jpg" alt="" class="ui-switchable-panel">

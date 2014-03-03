@@ -71,7 +71,7 @@
 
 ````html
 <div id="slide-demo-1" class="slide-demo">
-    <ul class="ui-switchable-content" data-switchable-role="content">
+    <ul class="ui-switchable-content" data-role="content">
         <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
@@ -144,12 +144,12 @@ seajs.use(['slide'], function(Slide) {
 
 ````html
 <div id="slide-demo-2" class="slide-demo">
-    <ul data-switchable-role="content" class="ui-switchable-content">
+    <ul data-role="content" class="ui-switchable-content">
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
         <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
     </ul>
-    <ul data-switchable-role="nav" class="ui-switchable-nav">
+    <ul data-role="nav" class="ui-switchable-nav">
         <li class="ui-switchable-trigger">●</li>
         <li class="ui-switchable-trigger ui-switchable-active">●</li>
         <li class="ui-switchable-trigger">●</li>
@@ -223,7 +223,7 @@ seajs.use(['slide'], function(Slide) {
 ````html
 <div id="slide-demo-3" class="slide-demo">
     <div class="wrapper">
-        <ul data-switchable-role="content" class="ui-switchable-content">
+        <ul data-role="content" class="ui-switchable-content">
             <li class="ui-switchable-panel"><strong>公告1: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
             <li class="hidden ui-switchable-panel"><strong>公告2: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
             <li class="hidden ui-switchable-panel"><strong>公告3: </strong>Arale 立足于支付宝的前端需求和国内前端社区，基于 Sea.js 和 CMD 规范，致力发展小而美的前端模块架构，建立了一套从编码测试到部署的开发体系， 是一个开放、简单、易用的前端解决方案。</li>
@@ -332,12 +332,12 @@ seajs.use(['slide', '$'], function(Slide, $) {
 
 ````html
 <div id="slide-demo-4" class="slide-demo">
-    <ul data-switchable-role="content" class="ui-switchable-content">
+    <ul data-role="content" class="ui-switchable-content">
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
         <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
     </ul>
-    <ul data-switchable-role="nav" class="ui-switchable-nav">
+    <ul data-role="nav" class="ui-switchable-nav">
         <li class="ui-switchable-trigger"><span>缩略/标题一</span><b class="arrow">◆</b></li>
         <li class="ui-switchable-trigger ui-switchable-active"><span>缩略/标题二</span><b class="arrow">◆</b></li>
         <li class="ui-switchable-trigger"><span>缩略/标题三</span><b class="arrow">◆</b></li>

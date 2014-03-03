@@ -2,6 +2,11 @@
 
 ---
 
+## 1.0.3
+
+`tag:changed` data-switchable-role 应该换成 data-role 暂时先改回来.
+
+
 ## 1.0.2
 
 `tag:improved` 有些地方 `$(selector, element)` 改成 `this.$(selector)`, 查找当前 element 下的元素

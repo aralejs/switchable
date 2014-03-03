@@ -63,13 +63,13 @@
 
 ````html
     <div id="tab-demo-1" class="tab-demo" data-widget="tabs">
-        <ul class="ui-switchable-nav" data-switchable-role="nav">
+        <ul class="ui-switchable-nav" data-role="nav">
             <li>标题 A</li>
             <li>标题 B</li>
             <li>标题 C</li>
             <li>标题 D</li>
         </ul>
-        <div class="ui-switchable-content" data-switchable-role="content">
+        <div class="ui-switchable-content" data-role="content">
             <div class="hidden">
                 内容 A
                 <pre>
@@ -141,12 +141,12 @@
 
 ````html
 <div id="slide-demo-2" class="slide-demo" data-widget="slide" data-active-index="1" data-effect="fade" data-interval="2000" data-easing="easeOutStrong">
-    <ul data-switchable-role="content" class="ui-switchable-content">
+    <ul data-role="content" class="ui-switchable-content">
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
         <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_3.jpg" /></a></li>
     </ul>
-    <ul data-switchable-role="nav" class="ui-switchable-nav">
+    <ul data-role="nav" class="ui-switchable-nav">
         <li class="ui-switchable-trigger">●</li>
         <li class="ui-switchable-trigger ui-switchable-active">●</li>
         <li class="ui-switchable-trigger">●</li>
@@ -203,10 +203,10 @@
 
 ````html
 <div id="carousel-demo-1" class="carousel-demo" data-widget="carousel" data-has-triggers="false" data-effect="scrollx" data-easing="easeOutStrong" data-step="2" data-view-size="[332]" data-circular="false" data-autoplay="true">
-    <span class="ui-switchable-prev-btn" data-switchable-role="prev">&lsaquo; 上一页</span>
-    <span class="ui-switchable-next-btn" data-switchable-role="next">下一页 &rsaquo;</span>
+    <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
+    <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
-        <div class="ui-switchable-content" data-switchable-role="content">
+        <div class="ui-switchable-content" data-role="content">
             <img src="https://i.alipayobjects.com/e/201306/SzpUxptFt.png" alt="" class="ui-switchable-panel">
             <img src="https://i.alipayobjects.com/e/201306/SzpaKukGz.png" alt="" class="ui-switchable-panel">
             <img src="https://i.alipayobjects.com/e/201306/SzpBApQi5.png" alt="" class="ui-switchable-panel">
@@ -265,17 +265,17 @@
 
 ````html
 <div id="accordion-demo-1" class="accordion-demo" data-widget="accordion">
-    <div class="ui-switchable-trigger ui-switchable-active" data-switchable-role="trigger"><h3>标题A</h3></div>
-    <div class="ui-switchable-panel" data-switchable-role="panel">
+    <div class="ui-switchable-trigger ui-switchable-active" data-role="trigger"><h3>标题A</h3></div>
+    <div class="ui-switchable-panel" data-role="panel">
         1、支持鼠标滑过和点击触点两种方式<br/>
         2、支持同时展开多个面板
     </div>
-    <div class="ui-switchable-trigger" data-switchable-role="trigger"><h3>标题B</h3></div>
-    <div class="ui-switchable-panel hidden" data-switchable-role="panel">内容B<br/>内容B<br/>内容B</div>
-    <div class="ui-switchable-trigger" data-switchable-role="trigger"><h3>标题C</h3></div>
-    <div class="ui-switchable-panel hidden" data-switchable-role="panel">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
-    <div class="ui-switchable-trigger last-trigger" data-switchable-role="trigger"><h3>标题D</h3></div>
-    <div class="ui-switchable-panel last-panel hidden" data-switchable-role="panel">内容D<br/>内容D<br/>内容D</div>
+    <div class="ui-switchable-trigger" data-role="trigger"><h3>标题B</h3></div>
+    <div class="ui-switchable-panel hidden" data-role="panel">内容B<br/>内容B<br/>内容B</div>
+    <div class="ui-switchable-trigger" data-role="trigger"><h3>标题C</h3></div>
+    <div class="ui-switchable-panel hidden" data-role="panel">内容C<br/>内容C<br/>内容C<br/>内容C<br/>内容C</div>
+    <div class="ui-switchable-trigger last-trigger" data-role="trigger"><h3>标题D</h3></div>
+    <div class="ui-switchable-panel last-panel hidden" data-role="panel">内容D<br/>内容D<br/>内容D</div>
 </div>
 ````
 
