@@ -1,4 +1,4 @@
-define("arale/switchable/1.0.2/carousel-debug", [ "./switchable-debug", "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "./plugins/autoplay-debug", "./plugins/circular-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.3/carousel-debug", [ "./switchable-debug", "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "./plugins/autoplay-debug", "./plugins/circular-debug" ], function(require, exports, module) {
     var Switchable = require("./switchable-debug");
     var $ = require("$-debug");
     // 旋转木马组件
@@ -42,7 +42,7 @@ define("arale/switchable/1.0.2/carousel-debug", [ "./switchable-debug", "$-debug
             var self = this;
             var roles = [ "next", "prev" ];
             $.each(roles, function(index, key) {
-                var elems = self.$("[data-switchable-role=" + key + "]");
+                var elems = self.$("[data-role=" + key + "]");
                 if (elems.length) {
                     role[key] = elems;
                 }
@@ -89,7 +89,7 @@ define("arale/switchable/1.0.2/carousel-debug", [ "./switchable-debug", "$-debug
     });
 });
 
-define("arale/switchable/1.0.2/switchable-debug", [ "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/1.0.2/plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "arale/switchable/1.0.2/plugins/autoplay-debug", "arale/switchable/1.0.2/plugins/circular-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.3/switchable-debug", [ "$-debug", "arale/widget/1.1.1/widget-debug", "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/switchable/1.0.3/plugins/effects-debug", "arale/easing/1.0.0/easing-debug", "arale/switchable/1.0.3/plugins/autoplay-debug", "arale/switchable/1.0.3/plugins/circular-debug" ], function(require, exports, module) {
     // Switchable
     // -----------
     // 可切换组件，核心特征是：有一组可切换的面板（Panel），可通过触点（Trigger）来触发。
@@ -97,9 +97,9 @@ define("arale/switchable/1.0.2/switchable-debug", [ "$-debug", "arale/widget/1.1
     //  - https://github.com/kissyteam/kissy/tree/6707ecc4cdfddd59e21698c8eb4a50b65dbe7632/src/switchable
     var $ = require("$-debug");
     var Widget = require("arale/widget/1.1.1/widget-debug");
-    var Effects = require("arale/switchable/1.0.2/plugins/effects-debug");
-    var Autoplay = require("arale/switchable/1.0.2/plugins/autoplay-debug");
-    var Circular = require("arale/switchable/1.0.2/plugins/circular-debug");
+    var Effects = require("arale/switchable/1.0.3/plugins/effects-debug");
+    var Autoplay = require("arale/switchable/1.0.3/plugins/autoplay-debug");
+    var Circular = require("arale/switchable/1.0.3/plugins/circular-debug");
     var Switchable = Widget.extend({
         attrs: {
             // 用户传入的 triggers 和 panels
@@ -172,7 +172,7 @@ define("arale/switchable/1.0.2/switchable-debug", [ "$-debug", "arale/widget/1.1
             var role = {};
             var roles = [ "trigger", "panel", "nav", "content" ];
             $.each(roles, function(index, key) {
-                var elems = self.$("[data-switchable-role=" + key + "]");
+                var elems = self.$("[data-role=" + key + "]");
                 if (elems.length) {
                     role[key] = elems;
                 }
@@ -367,7 +367,7 @@ define("arale/switchable/1.0.2/switchable-debug", [ "$-debug", "arale/widget/1.1
     }
 });
 
-define("arale/switchable/1.0.2/plugins/effects-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.3/plugins/effects-debug", [ "$-debug", "arale/easing/1.0.0/easing-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     require("arale/easing/1.0.0/easing-debug");
     var SCROLLX = "scrollx";
@@ -508,7 +508,7 @@ define("arale/switchable/1.0.2/plugins/effects-debug", [ "$-debug", "arale/easin
     module.exports.Effects = Effects;
 });
 
-define("arale/switchable/1.0.2/plugins/autoplay-debug", [ "$-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.3/plugins/autoplay-debug", [ "$-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     var win = $(window);
     // 自动播放插件
@@ -594,11 +594,11 @@ define("arale/switchable/1.0.2/plugins/autoplay-debug", [ "$-debug" ], function(
     }
 });
 
-define("arale/switchable/1.0.2/plugins/circular-debug", [ "$-debug", "arale/switchable/1.0.2/plugins/effects-debug", "arale/easing/1.0.0/easing-debug" ], function(require, exports, module) {
+define("arale/switchable/1.0.3/plugins/circular-debug", [ "$-debug", "arale/switchable/1.0.3/plugins/effects-debug", "arale/easing/1.0.0/easing-debug" ], function(require, exports, module) {
     var $ = require("$-debug");
     var SCROLLX = "scrollx";
     var SCROLLY = "scrolly";
-    var Effects = require("arale/switchable/1.0.2/plugins/effects-debug").Effects;
+    var Effects = require("arale/switchable/1.0.3/plugins/effects-debug").Effects;
     // 无缝循环滚动插件
     module.exports = {
         // 仅在开启滚动效果时需要

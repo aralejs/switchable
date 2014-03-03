@@ -4,7 +4,7 @@
 
 ## 1.0.3
 
-`tag:changed` data-switchable-role 应该换成 data-role 暂时先改回来.
+`tag:changed` [#40](https://github.com/aralejs/switchable/issues/40) data-switchable-role 应该换成 data-role 暂时先改回来.
 
 
 ## 1.0.2
