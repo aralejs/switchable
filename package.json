@@ -1,35 +1,43 @@
 {
-    "family": "arale",
-    "name": "switchable",
-    "version": "1.0.3",
-    "description": "Switchable提供了切换的基本操作, 并通过参数配置实现了自动播放, 循环, 切换等操作, 并提供不同的特点封装成了Tabs, Slide, Carousel, Accordion模块. 用户可以根据自己的需求引用不同的模块.",
-    "keywords": ["widget", "tab", "slide", "carousel", "accordion"],
-    "tag": "widget",
-    "homepage": "http://aralejs.org/switchable",
-    "author": "玉伯 <lifesinger@gmail.com>",
-    "maintainers": [
-        "乔花 <shengyan1985@gmail.com>",
-        "康辉 <kangpangpang@gmail.com>"
-    ],
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/aralejs/switchable.git"
+  "name": "arale-switchable",
+  "version": "1.1.0",
+  "description": "Switchable提供了切换的基本操作, 并通过参数配置实现了自动播放, 循环, 切换等操作, 并提供不同的特点封装成了Tabs, Slide, Carousel, Accordion模块. 用户可以根据自己的需求引用不同的模块.",
+  "keywords": [
+    "widget",
+    "tab",
+    "slide",
+    "carousel",
+    "accordion"
+  ],
+  "tag": "widget",
+  "homepage": "http://aralejs.org/switchable",
+  "author": "玉伯 <lifesinger@gmail.com>",
+  "maintainers": [
+    "乔花 <shengyan1985@gmail.com>",
+    "康辉 <kangpangpang@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aralejs/switchable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aralejs/switchable/issues"
+  },
+  "spm": {
+    "main": "src/switchable.js",
+    "dependencies": {
+      "jquery": "1.7.2",
+      "arale-widget": "1.2.0",
+      "arale-easing": "1.1.0"
     },
-    "bugs": {
-        "url": "https://github.com/aralejs/switchable/issues"
+    "devDependencies": {
+      "expect.js": "0.3.1",
+      "sinon": "1.6.0"
     },
-    "spm": {
-        "alias": {
-            "$": "$",
-            "widget": "arale/widget/1.1.1/widget",
-            "easing": "arale/easing/1.0.0/easing"
-        },
-        "output": [
-            "./switchable.js",
-            "./tabs.js",
-            "./slide.js",
-            "./accordion.js",
-            "./carousel.js"
-        ]
-    }
+    "engines": {
+      "seajs": "2.2.1",
+      "seajs-text": "1.1.0"
+    },
+    "buildArgs": "--ignore jquery"
+  }
 }

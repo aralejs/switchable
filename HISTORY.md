@@ -2,6 +2,10 @@
 
 ---
 
+## 1.1.0
+
+`tag:changed` 迁移 spm@3.x
+
 ## 1.0.3
 
 `tag:changed` [#40](https://github.com/aralejs/switchable/issues/40) data-switchable-role 应该换成 data-role 暂时先改回来.
