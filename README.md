@@ -2,6 +2,7 @@
 
 ---
 
+[![spm package](http://spmjs.io/badge/arale-switchable)](http://spmjs.io/package/arale-switchable)
 [![Build Status](https://secure.travis-ci.org/aralejs/switchable.png)](https://travis-ci.org/aralejs/switchable)
 [![Coverage Status](https://coveralls.io/repos/aralejs/switchable/badge.png?branch=master)](https://coveralls.io/r/aralejs/switchable)
 
