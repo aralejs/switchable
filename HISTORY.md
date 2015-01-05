@@ -2,6 +2,10 @@
 
 ---
 
+## 1.1.1
+
+`tag:fixed` 修复文档，和 main 文件路径。
+
 ## 1.1.0
 
 `tag:changed` 迁移 spm@3.x
