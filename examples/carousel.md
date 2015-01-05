@@ -20,46 +20,46 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
 </style>
 
 ````css
-    #carousel-demo-1 {
-        position: relative;
-        width: 664px;
-    }
-    #carousel-demo-1 .ui-switchable-prev-btn, #carousel-demo-1 .ui-switchable-next-btn {
-        position: absolute;
-        top: -30px;
-        color: #666;
-        cursor: pointer;
-    }
-    #carousel-demo-1 .ui-switchable-prev-btn {
-        left: 10px; 
-    }
-    #carousel-demo-1 .ui-switchable-next-btn {
-        right: 10px;
-    }
-    #carousel-demo-1 .ui-switchable-disabled-btn {
-        color: #ddd;
-        cursor: default;
-    }
+#carousel-demo-1 {
+    position: relative;
+    width: 664px;
+}
+#carousel-demo-1 .ui-switchable-prev-btn, #carousel-demo-1 .ui-switchable-next-btn {
+    position: absolute;
+    top: -30px;
+    color: #666;
+    cursor: pointer;
+}
+#carousel-demo-1 .ui-switchable-prev-btn {
+    left: 10px; 
+}
+#carousel-demo-1 .ui-switchable-next-btn {
+    right: 10px;
+}
+#carousel-demo-1 .ui-switchable-disabled-btn {
+    color: #ddd;
+    cursor: default;
+}
 
-    #carousel-demo-1 .scroller {
-        width: 664px;
-        height: 120px;
-        border: 1px solid #ccc;
-        background-color: #F9F9F9;
-        overflow: hidden;
-    }
-    #carousel-demo-1 .scroller .ui-switchable-content {
-        padding: 20px 0;
-        height: 80px;
-    }
-    #carousel-demo-1 .scroller .ui-switchable-content img {
-        float: left;
-        display: block;
-        width: 190px;
-        height: 80px;
-        margin: 0 15px;
-        border: 1px solid #ccc;
-    }
+#carousel-demo-1 .scroller {
+    width: 664px;
+    height: 120px;
+    border: 1px solid #ccc;
+    background-color: #F9F9F9;
+    overflow: hidden;
+}
+#carousel-demo-1 .scroller .ui-switchable-content {
+    padding: 20px 0;
+    height: 80px;
+}
+#carousel-demo-1 .scroller .ui-switchable-content img {
+    float: left;
+    display: block;
+    width: 190px;
+    height: 80px;
+    margin: 0 15px;
+    border: 1px solid #ccc;
+}
 ````
 
 ````html
@@ -80,19 +80,20 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
 
 
 ````js
-seajs.use(['carousel', '$'], function(Carousel, $) {
-    var panelLength = $('#carousel-demo-1 .ui-switchable-panel').length;
-    carousel = new Carousel({
-        element: '#carousel-demo-1',
-        hasTriggers: false,
-        easing: 'easeOutStrong',
-        effect: 'scrollx',
-        step: panelLength/(panelLength - 2),
-        viewSize: [232],
-        circular: false,
-        autoplay: true
-    }).render();
-});
+var Carousel = require('src/carousel');
+var $ = require('jquery');
+
+var panelLength = $('#carousel-demo-1 .ui-switchable-panel').length;
+new Carousel({
+    element: '#carousel-demo-1',
+    hasTriggers: false,
+    easing: 'easeOutStrong',
+    effect: 'scrollx',
+    step: panelLength/(panelLength - 2),
+    viewSize: [232],
+    circular: false,
+    autoplay: true
+}).render();
 ````
 
 ## 使用 Carousel 实现的 Slide
@@ -184,12 +185,11 @@ seajs.use(['carousel', '$'], function(Carousel, $) {
 
 
 ````js
-seajs.use(['carousel', '$'], function(Carousel, $) {
-    carousel = new Carousel({
-        element: '#carousel-demo-2',
-        easing: 'easeOutStrong',
-        effect: 'scrollx',
-        autoplay: true
-    }).render();
-});
+var Carousel = require('src/carousel');
+new Carousel({
+    element: '#carousel-demo-2',
+    easing: 'easeOutStrong',
+    effect: 'scrollx',
+    autoplay: true
+}).render();
 ````

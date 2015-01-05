@@ -18,73 +18,73 @@
 
 
 ````css
-    #tab-demo-1 {
-        font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        position: relative;
-        width: 750px;
-        padding-top: 29px;
-    }
+#tab-demo-1 {
+    font: 14px/1.5 'Xin Gothic', 'PT Sans', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    position: relative;
+    width: 750px;
+    padding-top: 29px;
+}
 
-    #tab-demo-1 .ui-switchable-nav {
-        position: absolute;
-        top: 0;
-        left: 20px;
-        margin: 0;
-        padding: 0;
-        z-index: 99;
-        list-style: none;
-    }
+#tab-demo-1 .ui-switchable-nav {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    margin: 0;
+    padding: 0;
+    z-index: 99;
+    list-style: none;
+}
 
-    #tab-demo-1 .ui-switchable-nav li {
-        float: left;
-        width: 130px;
-        height: 27px;
-        line-height: 21px;
-        text-align: center;
-        background: url(assets/tabs-sprite.gif) no-repeat 0 6px;
-        margin-right: 3px;
-        padding-top: 8px;
-        cursor: pointer;
-        list-style: none;
-    }
+#tab-demo-1 .ui-switchable-nav li {
+    float: left;
+    width: 130px;
+    height: 27px;
+    line-height: 21px;
+    text-align: center;
+    background: url(assets/tabs-sprite.gif) no-repeat 0 6px;
+    margin-right: 3px;
+    padding-top: 8px;
+    cursor: pointer;
+    list-style: none;
+}
 
-    #tab-demo-1 .ui-switchable-nav .ui-switchable-active {
-        background-position: 0 -40px;
-        cursor: default;
-    }
+#tab-demo-1 .ui-switchable-nav .ui-switchable-active {
+    background-position: 0 -40px;
+    cursor: default;
+}
 
-    #tab-demo-1 .ui-switchable-content {
-        position: relative;
-        height: 150px;
-        padding: 20px;
-        border: 1px solid #AEC7E5;
-    }
+#tab-demo-1 .ui-switchable-content {
+    position: relative;
+    height: 150px;
+    padding: 20px;
+    border: 1px solid #AEC7E5;
+}
 ````
 
 ````html
-    <div id="tab-demo-1" class="tab-demo" data-widget="tabs">
-        <ul class="ui-switchable-nav" data-role="nav">
-            <li>标题 A</li>
-            <li>标题 B</li>
-            <li>标题 C</li>
-            <li>标题 D</li>
-        </ul>
-        <div class="ui-switchable-content" data-role="content">
-            <div class="hidden">
-                内容 A
-                <pre>
-                  - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
-                  - 鼠标快速滑过非当前 trigger, 不触发
-                  - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
-                  - click 或 Tab 切换到 trigger, 立即触发
-                  - switch / switched 事件的触发
-                </pre>
-            </div>
-            <div class="hidden">内容 B</div>
-            <div class="hidden">内容 C</div>
-            <div class="hidden">内容 D</div>
+<div id="tab-demo-1" class="tab-demo" data-widget="src/tabs">
+    <ul class="ui-switchable-nav" data-role="nav">
+        <li>标题 A</li>
+        <li>标题 B</li>
+        <li>标题 C</li>
+        <li>标题 D</li>
+    </ul>
+    <div class="ui-switchable-content" data-role="content">
+        <div class="hidden">
+            内容 A
+            <pre>
+              - 在当前 trigger 中 mouseover/mouseout, click, focus, 不触发
+              - 鼠标快速滑过非当前 trigger, 不触发
+              - mouseover 到非当前 trigger, 停留时间到达延迟时，触发
+              - click 或 Tab 切换到 trigger, 立即触发
+              - switch / switched 事件的触发
+            </pre>
         </div>
+        <div class="hidden">内容 B</div>
+        <div class="hidden">内容 C</div>
+        <div class="hidden">内容 D</div>
     </div>
+</div>
 ````
 
 ## Slide
@@ -140,7 +140,7 @@
 ````
 
 ````html
-<div id="slide-demo-2" class="slide-demo" data-widget="slide" data-active-index="1" data-effect="fade" data-interval="2000" data-easing="easeOutStrong">
+<div id="slide-demo-2" class="slide-demo" data-widget="src/slide" data-active-index="1" data-effect="fade" data-interval="2000" data-easing="easeOutStrong">
     <ul data-role="content" class="ui-switchable-content">
         <li class="hidden ui-switchable-panel"><a href="#"><img src="./assets/slide_1.jpg" /></a></li>
         <li class="ui-switchable-panel"><a href="#"><img src="./assets/slide_2.jpg" /></a></li>
@@ -158,51 +158,51 @@
 
 
 ````css
-    #carousel-demo-1 {
-        position: relative;
-        width: 664px;
-        margin-top: 40px;
-    }
-    #carousel-demo-1 .ui-switchable-prev-btn, #carousel-demo-1 .ui-switchable-next-btn {
-        position: absolute;
-        top: -30px;
-        color: #666;
-        cursor: pointer;
-    }
-    #carousel-demo-1 .ui-switchable-prev-btn {
-        left: 10px;
-    }
-    #carousel-demo-1 .ui-switchable-next-btn {
-        right: 10px;
-    }
-    #carousel-demo-1 .ui-switchable-disabled-btn {
-        color: #ddd;
-        cursor: default;
-    }
+#carousel-demo-1 {
+    position: relative;
+    width: 664px;
+    margin-top: 40px;
+}
+#carousel-demo-1 .ui-switchable-prev-btn, #carousel-demo-1 .ui-switchable-next-btn {
+    position: absolute;
+    top: -30px;
+    color: #666;
+    cursor: pointer;
+}
+#carousel-demo-1 .ui-switchable-prev-btn {
+    left: 10px;
+}
+#carousel-demo-1 .ui-switchable-next-btn {
+    right: 10px;
+}
+#carousel-demo-1 .ui-switchable-disabled-btn {
+    color: #ddd;
+    cursor: default;
+}
 
-    #carousel-demo-1 .scroller {
-        width: 664px;
-        height: 120px;
-        border: 1px solid #ccc;
-        background-color: #F9F9F9;
-        overflow: hidden;
-    }
-    #carousel-demo-1 .scroller .ui-switchable-content {
-        padding: 20px 0;
-        height: 80px;
-    }
-    #carousel-demo-1 .scroller .ui-switchable-content img {
-        float: left;
-        display: block;
-        width: 300px;
-        height: 80px;
-        margin: 0 15px;
-        border: 1px solid #ccc;
-    }
+#carousel-demo-1 .scroller {
+    width: 664px;
+    height: 120px;
+    border: 1px solid #ccc;
+    background-color: #F9F9F9;
+    overflow: hidden;
+}
+#carousel-demo-1 .scroller .ui-switchable-content {
+    padding: 20px 0;
+    height: 80px;
+}
+#carousel-demo-1 .scroller .ui-switchable-content img {
+    float: left;
+    display: block;
+    width: 300px;
+    height: 80px;
+    margin: 0 15px;
+    border: 1px solid #ccc;
+}
 ````
 
 ````html
-<div id="carousel-demo-1" class="carousel-demo" data-widget="carousel" data-has-triggers="false" data-effect="scrollx" data-easing="easeOutStrong" data-step="2" data-view-size="[332]" data-circular="false" data-autoplay="true">
+<div id="carousel-demo-1" class="carousel-demo" data-widget="src/carousel" data-has-triggers="false" data-effect="scrollx" data-easing="easeOutStrong" data-step="2" data-view-size="[332]" data-circular="false" data-autoplay="true">
     <span class="ui-switchable-prev-btn" data-role="prev">&lsaquo; 上一页</span>
     <span class="ui-switchable-next-btn" data-role="next">下一页 &rsaquo;</span>
     <div class="scroller">
@@ -264,7 +264,7 @@
 ````
 
 ````html
-<div id="accordion-demo-1" class="accordion-demo" data-widget="accordion">
+<div id="accordion-demo-1" class="accordion-demo" data-widget="src/accordion">
     <div class="ui-switchable-trigger ui-switchable-active" data-role="trigger"><h3>标题A</h3></div>
     <div class="ui-switchable-panel" data-role="panel">
         1、支持鼠标滑过和点击触点两种方式<br/>
@@ -280,7 +280,7 @@
 ````
 
 ````javascript
-seajs.use(['widget'], function(Widget) {
+seajs.use(['arale-widget'], function(Widget) {
     Widget.autoRenderAll();
 });
 ````

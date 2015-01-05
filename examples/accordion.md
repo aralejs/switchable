@@ -78,11 +78,10 @@
 ````
 
 ````js
-seajs.use(['accordion', '$'], function(Accordion, $) {
-    accordion = new Accordion({
-        element: '#accordion-demo-1'
-    }).render();
-});
+var Accordion = require('src/accordion');
+new Accordion({
+    element: '#accordion-demo-1'
+}).render();
 ````
 
 ## multiple: true 时
@@ -150,11 +149,10 @@ seajs.use(['accordion', '$'], function(Accordion, $) {
 ````
 
 ````js
-seajs.use(['accordion', '$'], function(Accordion, $) {
-    accordion = new Accordion({
-        element: '#accordion-demo-2',
-        multiple: true,
-        activeIndex: -99
-    }).render();
-});
+var Accordion = require('src/accordion');
+accordion = new Accordion({
+    element: '#accordion-demo-2',
+    multiple: true,
+    activeIndex: -99
+}).render();
 ````

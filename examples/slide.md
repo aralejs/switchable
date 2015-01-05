@@ -80,13 +80,12 @@
 ````
 
 ````javascript
-seajs.use(['slide'], function(Slide) {
-    var slide = new Slide({
-        element: '#slide-demo-1',
-        effect: 'scrollx',
-        interval: 3000
-    }).render();
-});
+var Slide = require('src/slide');
+new Slide({
+    element: '#slide-demo-1',
+    effect: 'scrollx',
+    interval: 3000
+}).render();
 ````
 
 
@@ -158,13 +157,12 @@ seajs.use(['slide'], function(Slide) {
 ````
 
 ````javascript
-seajs.use(['slide'], function(Slide) {
-    var slide = new Slide({
-        element: '#slide-demo-2',
-        effect: 'fade',
-        activeIndex: 1
-    }).render();
-});
+var Slide = require('src/slide');
+new Slide({
+    element: '#slide-demo-2',
+    effect: 'fade',
+    activeIndex: 1
+}).render();
 ````
 
 
@@ -237,25 +235,24 @@ seajs.use(['slide'], function(Slide) {
 ````
 
 ````js
-seajs.use(['slide', '$'], function(Slide, $) {
-    var slide = new Slide({
-        element: '#slide-demo-3',
-        effect: 'scrollx',
-        hasTriggers: false
-    }).render();
+var Slide = require('src/slide');
+var $ = require('jquery');
 
-    // 自定义 prev/next
-    $("#slide-demo-3 #prev").click(function(e) {
-        e.preventDefault();
+var slide = new Slide({
+    element: '#slide-demo-3',
+    effect: 'scrollx',
+    hasTriggers: false
+}).render();
 
-        slide.prev();
-    });
+// 自定义 prev/next
+$("#slide-demo-3 #prev").click(function(e) {
+    e.preventDefault();
+    slide.prev();
+});
 
-    $("#slide-demo-3 #next").click(function(e) {
-        e.preventDefault();
-
-        slide.next();
-    });
+$("#slide-demo-3 #next").click(function(e) {
+    e.preventDefault();
+    slide.next();
 });
 ````
 
@@ -346,11 +343,10 @@ seajs.use(['slide', '$'], function(Slide, $) {
 ````
 
 ````js
-seajs.use(['slide'], function(Slide) {
-    var slide = new Slide({
-        element: '#slide-demo-4',
-        effect: 'fade',
-        activeIndex: 1
-    }).render();
-});
+var Slide = require('src/slide');
+var slide = new Slide({
+    element: '#slide-demo-4',
+    effect: 'fade',
+    activeIndex: 1
+}).render();
 ````
