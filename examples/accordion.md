@@ -78,7 +78,7 @@
 ````
 
 ````js
-var Accordion = require('src/accordion');
+var Accordion = require('arale-switchable').Accordion;
 new Accordion({
     element: '#accordion-demo-1'
 }).render();
@@ -149,7 +149,7 @@ new Accordion({
 ````
 
 ````js
-var Accordion = require('src/accordion');
+var Accordion = require('arale-switchable').Accordion;
 accordion = new Accordion({
     element: '#accordion-demo-2',
     multiple: true,

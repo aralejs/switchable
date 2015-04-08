@@ -80,7 +80,7 @@ step 为步长, 即每切换一次, 移动多少个 panels. 而 viewSize 为滑�
 
 
 ````js
-var Carousel = require('src/carousel');
+var Carousel = require('arale-switchable').Carousel;
 var $ = require('jquery');
 
 var panelLength = $('#carousel-demo-1 .ui-switchable-panel').length;
@@ -185,7 +185,7 @@ new Carousel({
 
 
 ````js
-var Carousel = require('src/carousel');
+var Carousel = require('arale-switchable').Carousel;
 new Carousel({
     element: '#carousel-demo-2',
     easing: 'easeOutStrong',

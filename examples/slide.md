@@ -80,7 +80,7 @@
 ````
 
 ````javascript
-var Slide = require('src/slide');
+var Slide = require('arale-switchable').Slide;
 new Slide({
     element: '#slide-demo-1',
     effect: 'scrollx',
@@ -157,7 +157,7 @@ new Slide({
 ````
 
 ````javascript
-var Slide = require('src/slide');
+var Slide = require('arale-switchable').Slide;
 new Slide({
     element: '#slide-demo-2',
     effect: 'fade',
@@ -235,7 +235,7 @@ new Slide({
 ````
 
 ````js
-var Slide = require('src/slide');
+var Slide = require('arale-switchable').Slide;
 var $ = require('jquery');
 
 var slide = new Slide({
@@ -343,7 +343,7 @@ $("#slide-demo-3 #next").click(function(e) {
 ````
 
 ````js
-var Slide = require('src/slide');
+var Slide = require('arale-switchable').Slide;
 var slide = new Slide({
     element: '#slide-demo-4',
     effect: 'fade',

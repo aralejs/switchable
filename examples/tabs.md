@@ -88,7 +88,7 @@
 ````
 
 ````js
-var Tabs = require('src/tabs');
+var Tabs = require('arale-switchable').Tabs;
 new Tabs({
     element: '#tab-demo-1',
     triggers: '#tab-demo-1 .ui-switchable-nav li',
@@ -177,7 +177,7 @@ setTimeout(function() {
 ````
 
 ````js
-var Tabs = require('src/tabs');
+var Tabs = require('arale-switchable').Tabs;
 new Tabs({
     element: '#tab-demo-2',
     triggers: '#tab-demo-2 .ui-switchable-nav li',

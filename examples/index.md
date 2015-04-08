@@ -89,7 +89,7 @@
 ````
 
 ````js
-var Tabs = require('src/tabs');
+var Tabs = require('arale-switchable').Tabs;
 new Tabs({
     element: '#tab-demo-1',
     triggers: '.ui-switchable-nav li',
@@ -165,7 +165,7 @@ new Tabs({
 ````
 
 ````javascript
-var Slide = require('src/slide');
+var Slide = require('arale-switchable').Slide;
 slide = new Slide({
     element: '#slide-demo-1',
     effect: 'scrolly',
@@ -255,7 +255,7 @@ data-role="prev" 添加 `${classPrefix}-prev-btn`, data-role="next" 添加 `${cl
 ````
 
 ````js
-var Tabs = require('src/tabs');
+var Tabs = require('arale-switchable').Tabs;
 
  new Tabs({
     classPrefix: '',
